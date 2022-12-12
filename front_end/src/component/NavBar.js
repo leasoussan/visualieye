@@ -56,13 +56,16 @@ const  NavBar=({user_id, Logged, username})=> {
                                     <Link to="/">Home</Link>
                                 </ul>
                                 <ul>
-                                    <Link to="/vision_board">Vision Board</Link>
+                                    <Link to={`/vision_board/${user_id}`}>Vision Board</Link>
                                 </ul>
                                 <ul>
                                     <Link to={`/my_goals/${user_id}`}>My Goals</Link>
                                 </ul>
                                 <ul>
                                     <Link to="/profile">Profile</Link>
+                                </ul>
+                                <ul>
+                                    {/* <Link to="/a_goal"></Link> */}
                                 </ul>
                             </div>
                         </div>
@@ -72,7 +75,7 @@ const  NavBar=({user_id, Logged, username})=> {
                             <div className="login">
 
                                 <ul>
-                                    <h4>Hello Dear { }</h4>
+                                    <h4>Hello Dear {username }</h4>
                                 </ul>
                                 <ul>
                                     <Link to="/logout">logout</Link>

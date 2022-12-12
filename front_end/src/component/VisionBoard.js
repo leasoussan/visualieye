@@ -5,46 +5,85 @@ import { CheckUserLogIn } from "./CheckUserLogIn";
 import NavBar from "./NavBar";
 
 class VisionsBoard extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            my_goals: []
+            goals: [],
+            user_id: "",
+            defaultImg: 'https://www.rd.com/wp-content/uploads/2019/06/DreamBigQuotes2-scaled.jpg'
         }
 
     }
 
-    // componentDidMount() {
-    //     console.log("welcome");
-    //     const getMyGoals = async () => {
-    //         const results = await fetch('http://localhost:5000/api/goals')
-    //         const data = await results.json()
-    //         this.setState({ my_goals: data })
-    //     }
+    componentDidMount() {
+        const {user_id} = this.props
 
-    //     getMyGoals()
-    //     CheckUserLogIn()
-    // }
+        const get_user_goal = async () => {
 
+            console.log(user_id);
+            try {
+                const response = await fetch(`http://localhost:5000/api/vision_board/${user_id}`);
+                const data = await response.json();
+                console.log(data);
+                if (data.msg === "null") {
+    
+                    this.setState({ goals: {"msg":"nothingyet"}})
+    
+                } else {
+                   this.setState({goals: data})
+                }
+    
+            }
+    
+            catch (e) {
+                console.log(e);
+            }
+        };get_user_goal()
+
+    }
+
+
+    setDefault=(e)=>{
+      e.preventDefault(e)
+        
+    //   const getDefautlImage=  document.getElementById(e )
+        // getDefautlImage.setAttribute('src', this.state.defaultImg);
+        // console.log(getDefautlImage.src);
+        console.log(e);
+    }
+    
 
     render() {
+        const goals = this.state.goals
+        
         return (
-            <>        
-            <CheckUserLogIn/>  
-  
-            <Link to='/login' id='go_to_login'/>
-            {/* <div>
+            <>
+                <CheckUserLogIn />
+
+                <Link to='/login' id='go_to_login' />
+
+                <div className="vision_board">
                 {
-                    this.state.my_goals.map((item) => {
+                    goals.map((item) => {
+                        const imageOne = item.image_one
+                        const imageTwo = item.image_two
+                        const defaultImage = this.state.defaultImg
+
                         return (
-                            <div>
-                                here {item.image_one}
-                                2{this.image_two}
+                            <div key={item.goal_id} className='vision_board_goal_display'>
+
+                              
+
+                               <img src={imageOne} id='img1' className='image_display' onError ={this.setDefault} /> 
+
+                               <img src={imageTwo} id='img2' className='image_display' onError ={this.setDefault}/> 
+
                             </div>
 
                         )
                     })
                 }
-            </div> */}
+            </div>
             </>
 
 

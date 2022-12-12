@@ -18,6 +18,7 @@ import {CheckUserLogIn} from './component/CheckUserLogIn';
 // import CheckUserLogIn from './component/CheckUserLogIn';
 
 import NavBar from './component/NavBar';
+import GoalDisplay from './component/GoalDisplay';
 
 export default function App(props) {
 
@@ -64,10 +65,12 @@ setLoggedIn()
         <Routes>
     
           <Route path="/" element={<Home />} />
-          <Route path="/vision_board" element={<VisionsBoard />} />
-          <Route path="/my_goals/:id" element={<GoalsList/>} />
+          <Route path="/vision_board/:id" element={<VisionsBoard user_id={check_user_id()}/>} />
+          <Route path="/my_goals/:id" element={<GoalsList  props={props}/>} />
+          <Route path="/a_goal/:id" element={<GoalDisplay props={props}/>} />
+
           <Route path="/profile" element={<Profile />} />
-          <Route path="/my_mood_borad" element={<MoodBoard />} />
+          <Route path="/my_mood_board" element={<MoodBoard />} />
           <Route path="/logout" element={<LogOut />} />
           <Route path="/login" element={<LogIn />} />
          <Route path="/register" element={<Register />} />

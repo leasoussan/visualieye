@@ -11,7 +11,18 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
-
+        const getusername = () => {
+                const getuser = localStorage.getItem('isLoggin');
+                if (getuser) {
+                    const getUserId = getuser.split(',')[1]
+                    this.setState({username:getUserId})
+                }
+                else {
+                    return 0
+                }
+        
+            };getusername()
+        
 
     }
 
@@ -28,7 +39,11 @@ class Profile extends React.Component {
                 <CheckUserLogIn />
                 <Link to='/login' id='go_to_login' />
 
-                <h1> about me here </h1>
+                <h1> About me here {this.state.username}</h1>
+
+                <h2> Affiramtion 1 </h2>
+                <h2> Affiramtion 2 </h2>
+                
             </>
         )
     }

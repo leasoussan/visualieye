@@ -8,6 +8,7 @@ const fs = require('fs');//read write on file
 const { db } = require('./data/database.js');
 const { client } = require('pg');
 const { log } = require('console');
+const { send } = require('process');
 dotenv.config()
 
 const app = express();
@@ -90,11 +91,10 @@ app.post('/login', (req, res) => {
         .where({email:email})
         .select('email','password_1', 'id', 'username')
         .then(rows => {
-            console.log("cest moiiiiiiiiiiiiiiiiiiiiiiiiiiiii", rows);
             if(rows.length === 0){
                 return res.json({msg:'user does not exist'})
               }
-            console.log(res);  
+              console.log("im here in node server ");
             res.json(rows)  
          })
          .catch(e => {
@@ -152,13 +152,16 @@ app.get('/api/goal_detail/:id', (req, res) => {
     console.log("in the parama id", id);
     db('goal')
         .select('*')
-        .where({ user_id : id})
+        .where({ goal_id : id})
         .then(rows => {
+            console.log("here yo");
             if (rows.length === 0) {
                 return res.status(404).json({ msg: 'not found' })
+            }else{
+                console.log(rows);
+                res.json(rows)
             }
-            console.log(rows);
-            res.json(rows)
+            
             
         })
         .catch(e => {
@@ -166,7 +169,7 @@ app.get('/api/goal_detail/:id', (req, res) => {
             res.status(404).json({ msg: e.message })
         })
 })
-// READ ALL
+// READ ALL GOALS
 app.get('/api/my_goals/:id', (req, res) => {
     // console.log("icic cest req et toi ",req);
     const {id} = req.params
@@ -178,10 +181,42 @@ app.get('/api/my_goals/:id', (req, res) => {
         .rightJoin('users', 'goal.user_id', 'users.id' )
         .where({user_id: id})
         .then(rows => {
-            if (rows.length === 0) {
-                res.status(404).json({ msg: "not int he list " })
+            console.log(rows);
+            if(rows.length === 0) {
+                  res.json({"msg":"null"})
+            }  else{
+             
+                res.json(rows) 
             }
-            res.json(rows)
+           
+        })
+        .catch(e => {
+            console.log(e);
+            res.status(404).json({ msg: "error" })
+        })
+})
+
+
+
+
+// READ ALL VISION BOARD
+app.get('/api/vision_board/:id', (req, res) => {
+    // console.log("icic cest req et toi ",req);
+    const {id} = req.params
+    console.log(id);
+    db('goal')
+        .select('*')
+        .rightJoin('users', 'goal.user_id', 'users.id' )
+        .where({user_id: id})
+        .then(rows => {
+            console.log(rows);
+            if(rows.length === 0) {
+                  res.json({"msg":"null"})
+            }  else{
+             
+                res.json(rows) 
+            }
+           
         })
         .catch(e => {
             console.log(e);
@@ -214,7 +249,7 @@ app.put('/api/goals/:id', (req, res) => {
 app.delete('/api/goals/:id', (req, res) => {
     const { id } = req.params;
     db('goal')
-        .where({ id })
+        .where({ goal_id:id })
         .del()
         .returning('*')
         .then(rows => {

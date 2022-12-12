@@ -30,11 +30,12 @@
     justify-content: start;
     align-items: center;
     border-radius: 15px;
-    background-color: rgb(174, 199, 196);
+    background-color: rgb(202, 226, 223);
     width: 15%;
     height: 75%;
     padding: 3rem 1rem;
     justify-content: space-between;
+    border: solid oldlace 3px 10px;
 }
 
 .display_manager{
@@ -44,6 +45,7 @@
     width: 100%;
     padding: 1rem;
     height: 60vh;
+    margin-top: 5rem;
     border: solid 4px green
 }
 
@@ -111,4 +113,26 @@
     border-radius: 15%;
     width: 15%;
     border: solid green 2px;
+}
+
+
+.vision_board{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 95vh;
+    
+}
+.vision_board_goal_display{
+    width: 20%;
+    height: 90%;
+    border: solid brown 3px;
+}
+
+
+.image_display{
+    width:100%;
+    height: 50%;
+    object-fit:cover;
+
 }

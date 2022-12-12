@@ -15,7 +15,7 @@ class AddGoalForm extends React.Component {
         this.state = {
             goal_type_select: [],
             title: '',
-            goal_type: '',
+            goal_type: props.goal_type,
             start_date: new Date(),
             end_date: new Date(),
             accomplished: false,
@@ -27,37 +27,39 @@ class AddGoalForm extends React.Component {
     }
 
     componentDidMount(e) {
-        console.log("on est monter sur le form");
-        const getGoal_type = async () => {
-            const { goal_type } = this.state.goal_type_select
-
-            try {
-                const results = await fetch('http://localhost:5000/api/goals_type/', {
-                    methode: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        body: JSON.stringify({ goal_type })
-                    }
-                });
-                const data = await results.json()
-
-                this.setState({ goal_type_select: data })
-            }
-            catch (e) {
-                console.log(e);
-            }
-        }
-        getGoal_type();
-    
+    console.log(this.props);
     const check_user_id = () => {
-            const getuser = localStorage.getItem('isLoggin');
-            console.log(getuser);
-            if (getuser=== true) {
-                const getUserId = getuser.split(',')[0]
-                console.log("getUserId", getUserId);
-                this.setState({user_id:getUserId})
-            }
-    } ;check_user_id()
+        const getuser = localStorage.getItem('isLoggin');
+        console.log(getuser);
+        if (getuser) {
+            const getUserId = getuser.split(',')[0]
+            this.setState({user_id:getUserId})
+        }else{
+            console.log("whats");
+        }
+} ;check_user_id()
+        // ______________________________________________________________________in case I want the user to be able to choose
+        // const getGoal_type = async () => {
+        //     const { goal_type } = this.state.goal_type_select
+
+        //     try {
+        //         const results = await fetch('http://localhost:5000/api/goals_type/', {
+        //             methode: 'GET',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //                 body: JSON.stringify({ goal_type })
+        //             }
+        //         });
+        //         const data = await results.json()
+        //         this.setState({ goal_type_select: data })
+        //     }
+        //     catch (e) {
+        //         console.log(e);
+        //     }
+        // }
+        // getGoal_type();
+    
+
 
     }
     handleChange = (e) => {
@@ -77,18 +79,18 @@ class AddGoalForm extends React.Component {
         console.log(e.target);
         const add_goal_data = async () => {
             const { title, goal_type, start_date, end_date, accomplished, user_id, image_one, image_two, notes } = this.state
+            console.log("icii conas", title, goal_type, start_date, end_date, accomplished, user_id, image_one, image_two, notes )
             console.log(JSON.stringify({ title, goal_type, start_date, end_date, accomplished, user_id, image_one, image_two, notes }));
             try {
-                console.log("try harder");
                 const results = await fetch(`http://localhost:5000/api/goals/`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ title, goal_type, start_date, end_date, accomplished, user_id:[this.user_id], image_one, image_two, notes })
+                    body: JSON.stringify({ title, goal_type, start_date, end_date, accomplished, user_id, image_one, image_two, notes })
                 });
                 console.log(results);
                 const data = await results.json();
                 console.log(data);
-                this.setState({[e.target.name]: e.target.value})
+                // this.setState({[e.target.name]: e.target.value})
             }
 
             catch (e) {
@@ -98,7 +100,7 @@ class AddGoalForm extends React.Component {
         add_goal_data()
         console.log(e.target.parentElement);
         e.target.reset()
-        this.handleClose()
+        // this.handleClose()
 
     }
 
@@ -125,7 +127,7 @@ class AddGoalForm extends React.Component {
                     <select name="goal_type" value={this.goal_type} onChange={this.handleChange}>
                         {
                             this.state.goal_type_select.map((item, index) => {
-                              
+                                
                                 return (
                                     
                                     <option key={item.id} value={index+1}>{item.name}</option>
