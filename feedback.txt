@@ -1,0 +1,21 @@
+Hi Lea,
+
+Let me just start by saying that I love your project! It's very user-friendly, 
+it's clean and I love the aesthetics of the application.
+
+- Make sure to delete unused lines of code and files, like console logs, test, 
+default react files, imports that you've ended up not using ecc
+
+- Your filing system works great, everything is clear and simple to navigate.
+
+- In the latest version of express, fetch is included! so there is no need to use axios, 
+you can convert your axios post requests to regular fetch requests.
+
+- Same goes to bodyParser. It's included in express.
+
+- For future reference and organization - Try putting your pages components inside a folder called "pages", 
+and inside these parent components include your child 
+components that are located in the "components" folder. 
+
+Overall, I loved your project! Very well done and it is clear that you've put a lot of effort into it.
+Good job!
