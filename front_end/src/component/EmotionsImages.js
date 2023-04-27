@@ -32,7 +32,7 @@ class EmotionsSet extends React.Component{
         return(
             <>
             {
-                emojiesList.map(item=> console.log(item);)
+                emojiesList.map(item=> console.log(item))
             }
             
             

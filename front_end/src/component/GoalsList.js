@@ -118,6 +118,7 @@ class GoalsList extends React.Component {
                             const getCurrentGoal = goals.find((obj) => obj.goal_type === item.id)
                             return (
                                 <div key={item.name} className={'goal_box'}>
+                                    <h1 style={{color:'green'}}>{item.name.toUpperCase()}</h1>
                                     {
                                         getCurrentGoal ?
                                             <div>
@@ -131,8 +132,7 @@ class GoalsList extends React.Component {
                                             :
                                             <div>
                                                 <Button variant="primary" onClick={this.handleShow}>
-                                                    Launch static backdrop modal
-                                                </Button>
+ADD YOUR {item.name} Goal                                                </Button>
                                                 <Modal
                                                     show={this.state.show}
                                                     onHide={this.handleClose}

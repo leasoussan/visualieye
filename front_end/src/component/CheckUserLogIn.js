@@ -7,36 +7,10 @@ import NavBar from './NavBar';
 
 export function CheckUserLogIn() {
 
-  function getUser(){
-    const getLocalStorage =  localStorage.getItem('isLoggin');
-    if(getLocalStorage === null){
-     document.getElementById('go_to_login')
-
-    }else{
-      const user_id = localStorage.getItem('isLoggin').split(',')[0]
-    }
-  };
-  getUser()
-
-
-  
-    // const test=() => {
-    //   const getStorage  =  localStorage.getItem('isLoggin')
-    //   if(getStorage === true){
-    //     const getUser =localStorage.getItem('isLoggin')
-    //     console.log(getUser);
-
-    //   }else{
-    //     console.log("ya pas");
- 
-    //   }
-
-    return(
-        <>
-       
-          {/* <Link to='/login' id='go_to_login' get_login_button={get_login_button} /> */}
-        </>
-    )
+  const user = localStorage.getItem('user');
+  console.log("we rare checking here");
+  return !! user ; 
+  // if the user is logged in = true else return false
 }
     
 

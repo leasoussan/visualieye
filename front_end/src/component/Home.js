@@ -41,7 +41,7 @@ export function Home() {
 
             <Link to='/login' id='go_to_login' />
             <div className='homePageDispaly'>
-
+                <img src={'https://www.oberlo.com/media/1608267092-life-goals.jpg?w=1824&fit=max'} style={{width:'90%', background:'cover'}} />
 
             </div>
         </>

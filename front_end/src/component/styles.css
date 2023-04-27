@@ -18,7 +18,7 @@
     width: 70%;
 }
 .form_holder > input[type=submit]{
-    background-color: rgb(79, 157, 149);
+    background-color: rgb(62, 117, 112);
 }
 .form_holder > input[name=notes]{
     height: 10rem;
@@ -101,8 +101,18 @@
 .homePageDispaly{
     width: 100%;
     height: 80vh;
-    background-color: aqua;
+    background-color: rgb(206, 221, 212);
 }
+
+
+.homePageDispaly img{
+    margin-left:5% ;
+    height: 100%;
+    max-width: auto;
+    background-size: 100% 100%;
+    background-color: rgb(206, 221, 212);
+}
+
 
 .goal_diplay_board{
     display: flex;
@@ -135,4 +145,13 @@
     height: 50%;
     object-fit:cover;
 
+}
+
+.goalDisplay{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(217, 218, 191);
+    height: 80vh;
 }
