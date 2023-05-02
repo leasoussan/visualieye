@@ -7,7 +7,7 @@ const Register =()=> {
             username: '',
             email: '',
             password:'' ,
-            consfirmPassword:'',
+            confirmPassword:'',
           
         });
         const [error, setError]= useState('');
@@ -21,15 +21,15 @@ const Register =()=> {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         // set up the connection :
-        const { username, email, password, consfirmPassword} = formData;
+        const { username, email, password, confirmPassword} = formData;
         
         // Validate the Form
-        if(!username || !email || ! password || !consfirmPassword){
+        if(!username && !email && ! password && !confirmPassword){
             setError('All fields are Required');
             return;
         }
         // another condition
-        if(password !== consfirmPassword){
+        if(password !== confirmPassword){
             setError('Password not matching');
             return;
 

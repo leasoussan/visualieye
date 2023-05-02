@@ -1,7 +1,7 @@
 import React from "react";
 import GoalsList from "./GoalsList";
 import { Link } from "react-router-dom";
-import { CheckUserLogIn } from "./CheckUserLogIn";
+import CheckUserLogIn from "./CheckUserLogIn";
 import NavBar from "./NavBar";
 
 class VisionsBoard extends React.Component {
@@ -54,15 +54,16 @@ class VisionsBoard extends React.Component {
     
 
     render() {
+
         const goals = this.state.goals
         
         return (
             <>
-                <CheckUserLogIn />
 
-                <Link to='/login' id='go_to_login' />
 
                 <div className="vision_board">
+                <h1>Yo yoyo</h1>
+
                 {
                     goals.map((item) => {
                         const imageOne = item.image_one

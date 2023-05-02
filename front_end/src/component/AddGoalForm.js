@@ -8,6 +8,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format, parseISO } from "date-fns";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import { CheckUserLogIn } from "./CheckUserLogIn.js";
+
+
 
 class AddGoalForm extends React.Component {
     constructor(props) {

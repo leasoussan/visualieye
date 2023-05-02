@@ -1,19 +1,30 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Home from './Home';
-import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
-
-// 
-
-export function CheckUserLogIn() {
-
-  const user = localStorage.getItem('user');
-  console.log("we rare checking here");
-  return !! user ; 
-  // if the user is logged in = true else return false
-}
-    
+import {navigate}  from '../App.js'
 
 
+function CheckUserLogIn ({isLoggedIn}){
+  
+  const navigate = useNavigate();
 
+  console.log("testing the userLogincheck", isLoggedIn);
+
+  useEffect(() => {
+    console.log("is the check userLOGIN.js");
+    const loggedIn = localStorage.getItem("isLoggin");
+    if (loggedIn) {
+      isLoggedIn(true);
+    } else {
+      isLoggedIn(false);
+      navigate("/login");
+    }
+  }, [navigate, isLoggedIn]);
+
+  return null;
+};
+
+
+export default CheckUserLogIn
 

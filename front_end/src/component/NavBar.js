@@ -1,108 +1,85 @@
-import { Routes, Route, Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import CheckUserLogIn from './CheckUserLogIn.js';
+// import Logout from './Logout.js';
 
-import Home from "./Home";
-import AddGoalForm from "./AddGoalForm";
-import VisionsBoard from "./VisionBoard";
-import GoalsList from "./GoalsList";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Register from "./Register";
-import {CheckUserLogIn} from "./CheckUserLogIn";
+const NavBar = ({ isLoggedIn, setIsLoggedIn, user_id }) => {
+  const navigate = useNavigate('');
 
 
-const  NavBar=({user_id, Logged, username})=> {
-
-    let menu;
-
-  
-    if (Logged === false) {
-        menu= (
-
-            <div className="nav_main">
+  useEffect(() => {
+    console.log("logIN status changed");
+    // const userStatus = 
+  }, [isLoggedIn]);
 
 
-                <div className="right_nav">
+  const handleLogout = async () => {
 
-                    <div className="login">
+    setIsLoggedIn(false);
+    localStorage.removeItem('user_id');
+    navigate('/');
+    // try {
+    //   const response = await fetch('http://localhost:5000/logout', {
+    //     method: 'DELETE',
+    //     credentials: 'include',
+    //   });
 
-                        <ul>
-                            <Link to="/login">login</Link>
-                        </ul>
+    //   if (response.ok) {
+    //     setIsLoggedIn(false);
+    //     localStorage.removeItem('user_id');
+    //     navigate('/');
+    //   } else {
+    //     console.error('Error in logout: ' + response.status);
+    //   }
+    // } catch (error) {
+    //   console.error('Error in logout:', error);
+    // }
+  };
+  const loggedInLinks = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to={`/vision_board/${user_id}`}>vision_board</Link>
+      </li>
+      <li>
+        <Link to={`/profile/${user_id}`}>Profile</Link>
 
-                    </div>
-                    <div className="register">
-                        <ul>
-                            <Link to="/register">Register</Link>
-                        </ul>
-                    </div>
-                </div>
+      </li>
+      <li>
+        <Link to="/logout" onClick={handleLogout}>
+          Logout
+        </Link>
+      </li>
+    </>
+  );
 
-            </div>
-        )
-    }
-    else {
+  const loggedOutLinks = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
+      <li>
+        <Link to="/register">Register</Link>
+      </li>
+    </>
+  );
 
-        menu= (
-            <>
-                <div className="nav_main">
-                    <>
-                        <div className="left_nav">
-                            <i>icon</i>
-                            <div className="nav_bar_logged">
-                                <ul>
-                                    <Link to="/">Home</Link>
-                                </ul>
-                                <ul>
-                                    <Link to={`/vision_board/${user_id}`}>Vision Board</Link>
-                                </ul>
-                                <ul>
-                                    <Link to={`/my_goals/${user_id}`}>My Goals</Link>
-                                </ul>
-                                <ul>
-                                    <Link to="/profile">Profile</Link>
-                                </ul>
-                                <ul>
-                                    {/* <Link to="/a_goal"></Link> */}
-                                </ul>
-                            </div>
-                        </div>
+  return (
+    <>
+      <nav className="navbar">
+        {isLoggedIn ? (
+          loggedInLinks
+        ) : (
+          loggedOutLinks
+        )}
+      </nav>
+    </>
+  );
+};
 
-                        <div className="right_nav">
-
-                            <div className="login">
-
-                                <ul>
-                                    <h4>Hello Dear {username }</h4>
-                                </ul>
-                                <ul>
-                                    <Link to="/logout">logout</Link>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </>
-                </div>
-
-
-
-            </>
-        )
-    }
-
-    return ( 
-        <nav className="navbar">
-       {menu}
-    
-        </nav>
-       );
-}
-
-export default NavBar;
-
-
-
-
-
+export default NavBar

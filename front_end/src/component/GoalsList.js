@@ -3,9 +3,12 @@ import AddGoalForm from "./AddGoalForm";
 import { Routes, Route, Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { CheckUserLogIn } from "./CheckUserLogIn";
+import CheckUserLogIn from "./CheckUserLogIn.js";
 import NavBar from "./NavBar";
 import GoalDisplay from "./GoalDisplay";
+
+
+
 class GoalsList extends React.Component {
     constructor() {
         super();
@@ -108,8 +111,6 @@ class GoalsList extends React.Component {
 
         return (
             <>
-                <CheckUserLogIn />
-                <Link to='/login' id='go_to_login' />
 
                 <div className="display_manager" >
 

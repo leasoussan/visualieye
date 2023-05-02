@@ -1,83 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
-import Register from './component/Register';
-import AddGoalForm from './component/AddGoalForm';
-
-import axios from 'axios';
+import Register from './component/Register.js';
 import React, { useState, useEffect } from 'react';
-import GoalsList from './component/GoalsList';
 import '../src/component/styles.css'
-import { BrowserRouter as Router, Route, Redirect, Routes, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Routes, Link } from "react-router-dom";
+import PrivateRoute from './component/PrivateRoute.js';
 import Home from './component/Home';
-import VisionsBoard from './component/VisionBoard';
-import Profile from './component/Profile';
-import MoodBoard from './component/MoodBoard';
-import LogOut from './component/LogOut';
-import LogIn from './component/LogIn';
-import {CheckUserLogIn} from './component/CheckUserLogIn';
-// import CheckUserLogIn from './component/CheckUserLogIn';
+import VisionsBoard from './component/VisionBoard.js';
+import Profile from './component/Profile.js';
+import MoodBoard from './component/MoodBoard.js';
+import LogOut from './component/Logout.js';
+import Login from './component/Login.js';
 
-import NavBar from './component/NavBar';
-import GoalDisplay from './component/GoalDisplay';
+import NavBar from './component/NavBar.js';
+import GoalDisplay from './component/GoalDisplay.js';
+import Logout from './component/Logout.js';
+import GoalsList from './component/GoalsList.js';
+
+
 
 export default function App(props) {
 
-
-  const check_user_id = () => {
-    const getuser = localStorage.getItem('isLoggin');
-    if (getuser) {
-        const getUserId = getuser.split(',')[0]
-        console.log("getUserId", localStorage);
-        return getUserId
-    }
-    else {
-        return 0
-    }
-
-};check_user_id()
-
-const setLoggedIn = () => {
-    if (check_user_id() === 0) {
-        return false
-    }else{
-        return true
-    }
-}
-setLoggedIn()
-
-
-  const username = () => {
-    const getUsername = localStorage.getItem('isLoggin');
-    if (getUsername) {
-      const userName = getUsername.split(',')[1]
-      return userName
-  
-  }
-  }
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggin') != null);
+  const userId = localStorage.getItem('user_id') 
+  console.log("userId in app", userId);
   return (
 
-    <>
-    
-      <CheckUserLogIn />
-        <Link to='/login' id='go_to_login'/>
-        <NavBar user_id={check_user_id()} Logged={setLoggedIn()} username={username()} />
-      
-        <Routes>
-    
-          <Route path="/" element={<Home />} />
-          <Route path="/vision_board/:id" element={<VisionsBoard user_id={check_user_id()}/>} />
-          <Route path="/my_goals/:id" element={<GoalsList  props={props}/>} />
-          <Route path="/a_goal/:id" element={<GoalDisplay props={props}/>} />
 
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/my_mood_board" element={<MoodBoard />} />
-          <Route path="/logout" element={<LogOut />} />
-          <Route path="/login" element={<LogIn />} />
-         <Route path="/register" element={<Register />} />
-         </Routes>
-        
-      
-    </>
+    <div>
+      <NavBar isLoggedIn={isLoggedIn}  user_id={userId} setIsLoggedIn={setIsLoggedIn}/>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/logout" element={<Logout setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/register" element={<Register />} />
+    
+        <Route path="/vision_board/:id" element ={<PrivateRoute> component={VisionsBoard} isLoggedIn={isLoggedIn}</PrivateRoute> }/>
+        <Route path="/a_goal/:id" element ={<PrivateRoute> component={GoalDisplay} isLoggedIn={isLoggedIn}</PrivateRoute> }/>
+        <Route path="/goals_list/:id" element ={<PrivateRoute> component={GoalsList} isLoggedIn={isLoggedIn}</PrivateRoute> }/>
+        <Route path="/profile/:id" element={<PrivateRoute component={Profile} isLoggedIn={isLoggedIn} />} />
+
+        <Route path="/mood_Board/:id" element ={<PrivateRoute> component={VisionsBoard} isLoggedIn={isLoggedIn}</PrivateRoute> }/>
+       
+        {/* <PrivateRoute path="/my_goals:id" component={VisionsBoard} isLoggedIn={isLoggedIn} />
+        <PrivateRoute path="/a_goal:id" component={VisionsBoard} isLoggedIn={isLoggedIn} />
+        <PrivateRoute path="/profile:id" component={VisionsBoard} isLoggedIn={isLoggedIn} />
+        <PrivateRoute path="/mood_Board:id" component={VisionsBoard} isLoggedIn={isLoggedIn} />
+     */}
+
+      </Routes>
+
+    </div>
 
   )
 }
