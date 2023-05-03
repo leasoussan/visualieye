@@ -38,7 +38,7 @@ class GoalsList extends React.Component {
 
         const setGoalsType = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/goals_type`);
+                const response = await fetch(`http://localhost:5000/api/goal_type`);
                 const data = await response.json();
                 this.setState({ goal_type: data })
                 // console.log(data);
@@ -50,27 +50,27 @@ class GoalsList extends React.Component {
         setGoalsType()
 
 
-        const get_user_goal = async () => {
-            const userId = fetch_user_id()
+        // const get_user_goal = async () => {
+        //     const userId = fetch_user_id()
 
-            try {
-                const response = await fetch(`http://localhost:5000/api/my_goals/${userId}`);
-                const data = await response.json();
-                console.log(data);
-                if (data.msg === "null") {
+        //     try {
+        //         const response = await fetch(`http://localhost:5000/api/my_goals/${userId}`);
+        //         const data = await response.json();
+        //         console.log(data);
+        //         if (data.msg === "null") {
 
-                    this.setState({ goals: this.state.goal_type })
+        //             this.setState({ goals: this.state.goal_type })
 
-                } else {
-                    this.checkUserGoals(data)
-                }
+        //         } else {
+        //             this.checkUserGoals(data)
+        //         }
 
-            }
+        //     }
 
-            catch (e) {
-                console.log(e);
-            }
-        }; get_user_goal()
+        //     catch (e) {
+        //         console.log(e);
+        //     }
+        // }; get_user_goal()
 
 
     }
@@ -101,7 +101,7 @@ class GoalsList extends React.Component {
         this.setState({ show: false })
     }
 
-    
+
 
     render() {
 
@@ -119,21 +119,21 @@ class GoalsList extends React.Component {
                             const getCurrentGoal = goals.find((obj) => obj.goal_type === item.id)
                             return (
                                 <div key={item.name} className={'goal_box'}>
-                                    <h1 style={{color:'green'}}>{item.name.toUpperCase()}</h1>
-                                    {
+                                    <h1 style={{ color: 'green' }}>{item.name.toUpperCase()}</h1>
+                                    {/* {
                                         getCurrentGoal ?
                                             <div>
-                                               <h1 style={{width:'90%'}}> {getCurrentGoal.title.toUpperCase()}</h1> 
-                                            Started on: <p>{getCurrentGoal.start_date.slice(0,10)}</p>
-                                            Accomplished on:<p>{getCurrentGoal.end_date.slice(0,10)}</p>
-                                            Status <p>{getCurrentGoal.accomplished}</p>                                            
-                                            <p>{getCurrentGoal.goal_id}</p>
+                                                <h1 style={{ width: '90%' }}> {getCurrentGoal.title.toUpperCase()}</h1>
+                                                Started on: <p>{getCurrentGoal.start_date.slice(0, 10)}</p>
+                                                Accomplished on:<p>{getCurrentGoal.end_date.slice(0, 10)}</p>
+                                                Status <p>{getCurrentGoal.accomplished}</p>
+                                                <p>{getCurrentGoal.goal_id}</p>
                                                 <Link to={`/a_goal/${getCurrentGoal.goal_id}`} props={getCurrentGoal.goal_id}>Goal</Link>
                                             </div>
                                             :
                                             <div>
                                                 <Button variant="primary" onClick={this.handleShow}>
-ADD YOUR {item.name} Goal                                                </Button>
+                                                    ADD YOUR {item.name} Goal                                                </Button>
                                                 <Modal
                                                     show={this.state.show}
                                                     onHide={this.handleClose}
@@ -144,7 +144,7 @@ ADD YOUR {item.name} Goal                                                </Butto
                                                         <Modal.Title>Modal title</Modal.Title>
                                                     </Modal.Header>
                                                     <Modal.Body>
-                                                        <AddGoalForm goal_type={item.id}/>
+                                                        <AddGoalForm goal_type={item.id} />
                                                     </Modal.Body>
                                                     <Modal.Footer>
                                                         <Button variant="secondary" onClick={this.handleClose}>
@@ -154,7 +154,7 @@ ADD YOUR {item.name} Goal                                                </Butto
                                                     </Modal.Footer>
                                                 </Modal>
                                             </div>
-                                    }
+                                    } */}
 
 
 

@@ -3,7 +3,7 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import CheckUserLogIn from './CheckUserLogIn.js';
 // import Logout from './Logout.js';
 
-const NavBar = ({ isLoggedIn, setIsLoggedIn, user_id }) => {
+const NavBar = ({ isLoggedIn, user_id }) => {
   const navigate = useNavigate('');
 
 
@@ -13,42 +13,42 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, user_id }) => {
   }, [isLoggedIn]);
 
 
-  const handleLogout = async () => {
 
-    setIsLoggedIn(false);
-    localStorage.removeItem('user_id');
+  const Logout = async () => {
+    try {
+      const response = await fetch('/logout', {
+        method: 'DELETE',
+        //credentials: 'include', >> in the case I have token or cookies.
+      });
+
+      // if (response.ok) {
+      //     navigate('/')
+      // }
+    } catch (e) {
+      console.log(e);
+
+    }
     navigate('/');
-    // try {
-    //   const response = await fetch('http://localhost:5000/logout', {
-    //     method: 'DELETE',
-    //     credentials: 'include',
-    //   });
-
-    //   if (response.ok) {
-    //     setIsLoggedIn(false);
-    //     localStorage.removeItem('user_id');
-    //     navigate('/');
-    //   } else {
-    //     console.error('Error in logout: ' + response.status);
-    //   }
-    // } catch (error) {
-    //   console.error('Error in logout:', error);
-    // }
   };
+
+
   const loggedInLinks = (
     <>
       <li>
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to={`/vision_board/${user_id}`}>vision_board</Link>
+        <Link to={`/goals_list/${user_id}/*`}>Goals List</Link>
       </li>
       <li>
-        <Link to={`/profile/${user_id}`}>Profile</Link>
+        <Link to={`/vision_board/${user_id}/*`}>vision_board</Link>
+      </li>
+      <li>
+        <Link to={`/profile/${user_id}/*`}>Profile</Link>
 
       </li>
       <li>
-        <Link to="/logout" onClick={handleLogout}>
+        <Link to="/logout" onClick={Logout}>
           Logout
         </Link>
       </li>
@@ -72,11 +72,7 @@ const NavBar = ({ isLoggedIn, setIsLoggedIn, user_id }) => {
   return (
     <>
       <nav className="navbar">
-        {isLoggedIn ? (
-          loggedInLinks
-        ) : (
-          loggedOutLinks
-        )}
+        {isLoggedIn ? loggedInLinks : loggedOutLinks}
       </nav>
     </>
   );

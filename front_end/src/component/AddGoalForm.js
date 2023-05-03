@@ -30,17 +30,7 @@ class AddGoalForm extends React.Component {
     }
 
     componentDidMount(e) {
-    console.log(this.props);
-    const check_user_id = () => {
-        const getuser = localStorage.getItem('isLoggin');
-        console.log(getuser);
-        if (getuser) {
-            const getUserId = getuser.split(',')[0]
-            this.setState({user_id:getUserId})
-        }else{
-            console.log("whats");
-        }
-} ;check_user_id()
+
         // ______________________________________________________________________in case I want the user to be able to choose
         // const getGoal_type = async () => {
         //     const { goal_type } = this.state.goal_type_select
@@ -61,19 +51,19 @@ class AddGoalForm extends React.Component {
         //     }
         // }
         // getGoal_type();
-    
+
 
 
     }
     handleChange = (e) => {
         e.preventDefault();
-        if(e.target.name ==='goal_type' ){
-          this.setState({goal_type:e.target.value})
-        }else{
+        if (e.target.name === 'goal_type') {
+            this.setState({ goal_type: e.target.value })
+        } else {
 
             this.setState({ [e.target.name]: e.target.value })
         }
-        
+
     }
 
     handleSubmit = (e) => {
@@ -81,18 +71,43 @@ class AddGoalForm extends React.Component {
         // to make a feetch in a post>>>
         console.log(e.target);
         const add_goal_data = async () => {
-            const { title, goal_type, start_date, end_date, accomplished, user_id, image_one, image_two, notes } = this.state
-            console.log("icii conas", title, goal_type, start_date, end_date, accomplished, user_id, image_one, image_two, notes )
-            console.log(JSON.stringify({ title, goal_type, start_date, end_date, accomplished, user_id, image_one, image_two, notes }));
+            const {
+                goal_id,
+                user_id,
+                title,
+                goal_type,
+                starting_date,
+                end_date,
+                goal_status,
+                goal_order } = this.state;
+
+            console.log("icii conas", this.state)
+            console.log(JSON.stringify({
+                goal_id,
+                user_id,
+                title,
+                goal_type,
+                starting_date,
+                end_date,
+                goal_status,
+                goal_order
+            }));
             try {
-                const results = await fetch(`http://localhost:5000/api/goals/`, {
+                const results = await fetch(`http://localhost:5000/api/goal/`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ title, goal_type, start_date, end_date, accomplished, user_id, image_one, image_two, notes })
+                    body: JSON.stringify({ goal_id,
+                        user_id,
+                        title,
+                        goal_type,
+                        starting_date,
+                        end_date,
+                        goal_status,
+                        goal_order  })
                 });
                 console.log(results);
                 const data = await results.json();
-                console.log(data);
+                console.log("data", data);
                 // this.setState({[e.target.name]: e.target.value})
             }
 
@@ -110,16 +125,16 @@ class AddGoalForm extends React.Component {
     handleDate = (e) => {
 
         const dateFormatted = format(parseISO(e), "dd.MM.yyyy");
-        console.log("date",this.start_date, this.end_date);
+        console.log("date", this.start_date, this.end_date);
     }
 
-    checkit=(e)=>{
+    checkit = (e) => {
         console.log(e);
     }
 
     render() {
         // const {goal_type_select} = this.state.goal_type
-        
+
         // const {start_date_selector} = new Date();
         return (
             <>
@@ -127,31 +142,28 @@ class AddGoalForm extends React.Component {
                     <label>TITLE</label>
                     <input type="title" name="title" placeholder="title" onChange={this.handleChange} />
                     <label>Goal Type</label>
-                    <select name="goal_type" value={this.goal_type} onChange={this.handleChange}>
+                    {/* <select name="goal_type" value={this.goal_type} onChange={this.handleChange}>
                         {
                             this.state.goal_type_select.map((item, index) => {
-                                
+
                                 return (
-                                    
-                                    <option key={item.id} value={index+1}>{item.name}</option>
+
+                                    <option key={item.id} value={index + 1}>{item.name}</option>
                                 )
                             })
                         }
-                    </select>
+                    </select> */}
 
-                   
-                    <DatePicker selected={this.state.start_date} name="select_start" format='yyyy-MM-dd' onChange={(e)=> {this.setState({start_date:e })}} onClick={this.handleDate} />
-                    <DatePicker selected={this.state.end_date} name="select_End Date"  format='yyyy-MM-dd' onChange={(e)=> {this.setState({end_date:e })}} onClick={this.handleDate}  />
 
-                    <input type="text" name="image_one" placeholder="url to image one" onChange={this.handleChange}/>
-                    <input type="text" name="image_two" placeholder="url to image 2" onChange={this.handleChange}/>
-                    <input type="text" name="notes" placeholder="notes"onChange={this.handleChange} />
-                    Accomplished<input type="radio" name="accomplished" placeholder="accomplished"onChange={this.handleChange} />
+                    <DatePicker selected={this.state.start_date} name="select_start_date" format='yyyy-MM-dd' onChange={(e) => { this.setState({ start_date: e }) }} onClick={this.handleDate} />
+                    <DatePicker selected={this.state.end_date} name="select_end_date" format='yyyy-MM-dd' onChange={(e) => { this.setState({ end_date: e }) }} onClick={this.handleDate} />
+
+
+                    <input type="select" name="goal_order" placeholder="goal_order" onChange={this.handleChange} />
                     <input type="submit" name="submit" placeholder="submit" />
 
                 </form>
-
-
+            
             </>
 
         )

@@ -2,6 +2,7 @@ import { Route, Redirect } from 'react-router'
 import { CheckUserLogIn } from './CheckUserLogIn';
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
+import VisionsBoard from './VisionBoard';
 
 export function Home() {
     console.log(localStorage);

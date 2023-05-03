@@ -155,21 +155,32 @@ app.get('/profile/:id', (res,req)=>{
 
 
 // // CRUD GOAL
-// // CREAT ONE GOAL
-// app.post('/api/goals/', (req, res) => {
-//     console.log("in the goals list ", req.body);
-//     const { title, goal_type, start_date, end_date, accomplished, user_id, image_one, image_two, notes } = req.body;
-//     db('goal')
-//         .insert(req.body)
-//         .returning('*')
-//         .then(rows => {
-//             res.json(rows)
-//         })
-//         .catch(e => {
-//             console.log(e);
-//             res.status(404).json({ msg: "error" })
-//         })
-// })
+// CREAT ONE GOAL
+    app.post('/api/goal/', (req, res) => {
+        console.log("in the goals list ", req.body);
+        const { 
+            goal_id,
+            user_id,
+            title,
+            goal_type,
+            starting_date,
+            end_date,
+            goal_status,
+            accomplished,
+            goal_order
+         } = req.body;
+        db('goal')
+            .insert(req.body)
+            .returning('*')
+            .then(rows => {
+                console.log("the rows", rows);
+                res.json(rows)
+            })
+            .catch(e => {
+                console.log(e);
+                res.status(404).json({ msg: "error" })
+            })
+    })
 
 
 // // READ ONE
@@ -178,60 +189,36 @@ app.get('/profile/:id', (res,req)=>{
 
 
 
+app.get('/api/goal_detail/:id', (req, res) => {
+    const { id } = req.params;
+    console.log("in the parama id", id);
 
-
-// // app.get('/api/goal_detail/:id', (req, res) => {
-
-// //     const { id } = req.params;
-// //     console.log("in the parama id", id);
-
+    try{
+        db('goal')
+        .select('*')
+        .where('goal_id', '=', id)
+        .then(rows => {
+            console.log("here yo");
+            if (rows.length === 0) {
+                return res.status(404).json({ msg: 'not found' })
+            }else{
+                console.log("in the goalId", rows );
+                res.json(rows)
+            }
+        })
+        .catch(e => {
+            console.log(e);
+            res.status(404).json({ msg: e.message })
+        })
+    }
+    catch(err){
+        return res.status(404).json({msg:'not found'})
+    }
     
-// //     db('goal')
-// //         .select('*')
-// //         .where({ goal_id : id})
-// //         .then(rows => {
-// //             console.log("here yo");
-// //             if (rows.length === 0) {
-// //                 return res.status(404).json({ msg: 'not found' })
-// //             }else{
-// //                 console.log(rows);
-// //                 res.json(rows)
-// //             }
-            
-            
-// //         })
-// //         .catch(e => {
-// //             console.log(e);
-// //             res.status(404).json({ msg: e.message })
-// //         })
-// // })
-// app.get('/api/goal_detail/:id', (req, res) => {
-//     const { id } = req.params;
-//     console.log("in the parama id", id);
+})
 
-//     try{
-//         db('goal')
-//         .select('*')
-//         .where('goal_id', '=', id)
-//         .then(rows => {
-//             console.log("here yo");
-//             if (rows.length === 0) {
-//                 return res.status(404).json({ msg: 'not found' })
-//             }else{
-//                 console.log(rows);
-//                 res.json(rows)
-//             }
-//         })
-//         .catch(e => {
-//             console.log(e);
-//             res.status(404).json({ msg: e.message })
-//         })
-//     }
-//     catch(err){
-//         return res.status(404).json({msg:'not found'})
-//     }
-    
-// })
+
+
 // // READ ALL GOALS
 // app.get('/api/my_goals/:id', (req, res) => {
 //     // console.log("icic cest req et toi ",req);
@@ -463,18 +450,18 @@ app.delete('/logout', (req, res) => {
 // })
 
 
-// // read_goalType
-// app.get('/api/goals_type/', (req, res) => {
-//     db('goal_type')
-//         .select('*')
-//         .then(row => {
-//             res.json(row)
-//         })
-//         .catch(e => {
-//             console.log(e);
-//             res.status(404).json({ msg: "error" })
-//         })
-// })
+// read_goalType
+app.get('/api/goal_type/', (req, res) => {
+    db('goal_type')
+        .select('*')
+        .then(row => {
+            res.json(row)
+        })
+        .catch(e => {
+            console.log(e);
+            res.status(404).json({ msg: "error" })
+        })
+})
 
 
 // app.get('/usr' ,( req,res)=>{

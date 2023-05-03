@@ -1,51 +1,64 @@
 import React from "react";
-import CheckUserLogIn from "./CheckUserLogIn";
-import { Link } from "react-router-dom";
-import NavBar from "./NavBar";
+
+const Profile = ({ isLoggedIn }) => {
+  console.log("Profile component isLoggedIn: ", isLoggedIn);
+  return (
+    <div>
+      <h1>Profile</h1>
+    </div>
+  );
+};
+
+export default Profile;
 
 
-class Profile extends React.Component {
-    constructor() {
-        super();
-        this.state = {
 
-        }
-    }
 
-    componentDidMount() {
-        // const getusername = () => {
-        //         const getuser = localStorage.getItem('isLoggin');
-        //         if (getuser) {
-        //             const getUserId = getuser.split(',')[1]
-        //             this.setState({username:getUserId})
-        //         }
-        //         else {
-        //             return 0
-        //         }
+
+
+
+// class Profile extends React.Component {
+//     constructor() {
+//         super();
+//         this.state = {
+
+//         }
+//     }
+
+//     componentDidMount() {
+//         // const getusername = () => {
+//         //         const getuser = localStorage.getItem('isLoggin');
+//         //         if (getuser) {
+//         //             const getUserId = getuser.split(',')[1]
+//         //             this.setState({username:getUserId})
+//         //         }
+//         //         else {
+//         //             return 0
+//         //         }
         
-        //     };getusername()
+//         //     };getusername()
         
 
-    }
+//     }
 
 
 
 
-    render() {
+//     render() {
 
 
-        return (
+//         return (
 
-            <>
+//             <>
 
 
-                <h1> About me here {this.state.username}</h1>
+//                 <h1> About me here {this.state.username}</h1>
 
-                <h2> Affiramtion 1 </h2>
-                <h2> Affiramtion 2 </h2>
+//                 <h2> Affiramtion 1 </h2>
+//                 <h2> Affiramtion 2 </h2>
                 
-            </>
-        )
-    }
-}
-export default Profile
+//             </>
+//         )
+//     }
+// }
+// export default Profile

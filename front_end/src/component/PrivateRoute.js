@@ -1,19 +1,22 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import CheckUserLogIn from "./CheckUserLogIn";
+import { Outlet, Navigate, Route } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component, isLoggedIn, ...rest }) => {
+const PrivateRoute = ({ isLoggedIn }) => {
+    console.log("isLoging in private ", isLoggedIn);
+
     return (
+        isLoggedIn ? 
 
-        <Routes>
-            <Route {...rest} element={<CheckUserLogIn isLoggedIn={isLoggedIn}></CheckUserLogIn>}
-            />
-        </Routes>
-
-        
-
+        <Outlet />
+        : 
+        <Navigate to='/' />
     )
 };
 
-export default PrivateRoute
+export default PrivateRoute;
 
+// const PrivateRoute = ({ isLoggedIn }) => {
+//     console.log("isLoging in private ", isLoggedIn);
+//     return isLoggedIn ? <Outlet /> : <Navigate to="/" />;
+//   };
+// export default PrivateRoute
