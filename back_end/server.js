@@ -159,15 +159,11 @@ app.get('/profile/:id', (res,req)=>{
     app.post('/api/goal/', (req, res) => {
         console.log("in the goals list ", req.body);
         const { 
-            goal_id,
             user_id,
             title,
             goal_type,
             starting_date,
             end_date,
-            goal_status,
-            accomplished,
-            goal_order
          } = req.body;
         db('goal')
             .insert(req.body)
@@ -220,31 +216,31 @@ app.get('/api/goal_detail/:id', (req, res) => {
 
 
 // // READ ALL GOALS
-// app.get('/api/my_goals/:id', (req, res) => {
-//     // console.log("icic cest req et toi ",req);
-//     const {id} = req.params
-//     console.log(id);
-//     db('goal')
-//         .select('*')
-//         .leftOuterJoin('goal_type', 'goal.goal_type', 'goal_type.id')
-//         //create  inner join on table type of 
-//         .rightJoin('users', 'goal.user_id', 'users.id' )
-//         .where({user_id: id})
-//         .then(rows => {
-//             console.log(rows);
-//             if(rows.length === 0) {
-//                   res.json({"msg":"null"})
-//             }  else{
+app.get('/api/my_goals/:id', (req, res) => {
+    // console.log("icic cest req et toi ",req);
+    const {id} = req.params
+    console.log(id);
+    db('goal')
+        .select('*')
+        .leftOuterJoin('goal_type', 'goal.goal_type', 'goal_type.id')
+        //create  inner join on table type of 
+        .rightJoin('users', 'goal.user_id', 'users.id' )
+        .where({user_id: id})
+        .then(rows => {
+            console.log(rows);
+            if(rows.length === 0) {
+                  res.json({"msg":"null"})
+            }  else{
              
-//                 res.json(rows) 
-//             }
+                res.json(rows) 
+            }
            
-//         })
-//         .catch(e => {
-//             console.log(e);
-//             res.status(404).json({ msg: "error" })
-//         })
-// })
+        })
+        .catch(e => {
+            console.log(e);
+            res.status(404).json({ msg: "error" })
+        })
+})
 
 
 
