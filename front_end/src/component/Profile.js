@@ -1,10 +1,14 @@
 import React from "react";
+import WeeklySlots from "./planning/WeeklySlots";
+
 
 const Profile = ({ isLoggedIn }) => {
   console.log("Profile component isLoggedIn: ", isLoggedIn);
   return (
     <div>
       <h1>Profile</h1>
+
+    <WeeklySlots />
     </div>
   );
 };

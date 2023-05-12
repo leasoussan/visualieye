@@ -32,23 +32,58 @@ CREATE TABLE goal (
     goal_order VARCHAR(50) CHECK(goal_order IN ('main', 'secondary', 'health', 'wealth'))
 );
 
+CREATE TABLE slot_type (
+    slot_id SERIAL PRIMARY KEY, 
+    name VARCHAR(50) NOT NULL,
+
+);
+
+CREATE TABLE metting_type (
+    mt_id SERIAL PRIMARY KEY, 
+    name VARCHAR(50) NOT NULL,
+
+);
 
 
-CREATE TABLE action_type(
-    id SERIAL PRIMARY KEY
-    name VARCHAR(100)
-)
-
-CREATE TABLE goals_steps(
-    id SERIAL PRIMARY KEY,
+CREATE TABLE slot (
+    slot_id SERIAL PRIMARY KEY, 
+    user_id INT REFERENCES users(id) NOT NULL ON DELETE CASCADE,
     title VARCHAR(200) NOT NULL,
-    goal_id INT REFERENCES goal(id) NOT NULL ON DELETE CASCADE,
-    action_type INT REFERENCES action_type(action_id),
-    accomplished BOOLEAN,
-    affirmation VARCHAR(500) NOT NULL,
-    instructions TEXT NOT NULL,
-    time_needed INT 
-)
+    slot_type INT REFERENCES slot_type(slot_id) NOT NULL, 
+    starting_time TIME NOT NULL,
+    end_time TIME NOT NULL,
+    day_of_week VARCHAR(100) NOT NULL,
+    transportation BOOLEAN,
+    fixed_slot BOOLEAN NOT NULL,
+);
+
+
+CREATE TABLE meeting (
+    metting_id SERIAL PRIMARY KEY, 
+    user_id INT REFERENCES users(id) NOT NULL ON DELETE CASCADE,
+    title VARCHAR(200) NOT NULL,
+    metting_type INT REFERENCES metting_type(mt_id) NOT NULL, 
+    starting_date TIMESTAMP NOT NULL,
+    end_date TIMESTAMP NOT NULL, 
+    time_needed INT NOT NULL,
+    transportation BOOLEAN,
+);
+
+-- CREATE TABLE action_type(
+--     id SERIAL PRIMARY KEY
+--     name VARCHAR(100)
+-- )
+
+-- CREATE TABLE goals_steps(
+--     id SERIAL PRIMARY KEY,
+--     title VARCHAR(200) NOT NULL,
+--     goal_id INT REFERENCES goal(id) NOT NULL ON DELETE CASCADE,
+--     action_type INT REFERENCES action_type(action_id),
+--     accomplished BOOLEAN,
+--     affirmation VARCHAR(500) NOT NULL,
+--     instructions TEXT NOT NULL,
+--     time_needed INT 
+-- )
 
 
 INSERT INTO goal_state (name)

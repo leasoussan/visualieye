@@ -28,7 +28,7 @@ function GoalsList() {
         try {
           console.log("userId", getuser);
 
-          const response = await fetch(`http://localhost:5000/api/my_goals/${getuser}`);
+          const response = await fetch(`http://localhost:5000/goals_list/${getuser}`);
           const data = await response.json();
           if (data.msg === "null") {
             console.log("User has no goals.");
@@ -43,7 +43,7 @@ function GoalsList() {
 
     const fetchGoalTypes = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/goal_type`);
+        const response = await fetch(`http://localhost:5000/goal_type`);
         const data = await response.json();
         setGoalTypes(data);
       } catch (e) {
