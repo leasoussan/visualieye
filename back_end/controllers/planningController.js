@@ -26,3 +26,22 @@ export const add_slot = (req, res) => {
         })
 }
 
+
+export const slot_detail = async (req, res)=>{
+    console.log("req.body", req.body);
+    
+    const {slot_id} =req.params;
+    try{
+       
+       const data = await db('slot')
+        .where('slot_id', '=', slot_id )
+        .select("*");
+        console.log("thedata", data);
+        res.json(data)
+
+
+    }catch(e){
+
+        console.log("error", e);
+    }
+}

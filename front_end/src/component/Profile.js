@@ -1,5 +1,5 @@
 import React from "react";
-import WeeklySlots from "./planning/WeeklySlots";
+import WeeklyPlanner from "./planning/WeeklyPlanner.js";
 
 
 const Profile = ({ isLoggedIn }) => {
@@ -8,7 +8,7 @@ const Profile = ({ isLoggedIn }) => {
     <div>
       <h1>Profile</h1>
 
-    <WeeklySlots />
+    <WeeklyPlanner />
     </div>
   );
 };
