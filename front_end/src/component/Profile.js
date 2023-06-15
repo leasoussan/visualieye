@@ -3,10 +3,18 @@ import WeeklyPlanner from "./planning/WeeklyPlanner.js";
 
 
 const Profile = ({ isLoggedIn }) => {
+
+  const setPlanning =(e)=>{
+    console.log("setting the plannig ");
+  }
+
+
   console.log("Profile component isLoggedIn: ", isLoggedIn);
   return (
     <div>
       <h1>Profile</h1>
+
+    <button onClick={setPlanning}> Set Weekly Planning</button>
 
     <WeeklyPlanner />
     </div>

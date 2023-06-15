@@ -1,45 +1,54 @@
 .weekly_planing_display {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    height: 70vh;
-    width: 90vw;
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 16px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 90vh;
+  width: 90vw;
+  background-color: white;
+  border: 1px solid pink;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  }
-  
+}
 
-  .planner-header {
+
+/* .planner-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
-  }
-  
-  .planner-header button {
+    border: 2px solid greenyellow;
+    background-color: grey;
+
+  } */
+
+/* .planner-header button {
     background-color: transparent;
     border: none;
     font-size: 14px;
     color: #555;
     cursor: pointer;
     outline: none;
+    background-color: grey;
+
   }
-  
-  .planner-content {
+   */
+/* .planner-content {
     display: flex;
     justify-content: space-between;
-  }
-  
-  .day-column {
+    background-color: grey;
+
+  } */
+
+/* .day-column {
     display: flex;
     flex-direction: column;
     flex: 1;
     border-right: 1px solid #ddd;
     padding: 0 8px;
+    background-color: grey;
+
   }
   
   .day-header,
@@ -48,16 +57,36 @@
     padding: 8px;
     font-weight: bold;
     text-align: center
-  }
+  } */
 
-  .daily_hours_container{
-    display: flex;
-    flex-direction: column;
-    border: solid 3px red;
-  }
+.daily_hours_container {
+  display: flex;
+  flex-direction: column;
+  border: solid 3px green;
+  height: 100%;
 
-  .hours_label_box{
-    /* border: solid 3px orange;
-    display: flex;
-    flex-direction: column; */
-  }
+}
+
+.hours_label_box{
+  overflow: scroll;
+  background-color: rgb(223, 223, 195);
+}
+
+.slots {
+  height: 100vh;
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+}
+
+
+.pomedoro_slots {
+  width: 100%;
+  height: calc(100% / 72);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border: solid 1px rgb(217, 184, 184);
+  margin: 0;  
+  font-size: small;
+}
