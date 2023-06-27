@@ -1,5 +1,6 @@
 import React, {useState}from "react";
-import AddGoalForm from "./AddGoalForm";
+// import AddGoalForm from "./Goal/AddGoalForm";
+
 
 const VisionBoard = ({ isLoggedIn }) => {
     const [goalsList, setGoalsList] = useState([])
@@ -29,6 +30,8 @@ const VisionBoard = ({ isLoggedIn }) => {
   return (
     <div>
       <h1>VisionBoard YO</h1>
+      <h1>In Construction</h1>
+
     </div>
   );
 };
