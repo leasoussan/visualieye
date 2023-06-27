@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
-import './styles.css'
+import '../styles.css'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format, parseISO } from "date-fns";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { CheckUserLogIn } from "./CheckUserLogIn.js";
+import { CheckUserLogIn } from "../CheckUserLogIn.js";
 
 
 class AddGoalForm extends React.Component {

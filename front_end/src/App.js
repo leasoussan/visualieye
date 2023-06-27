@@ -1,6 +1,6 @@
 import Register from './component/Register.js';
 import React, { useState, useEffect } from 'react';
-import '../src/component/styles.css'
+// import '../src/component/styles.css'
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom";
 import PrivateRoute from './component/PrivateRoute.js';
 import Home from './component/Home';
@@ -9,12 +9,10 @@ import Profile from './component/Profile.js';
 import MoodBoard from './component/MoodBoard.js';
 import LogOut from './component/Logout.js';
 import Login from './component/Login.js';
-
 import NavBar from './component/NavBar.js';
-import GoalDisplay from './component/GoalDisplay.js';
+import GoalDisplay from './component/Goal/GoalDisplay.js';
 import Logout from './component/Logout.js';
-import GoalsList from './component/GoalsList.js';
-
+import GoalsList from '../src/component/Goal/GoalsList.js';
 
 
 export default function App(props) {

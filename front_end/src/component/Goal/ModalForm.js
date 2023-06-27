@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import AddGoalForm from "./AddGoalForm";
+import AddGoalForm from './AddGoalForm.js';
 
 function ModalForm({ show, close, goalType, user_id}) {
     const [showModal, setShowModal] = useState(show);

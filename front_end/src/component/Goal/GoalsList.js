@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import AddGoalForm from "./AddGoalForm";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import NavBar from "./NavBar";
+import NavBar from "../NavBar";
 import GoalDisplay from "./GoalDisplay";
-import ModalForm from "./ModalForm";
+import AddGoalForm from "./AddGoalForm";
+import ModalForm from "./ModalForm.js";
 
 function GoalsList() {
   const [goals, setGoals] = useState([]);

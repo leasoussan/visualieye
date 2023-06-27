@@ -1,5 +1,5 @@
 import React from "react";
-import CheckUserLogIn from "./CheckUserLogIn.js";
+import CheckUserLogIn from "../CheckUserLogIn.js";
 
 
 
