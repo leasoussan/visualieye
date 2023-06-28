@@ -5,7 +5,7 @@ import db from '../data/database.js'
 
 // CREAT ONE GOAL
 export const add_goal = (req, res) => {
-    console.log("in the goals list ", req.body);
+    console.log("in the add goal ", req.body);
     const { 
         user_id,
         title,
@@ -68,7 +68,7 @@ export const goal_detail = (req, res) => {
 // // READ ALL GOALS
 // app.get('/api/my_goals/:id', )
 
-export const goals_list = (req, res) => {
+export const profiler = (req, res) => {
     // console.log("icic cest req et toi ",req);
     const {user_id} = req.params
     console.log(user_id);

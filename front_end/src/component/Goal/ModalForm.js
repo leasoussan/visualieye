@@ -7,11 +7,7 @@ import AddGoalForm from './AddGoalForm.js';
 function ModalForm({ show, close, goalType, user_id}) {
     const [showModal, setShowModal] = useState(show);
 
-        // console.log("show",show );
-        // console.log("close", close);
-        // console.log("goalType", goalType);
-        // console.log("userId", user_id);
-
+  
         useEffect(()=>{
             setShowModal(show);
 

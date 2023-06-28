@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './GoalStyles.css'
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -7,7 +8,7 @@ import GoalDisplay from "./GoalDisplay";
 import AddGoalForm from "./AddGoalForm";
 import ModalForm from "./ModalForm.js";
 
-function GoalsList() {
+function Profiler() {
   const [goals, setGoals] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
@@ -28,7 +29,7 @@ function GoalsList() {
         try {
           console.log("userId", getuser);
 
-          const response = await fetch(`http://localhost:5000/goals_list/${getuser}`);
+          const response = await fetch(`http://localhost:5000/profiler/${getuser}`);
           const data = await response.json();
           if (data.msg === "null") {
             console.log("User has no goals.");
@@ -100,4 +101,4 @@ function GoalsList() {
   );
 }
 
-export default GoalsList;
+export default Profiler;

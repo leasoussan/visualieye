@@ -2,17 +2,17 @@ import React from "react";
 import WeeklyPlanner from "./planning/WeeklyPlanner.js";
 
 
-const Profile = ({ isLoggedIn }) => {
+const Planner = ({ isLoggedIn }) => {
 
   const setPlanning =(e)=>{
     console.log("setting the plannig ");
   }
 
 
-  console.log("Profile component isLoggedIn: ", isLoggedIn);
+  console.log("profiler component isLoggedIn: ", isLoggedIn);
   return (
     <div>
-      <h1>Profile</h1>
+      <h1>profiler</h1>
 
     <button onClick={setPlanning}> Set Weekly Planning</button>
 
@@ -21,7 +21,7 @@ const Profile = ({ isLoggedIn }) => {
   );
 };
 
-export default Profile;
+export default Planner;
 
 
 
@@ -29,7 +29,7 @@ export default Profile;
 
 
 
-// class Profile extends React.Component {
+// class profiler extends React.Component {
 //     constructor() {
 //         super();
 //         this.state = {
@@ -73,4 +73,4 @@ export default Profile;
 //         )
 //     }
 // }
-// export default Profile
+// export default profiler

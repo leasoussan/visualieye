@@ -1,12 +1,4 @@
-// const express = require('express');
-// const cors = require('cors');
-// const dotenv = require('dotenv');
-// const axios = require('axios');
-// const bodyParser = require('body-parser');
-// const cookieParser = require('cookie-parser');
-// const bcrypt = require('bcrypt');
-// const { db } = require('./data/database.js');
-// const { client } = require('pg');
+
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -171,18 +163,18 @@ app.get('/users', (res,req)=>{
 })
 
 
-
-app.get('/profile/:id', (res,req)=>{
-    const id = req.params
-    db('users')
-    .select('user_id', "=", id)
-    .from('users')
-    .then(rows =>{
-        console.log("got userProfile", rows)
-    }
-    )
-    .cathc(e=>{
-        console.log("oups",e);
-        res.status(404).json({ msg: "error" })
-    })
-})
+// TO DO LATER
+// app.get('/profiler/:id', (res,req)=>{
+//     const id = req.params
+//     db('users')
+//     .select('user_id', "=", id)
+//     .from('users')
+//     .then(rows =>{
+//         console.log("got userProfile", rows)
+//     }
+//     )
+//     .cathc(e=>{
+//         console.log("oups",e);
+//         res.status(404).json({ msg: "error" })
+//     })
+// })

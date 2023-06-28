@@ -19,7 +19,7 @@ class AddGoalForm extends React.Component {
             starting_date: new Date(),
             end_date: '',
             user_id: props.userId,
-            set_order: ''
+            // set_order: ''
         }
     }
     componentDidMount() {
@@ -28,28 +28,28 @@ class AddGoalForm extends React.Component {
             goal_type_select: this.props.goalType['id'],
             goal_type_name: this.props.goalType['name'],
         });
-        switch (this.props.goalType.name) {
-            case 'main':
-                this.setState({ set_order:'main' }, () => console.log(this.state.set_order));
-                break;
-            case 'secondary':
-                this.setState({ set_order: 'secondary' }, () => console.log(this.state.set_order));
-                break;
-            case 'health':
-                this.setState({ set_order: 'health' }, () => console.log(this.state.set_order));
-                break;
-            case 'wealth':
-                this.setState({ set_order: 'wealth' }, () => console.log(this.state.set_order));
-                break;
-            default:
-                break;
+    //     switch (this.props.goalType.name) {
+    //         case 'main':
+    //             this.setState({ set_order:'main' }, () => console.log(this.state.set_order));
+    //             break;
+    //         case 'planner':
+    //             this.setState({ set_order: 'planner' }, () => console.log(this.state.set_order));
+    //             break;
+    //         case 'health':
+    //             this.setState({ set_order: 'health' }, () => console.log(this.state.set_order));
+    //             break;
+    //         case 'wealth':
+    //             this.setState({ set_order: 'wealth' }, () => console.log(this.state.set_order));
+    //             break;
+    //         default:
+    //             break;
 
-    }
+    // }
     };
 
-    // componentDidUpdate(prevProps) {
-   
-    // };
+    componentDidUpdate(prevProps) {
+        // window.location.reload(false)
+    };
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
@@ -66,10 +66,11 @@ class AddGoalForm extends React.Component {
                 goal_type_select,
                 starting_date,
                 end_date,
-                set_order } = this.state;
+                // set_order 
+            } = this.state;
 
             try {
-                const results = await fetch(`http://localhost:5000/api/goal/`, {
+                const results = await fetch(`http://localhost:5000/add_goal/`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -79,7 +80,7 @@ class AddGoalForm extends React.Component {
                         starting_date,
                         end_date,
                         accomplished: false,
-                        goal_order:set_order,
+                        // goal_order:set_order,
                     })
                 });
                 const data = await results.json();
@@ -89,8 +90,9 @@ class AddGoalForm extends React.Component {
             }
         }
         add_goal_data();
-
+       
         e.target.reset();
+        this.props.close();
 
     }
 

@@ -1,0 +1,44 @@
+.display_manager{
+    display: grid;
+    row-gap: 3rem;
+    grid-template-columns: 6fr 6fr;
+    grid-template-rows: 6fr 6fr;
+    height: 80vh;
+    border: solid 3px red;
+    margin-top: 15vh;
+}
+
+
+/* .display_manager{ */
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: space-between; */
+    /* width: 100%; */
+    /* padding: 1rem; */
+    /* height: 60vh; */
+    /* margin-top: 5rem; */
+    /* border: solid 4px green */
+/* } */
+
+.goal_box{
+    margin: auto;
+    height: 70%;
+
+    width: 70%;
+border: solid 2px orange;
+}
+
+/* 
+.goal_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border-radius: 15px;
+    background-color: rgb(202, 226, 223);
+    width: 15%;
+    height: 75%;
+    padding: 3rem 1rem;
+    justify-content: space-between;
+    border: solid oldlace 3px 10px;
+} */

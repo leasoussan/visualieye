@@ -3,7 +3,7 @@ import React, {useState}from "react";
 
 
 const VisionBoard = ({ isLoggedIn }) => {
-    const [goalsList, setGoalsList] = useState([])
+    const [Profiler, setGoalsList] = useState([])
     const user_id = localStorage.getItem('user_id');
 
     // const get_user_goal = async () => {

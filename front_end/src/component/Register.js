@@ -45,7 +45,7 @@ const Register =()=> {
 
             const data = await result.json();
             if(result.ok){
-                navigate('login');
+                navigate('/login');
             }else{
                 setError(data.message)
             };

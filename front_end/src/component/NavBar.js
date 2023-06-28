@@ -38,13 +38,13 @@ const NavBar = ({ isLoggedIn, user_id }) => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to={`/goals_list/${user_id}/*`}>Goals List</Link>
+        <Link to={`/profiler/${user_id}/*`}>Profiler</Link>
       </li>
       <li>
         <Link to={`/vision_board/${user_id}/*`}>vision_board</Link>
       </li>
       <li>
-        <Link to={`/profile/${user_id}/*`}>Profile</Link>
+        <Link to={`/planner/${user_id}/*`}>Planner</Link>
 
       </li>
       <li>

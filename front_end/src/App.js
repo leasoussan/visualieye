@@ -5,15 +5,14 @@ import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-ro
 import PrivateRoute from './component/PrivateRoute.js';
 import Home from './component/Home';
 import VisionsBoard from './component/VisionBoard.js';
-import Profile from './component/Profile.js';
+import Profiler from './component/Goal/Profiler.js';
 import MoodBoard from './component/MoodBoard.js';
 import LogOut from './component/Logout.js';
 import Login from './component/Login.js';
 import NavBar from './component/NavBar.js';
 import GoalDisplay from './component/Goal/GoalDisplay.js';
 import Logout from './component/Logout.js';
-import GoalsList from '../src/component/Goal/GoalsList.js';
-
+import Planner from './component/Planner.js';
 
 export default function App(props) {
 
@@ -34,15 +33,15 @@ export default function App(props) {
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
-          <Route path="/profile/:id/*" element={<Profile isLoggedIn={isLoggedIn} />}  />
-          <Route path="/goals_list/:id/*" element={<GoalsList isLoggedIn={isLoggedIn} />}  />
+          <Route path="/profiler/:id/*" element={<Profiler isLoggedIn={isLoggedIn} />}  />
+          <Route path="/planner/:id/*" element={<Planner isLoggedIn={isLoggedIn} />}  />
 
           <Route path="/vision_board/:id/*" element={<VisionsBoard  isLoggedIn={isLoggedIn} />} />
         </Route>
 {/* <Route
   element={<PrivateRoute isLoggedIn={isLoggedIn} />}
 >
-  <Route path="/profile/:id/*" element={(props) => <Profile {...props} isLoggedIn={isLoggedIn} />} />
+  <Route path="/profiler/:id/*" element={(props) => <profiler {...props} isLoggedIn={isLoggedIn} />} />
   <Route path="/vision_board/:id/*" element={(props) => <VisionsBoard {...props} isLoggedIn={isLoggedIn} />} />
 </Route> */}
       </Routes>
