@@ -48,7 +48,9 @@ class AddGoalForm extends React.Component {
     };
 
     componentDidUpdate(prevProps) {
-        // window.location.reload(false)
+        // TODO# refresh page after elemench changed -saved goal
+        // window.location.reload(false).
+        
     };
 
     handleChange = (e) => {

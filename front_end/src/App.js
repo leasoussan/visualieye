@@ -37,6 +37,7 @@ export default function App(props) {
           <Route path="/planner/:id/*" element={<Planner isLoggedIn={isLoggedIn} />}  />
 
           <Route path="/vision_board/:id/*" element={<VisionsBoard  isLoggedIn={isLoggedIn} />} />
+          <Route path="/goal/:goal_id/*" element={<GoalDisplay  isLoggedIn={isLoggedIn} user_id={userId}/>} />
         </Route>
 {/* <Route
   element={<PrivateRoute isLoggedIn={isLoggedIn} />}
