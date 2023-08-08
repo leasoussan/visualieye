@@ -101,14 +101,20 @@ export const profiler = (req, res) => {
 // app.put('/api/goals/:id', )
 
 export const edit_goal =(req, res) => {
-    const { id } = req.params;
+    console.log("entree");
+    const { goal_id } = req.params;
     const { title, goal_type, start_date, end_date, accomplished } = req.body;
-    console.log(req.body);
-    db('goal')
-        .where({ id })
+    console.log("in the req body 107", req.body);
+    
+    
+    try{
+        db('goal')
+        .where({ goal_id })
         .update(req.body)
         .returning('*')
         .then(rows => {
+            console.log("rows from back end", rows );
+
             res.json(rows)
         })
         .catch(e => {
@@ -116,6 +122,12 @@ export const edit_goal =(req, res) => {
             res.status(404).json({ msg: e.messgae })
         })
 
+    }
+    catch (e){
+        console.log(e);
+        res.status(404).json({ msg: e.messgae })
+    }
+    
 
 }
 

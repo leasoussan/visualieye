@@ -72,7 +72,7 @@ class AddGoalForm extends React.Component {
             } = this.state;
 
             try {
-                const results = await fetch(`http://localhost:5000/add_goal/`, {
+                const results = await fetch(`http://localhost:5000/add_goal`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
