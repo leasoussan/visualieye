@@ -3,11 +3,11 @@ import Button from "react-bootstrap/esm/Button";
 import Modal from 'react-bootstrap/Modal';
 
 
-function EditGoalForm({ closeModal, goal_data }) {
+function EditGoalForm({ closeModal, goal_data, onRefresh}) {
 
     const [editedGoalData, setEditedGoalData] = useState({ ...goal_data });
     const [error, setError] = useState('');
-
+    const goalId = editedGoalData.goal_id
 
     const handleTitleChange = (e) => {
         const newTitle = e.target.value;
@@ -22,29 +22,49 @@ function EditGoalForm({ closeModal, goal_data }) {
             ...editedGoalData,
             end_date: end_date,
         });
+    }
+    const handledeleteGoal = async (e)=>{
+        e.preventDefault();
+        // const {goal_id} = editedGoalData;
+        try{
+            const response = await fetch(`http://localhost:5000/delete_goal/${goalId}`,{
+                method: 'DELETE',
+                headers:{
+                    'Content-Type' :  'application/json',
+                },
+                body: JSON.stringify({goalId})
+            });
+            
+        }
+        catch(e){
+
+        }
 
     }
 
-
-
     const handleSaveChanges = async (e) => {
         e.preventDefault();
-        console.log("im trying here and I love it");
+        console.log("im trying here and I love it",);
 
+        const {title,end_date} = editedGoalData
         try {
 
-            const response = await fetch(`http://localhost:5000/edit_goal/${editedGoalData.goal_id}`, {
+            const response = await fetch(`http://localhost:5000/edit_goal/${goalId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(editedGoalData),
+                body: JSON.stringify({goalId,title,end_date}),
             });
-            console.log("respose", response);
-            const editGoalData = await response.json()
-            console.log("editGoalData", editGoalData);
-
-
+            
+            // const editGoalData = await response.json()
+            if (response.ok){
+                closeModal();
+                onRefresh();
+            }
+            else{
+                setError({msg:"the Goal wasn't Updated"})
+            }
         }
         catch (e) {
             console.log();
@@ -73,13 +93,13 @@ function EditGoalForm({ closeModal, goal_data }) {
                             onChange={handleEndDateChange}
                         />
                         <button type="submit">Save Changes</button>
-                        <button onClick={closeModal}>Cancel</button>
+                        <button onClick={handledeleteGoal}>Delete Goal</button>
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    {/* <Button variant="secondary" onClick={closeModal}>
+                    <Button variant="secondary" onClick={closeModal}>
             Close
-          </Button> */}
+          </Button>
                     {/* <Button variant="primary" onClick={handleSaveChanges}>
             Save Changes
           </Button> */}

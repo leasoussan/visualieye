@@ -6,13 +6,13 @@ import db from '../data/database.js'
 // CREAT ONE GOAL
 export const add_goal = (req, res) => {
     console.log("in the add goal ", req.body);
-    const { 
+    const {
         user_id,
         title,
         goal_type,
         starting_date,
         end_date,
-     } = req.body;
+    } = req.body;
     db('goal')
         .insert(req.body)
         .returning('*')
@@ -36,30 +36,30 @@ export const add_goal = (req, res) => {
 export const goal_detail = (req, res) => {
     const { id } = req.params;
     console.log("in the parama id", id);
-    
-    try{
+
+    try {
         db('goal')
-        .select('*')
-        .where('goal_id', '=', id)
-        .then(rows => {
-            console.log("here yo");
-            if (rows.length === 0) {
-                return res.status(404).json({ msg: 'not found' })
-            }else{
-                console.log("in the goalId", rows );
-                res.json(rows)
-            }
-        })
-        .catch(e => {
-            console.log(e);
-            res.status(404).json({ msg: e.message })
-        })
+            .select('*')
+            .where('goal_id', '=', id)
+            .then(rows => {
+                console.log("here yo");
+                if (rows.length === 0) {
+                    return res.status(404).json({ msg: 'not found' })
+                } else {
+                    console.log("in the goalId", rows);
+                    res.json(rows)
+                }
+            })
+            .catch(e => {
+                console.log(e);
+                res.status(404).json({ msg: e.message })
+            })
     }
-    catch(err){
-        return res.status(404).json({msg:'not found'})
+    catch (err) {
+        return res.status(404).json({ msg: 'not found' })
     }
-    
-    }
+
+}
 
 
 
@@ -70,29 +70,29 @@ export const goal_detail = (req, res) => {
 
 export const profiler = (req, res) => {
     // console.log("icic cest req et toi ",req);
-    const {user_id} = req.params
+    const { user_id } = req.params
     console.log(user_id);
     db('goal')
         .select('*')
         .leftOuterJoin('goal_type', 'goal.goal_type', 'goal_type.id')
         //create  inner join on table type of 
-        .rightJoin('users', 'goal.user_id', 'users.id' )
-        .where({user_id: user_id})
+        .rightJoin('users', 'goal.user_id', 'users.id')
+        .where({ user_id: user_id })
         .then(rows => {
             console.log(rows);
-            if(rows.length === 0) {
-                  res.json({"msg":"null"})
-            }  else{
-             
-                res.json(rows) 
+            if (rows.length === 0) {
+                res.json({ "msg": "null" })
+            } else {
+
+                res.json(rows)
             }
-           
+
         })
         .catch(e => {
             console.log(e);
             res.status(404).json({ msg: "error" })
         })
-    }
+}
 
 
 
@@ -100,52 +100,57 @@ export const profiler = (req, res) => {
 // / Update - Put - Update/Modify a product
 // app.put('/api/goals/:id', )
 
-export const edit_goal =(req, res) => {
-    console.log("entree");
-    const { goal_id } = req.params;
-    const { title, goal_type, start_date, end_date, accomplished } = req.body;
-    console.log("in the req body 107", req.body);
-    
-    
-    try{
-        db('goal')
-        .where({ goal_id })
-        .update(req.body)
-        .returning('*')
-        .then(rows => {
-            console.log("rows from back end", rows );
+export const edit_goal = async (req, res) => {
+    const { title, end_date } = req.body;
+    const goal_id= req.params['id'];
+    try {
+        const updateGoal = await db('goal')
+            .where({'goal_id': goal_id})
+            .update({title, end_date})
+            .returning('*');
 
-            res.json(rows)
-        })
-        .catch(e => {
-            console.log(e);
-            res.status(404).json({ msg: e.messgae })
-        })
+        if (updateGoal.length === 0) {
+            return res.status(404).json({ msg: "Goal not found" })
+        }
+
+        res.json(updateGoal);
 
     }
-    catch (e){
-        console.log(e);
-        res.status(404).json({ msg: e.messgae })
+
+    catch (e) {
+        console.log("erro in Back End - edit goal", e);
+        res.status(500).json({ msg: "Internal Server Error" })
     }
-    
+
 
 }
 
 
 // app.delete('/api/goals/:id', )
 
-export const delete_goal = (req, res) => {
-    const { id } = req.params;
-    db('goal')
-        .where({ goal_id:id })
+export const delete_goal = async (req, res) => {
+    const { goal_id } = req.params;
+    console.log("goal_id", goal_id);
+    
+    try{
+        const deleteGoal = await  db('goal')
+        .where({ goal_id: goal_id })
         .del()
         .returning('*')
-        .then(rows => {
-            res.json(rows)
-        })
-        .catch(e => {
-            res.status(404).json({ msg: 'product not found...' })
-        })
+
+        if (deleteGoal.length !== 0){
+            res.json("gaol deleted")
+        }else{
+            res.json("not DELETED YET")
+        };
+
+    
+    }
+    catch(e){
+        res.status(500).json({msg:"internal Error in Delete"})
+    }
+   
+        
 
 }
 
@@ -164,10 +169,10 @@ export const delete_goal = (req, res) => {
 //         if(rows.length === 0) {
 //               res.json({"msg":"null"})
 //         }  else{
-         
+
 //             res.json(rows) 
 //         }
-       
+
 //     })
 //     .catch(e => {
 //         console.log(e);
@@ -307,13 +312,13 @@ export const delete_goal = (req, res) => {
 
 
 export const goal_type = (req, res) => {
-db('goal_type')
-    .select('*')
-    .then(row => {
-        res.json(row)
-    })
-    .catch(e => {
-        console.log(e);
-        res.status(404).json({ msg: "error" })
-    })
+    db('goal_type')
+        .select('*')
+        .then(row => {
+            res.json(row)
+        })
+        .catch(e => {
+            console.log(e);
+            res.status(404).json({ msg: "error" })
+        })
 }

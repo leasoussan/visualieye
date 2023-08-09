@@ -123,11 +123,3 @@
 
 }
 
-.goalDisplay{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(217, 218, 191);
-    height: 80vh;
-}

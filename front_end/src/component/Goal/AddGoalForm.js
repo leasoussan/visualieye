@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
-import '../styles.css'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format, parseISO } from "date-fns";

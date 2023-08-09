@@ -1,4 +1,4 @@
-.display_manager{
+.display_manager {
     display: grid;
     row-gap: 3rem;
     grid-template-columns: 6fr 6fr;
@@ -8,24 +8,29 @@
     margin-top: 15vh;
 }
 
+.goal_conainer{
+    display: flex;
+    width: 90vw;
+    flex-direction: column;
+    margin: 2rem;
+}
 
-/* .display_manager{ */
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* justify-content: space-between; */
-    /* width: 100%; */
-    /* padding: 1rem; */
-    /* height: 60vh; */
-    /* margin-top: 5rem; */
-    /* border: solid 4px green */
-/* } */
+.goal_header{
+    background-color: orange ;
+}
 
-.goal_box{
+.goal_display_title {
+    color: red;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.goal_box {
     margin: auto;
     height: 70%;
 
     width: 70%;
-border: solid 2px orange;
+    border: solid 2px orange;
 }
 
 /* 
