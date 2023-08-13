@@ -34,10 +34,12 @@ function EditGoalForm({ closeModal, goal_data, onRefresh}) {
                 },
                 body: JSON.stringify({goalId})
             });
+            closeModal();
+            onRefresh();
             
         }
         catch(e){
-
+            setError("We coldn't errase your Goal")
         }
 
     }

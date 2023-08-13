@@ -21,7 +21,6 @@ function Profiler() {
     
     const fetchUserGoals = async () => {
       const getuser = localStorage.getItem('user_id');
-      console.log("userId", getuser);
 
       if (getuser !== null) {
 
@@ -62,9 +61,7 @@ function Profiler() {
     setShowModal(true);
     setSelectedGoalType(goal_type)
   };
-//   const handleCloseModal = () => {
-//     setSelectedGoalType(null)
-//     setShowModal(false)};
+
 
   return (
     <>
@@ -82,7 +79,8 @@ function Profiler() {
                 <div>
                   <h1 style={{ width: '90%' }}> {currentGoal.title.toUpperCase()}</h1>
                   <p>Status: {currentGoal.accomplished}</p>
-                  <Link to={`/goal/${currentGoal.goal_id}`} >Goal</Link>
+
+                  <Link to={`/goal/${currentGoal.goal_id}` } >Goal</Link>
                 </div>
               ) : (
                 <div>

@@ -24,8 +24,16 @@ function GoalDisplay(props) {
     const getdata = async (req, res) => {
         try {
             const response = await fetch(`http://localhost:5000/goal_detail/${goal_id}`)
-            const data = await response.json()
-            setGoalData(data[0])
+            if (response.length === 0) {
+                alert('there isnt a goal yet')
+            }
+            else {
+                const data = await response.json()
+
+                setGoalData(data[0])
+            }
+
+
         }
         catch (e) {
             console.log("in the error of Goal Display");
