@@ -194,8 +194,7 @@ INSERT INTO weekly_slots_per_category (
             weekly_slots_per_category_user_id,
             weekly_slots_per_category_planner_id,
             weekly_slots_per_category_type,
-            weekly_slots_per_category_week,
-            weekly_slots_per_category_transportation_time
+            weekly_slots_per_category_day_time
             )
 VALUES     (4, 
             1, 

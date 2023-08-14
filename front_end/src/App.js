@@ -12,7 +12,7 @@ import Login from './component/Login.js';
 import NavBar from './component/NavBar.js';
 import GoalDisplay from './component/Goal/GoalDisplay.js';
 import Logout from './component/Logout.js';
-import Planner from './component/Planner.js';
+import Planner from './component/planning/Planner.js';
 
 export default function App(props) {
 
@@ -34,7 +34,7 @@ export default function App(props) {
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
           <Route path="/profiler/:id/*" element={<Profiler isLoggedIn={isLoggedIn} />}  />
-          <Route path="/planner/:id/*" element={<Planner isLoggedIn={isLoggedIn} />}  />
+          <Route path="/planner/:id/*" element={<Planner isLoggedIn={isLoggedIn} user_id={userId}/>}  />
 
           <Route path="/vision_board/:id/*" element={<VisionsBoard  isLoggedIn={isLoggedIn} />} />
           <Route path="/goal/:goal_id/*" element={<GoalDisplay  isLoggedIn={isLoggedIn} user_id={userId}/>} />
