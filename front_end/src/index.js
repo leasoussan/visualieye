@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import store from './store';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -13,11 +15,14 @@ import CheckUserLogIn from './component/CheckUserLogIn';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    
+
     <ErrorBoundary>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+
+        </Provider>
+      </BrowserRouter>
     </ErrorBoundary>
   </React.StrictMode>
 );

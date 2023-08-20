@@ -34,7 +34,7 @@ export default function App(props) {
         <Route path="/register" element={<Register />} />
         <Route element={<PrivateRoute isLoggedIn={isLoggedIn} />}>
           <Route path="/profiler/:id/*" element={<Profiler isLoggedIn={isLoggedIn} />}  />
-          <Route path="/planner/:id/*" element={<Planner isLoggedIn={isLoggedIn} user_id={userId}/>}  />
+          <Route path="/planner/:id/*" element={<Planner isLoggedIn={isLoggedIn} userId={userId}/>}  />
 
           <Route path="/vision_board/:id/*" element={<VisionsBoard  isLoggedIn={isLoggedIn} />} />
           <Route path="/goal/:goal_id/*" element={<GoalDisplay  isLoggedIn={isLoggedIn} user_id={userId}/>} />

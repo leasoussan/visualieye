@@ -14,7 +14,8 @@ export const add_weekly_planner = async (req, res) => {
             weekly_planner_user_id,
             weekly_planner_start_date,
             weekly_planner_end_date,
-            weekly_planner_is_current_week } = req.body;
+            weekly_planner_is_current_week,
+            weekly_planner_week_number } = req.body;
 
 
         // validation input data
@@ -30,7 +31,8 @@ export const add_weekly_planner = async (req, res) => {
                 weekly_planner_user_id,
                 weekly_planner_start_date,
                 weekly_planner_end_date,
-                weekly_planner_is_current_week
+                weekly_planner_is_current_week,
+                weekly_planner_week_number
             })
             .returning('*')
 
@@ -88,6 +90,43 @@ export const add_weekly_planner_slots = async (req, res) => {
 
 }
 
+// this Function API will allow the fetching of any weekly data, this will allows to simplify code
+// the the API will be called with a week ID 
+
+export const get_user_current_week_data = async (req, res) => {
+    
+    try {
+        const user_id = parseInt(req.params.user_id);
+        const week_number = parseInt(req.params.week_number)
+        console.log(user_id,);
+
+        const getUserWeekData = await db ('weekly_planner')
+        .join('weekly_slots_per_category', function() {
+            this.on('weekly_planner.weekly_planner_user_id', '=', user_id)
+                .andOn('weekly_planner.weekly_planner_week_number', '=', week_number +1)
+        })
+        .select('*');
+
+
+        if (getUserWeekData.length > 0) {
+            console.log(getUserWeekData);
+            res.json(getUserWeekData)
+        }
+        else {
+            res.status(404).json({msg:"You dont have data yet "})
+        }
+        
+
+    }
+    catch (e) {
+        console.log("errro in the back ");
+        res.status(500).json({msg:"errro fetching user week -backEnd"})
+    }
+
+};
+
+
+
 
 // here is to get slots types 
 export const get_slots_types = async (req, res) => {
@@ -97,9 +136,8 @@ export const get_slots_types = async (req, res) => {
             .from('slot_type')
 
         if (slots_types.length > 0) {
-            console.log("slots_types", slots_types);
 
-            return res.status(200).json({ msg: "you got htem all ", data: slots_types });
+            return res.status(200).json({ data: slots_types });
 
         } else {
             return res.status(400).json({ msg: "bad request here in the backEnd slots Types" })

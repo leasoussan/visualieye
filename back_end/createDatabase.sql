@@ -102,7 +102,8 @@ CREATE TABLE weekly_planner (
     weekly_planner_user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     weekly_planner_start_date DATE NOT NULL, 
     weekly_planner_end_date DATE NOT NULL, 
-    weekly_planner_is_current_week BOOLEAN NOT NULL
+    weekly_planner_is_current_week BOOLEAN NOT NULL DEFAULT false,
+    weekly_planner_week_number INTEGER NOT NULL
 )
 
 
@@ -172,8 +173,8 @@ VALUES('miamibound', 1, '2023-06-28', '2023-09-01', false, 1, 1),
 ('quiteSmoking', 1, '2023-06-28', '2023-09-01', false, 1, 3)
 
 
-INSERT INTO weekly_planner (weekly_planner_user_id, weekly_planner_start_date, weekly_planner_end_date, weekly_planner_is_current_week)
-VALUES(4,'2023-08-13', '2023-08-19', true )
+INSERT INTO weekly_planner (weekly_planner_user_id, weekly_planner_start_date, weekly_planner_end_date, weekly_planner_is_current_week, weekly_planner_week_number)
+VALUES(4,'2023-08-13', '2023-08-19', true, 33 )
 
 
 INSERT INTO slot_type (slot_type_name)
@@ -200,9 +201,9 @@ VALUES     (4,
             1, 
             2, 
             ARRAY[
-            '{"day": "sunday", "timeRange": {"start": "11:30", "end": "13:30"}, "transportation": {"to": "30", "from": "20"}}',
-            '{"day": "tuesday", "timeRange": {"start": "11:30", "end": "13:30"},  "transportation": {"to": "30", "from": "20"}}',
-            '{"day": "wednesday", "timeRange": {"start": "14:30", "end": "18:30"},  "transportation": {"to": "30", "from": "20"}}'])
+            '{"day": "2022-08-13", "timeRange": {"start": "11:30", "end": "13:30"}, "transportation": {"to": "30", "from": "20"}}',
+            '{"day": "2022-08-15", "timeRange": {"start": "11:30", "end": "13:30"},  "transportation": {"to": "30", "from": "20"}}',
+            '{"day": "2022-08-17", "timeRange": {"start": "14:30", "end": "18:30"},  "transportation": {"to": "30", "from": "20"}}'])
 
 
 

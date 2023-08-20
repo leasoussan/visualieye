@@ -1,6 +1,7 @@
 import React from "react";
 
 const WeeklySlotsDisplay = () => {
+    
     const fullDay = Array.from(Array(24), (_, index) => index + 1);
     //   
     const slots = fullDay.flatMap((hour) => {
@@ -12,10 +13,11 @@ const WeeklySlotsDisplay = () => {
             </p>
         ))
     })
-    //   
-    //   
-    //   
-    //   
+
+    // Display User Planing 
+
+    
+    
     //   
     return (
         <>
