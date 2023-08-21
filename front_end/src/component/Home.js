@@ -14,7 +14,7 @@ export function Home() {
 
     return (
         <>
-
+            <h1>Alex's branch</h1>
             <div className='homePageDispaly'>
                 <img src={'https://www.oberlo.com/media/1608267092-life-goals.jpg?w=1824&fit=max'} style={{width:'60%', background:'cover'}} />
 
