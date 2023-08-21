@@ -100,3 +100,10 @@ function Profiler() {
 }
 
 export default Profiler;
+
+//-------------------------------------
+// Comment section
+//-------------------------------------
+// 1. Hooks ??? useState function
+// 2. Still didn't have time to learn the concept of promises, maybe we could look through this topic.
+

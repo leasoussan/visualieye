@@ -4,7 +4,7 @@ import CheckUserLogIn from './CheckUserLogIn.js';
 // import Logout from './Logout.js';
 
 const NavBar = ({ isLoggedIn, user_id }) => {
-  const navigate = useNavigate('');
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -79,3 +79,9 @@ const NavBar = ({ isLoggedIn, user_id }) => {
 };
 
 export default NavBar
+
+//-------------------------------------
+//          Comment section
+//-------------------------------------
+//1. Error appearing on line 19 after using logout button;
+//

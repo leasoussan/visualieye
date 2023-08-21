@@ -51,4 +51,8 @@ export default function App(props) {
 }
 
 
-//testing github
+////-------------------------------------
+// // Comment section
+// //-------------------------------------
+// // 1. If I get it right, routes have the same purpose as routes in python flask (and perhaps as in any other language), so it
+//       declares an element (of course in python there are no elements, only objects) that should be rendered at a certain URL path.
