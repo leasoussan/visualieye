@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { SlotsPlanningFormDetails } from "./SlotsPlanningFormDetails";
+import './planning.css'
 
 
 function WeeklyPlaningForm({ userId , currentWeek}) {
 
     const user_id = userId;
     console.log("current week ", currentWeek);
-    const globalSlotsTypes = useSelector(state => state.globalDataReducer.slotsTypes).data;
+    const globalSlotsTypes = useSelector(state => state.globalDataReducer.slotsTypes);
   
     console.log("slots_type", globalSlotsTypes);
     const [show, setShow] = useState(false);
@@ -20,10 +22,12 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
 
         console.log(globalSlotsTypes, index);
         return(
-            <div key={index} className="slot_form_category">
+            <div key={index} className=" slot_form_category">
             <h2>{slot_type.slot_type_name}</h2>
+            <div className="input_week_checkbox">
+            <SlotsPlanningFormDetails slot_type={slot_type} currentWeek={currentWeek}/>
 
-            
+            </div>
 
             </div>
         )
@@ -34,7 +38,8 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
    
     
 
-    const handleSubmit =()=>{
+    const handleSubmit =(e)=>{
+        e.preventDefault();
 
     };
 

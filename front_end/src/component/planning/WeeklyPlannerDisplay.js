@@ -12,12 +12,12 @@ const WeeklyPlannerDisplay = ({currentWeek}) => {
   
   const globalSlotsTypes = useSelector(state => state.globalDataReducer.slotsTypes);
   const userWeeklyData = useSelector(state => state.userReducer.userCurrentWeekData);
-    console.log("globalSlotsTypes", globalSlotsTypes);
-    console.log("userWeeklyData", userWeeklyData);
+ 
 
-  const renderPlanning = currentWeek.map((day, index) => (
+  const renderPlanning =Object.entries(currentWeek.weekDates).map(([index, value]) =>(
+    
     <div key={index} className="daily_hours_container">
-      <h4>{day.day} {day.value}</h4>
+      <h4>{value.day} {value.value}</h4>
       <div className="hours_label_box">
 
     <WeeklySlotsDisplay  currentWeek={currentWeek}/>
@@ -33,7 +33,6 @@ const WeeklyPlannerDisplay = ({currentWeek}) => {
       <div className="weekly_planing_display">
         {renderPlanning}
 
-        {/* <SlotDetail /> */}
 
       </div>
     </>

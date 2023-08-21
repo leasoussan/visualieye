@@ -23,7 +23,7 @@ const Planner = ({ isLoggedIn, userId }) => {
   const dispatch = useDispatch();
   
   const [slotsTypes, setSlotsTypes] = useState([]);
-  const [currentWeek, setCurrentWeek] = useState([]);
+  const [currentWeek, setCurrentWeek] = useState({currentWeekNumber: 0 , weekDates :[]});
   const [weekNumber, setWeekNumber] = useState(null);
   // Modal -set Week open/close Management
   const [show, setShow] = useState(false);
@@ -62,8 +62,9 @@ const Planner = ({ isLoggedIn, userId }) => {
       const weekDates = days.map((day, index) => {
         return { day, value: (`${startDay + index}/${currentMonth}`) };
       });
+      console.log(typeof weekDates);
       setWeekNumber(currentWeekNumber)
-      setCurrentWeek(weekDates);
+      setCurrentWeek({currentWeekNumber, weekDates});
     };
     getWeekDates();
   };
@@ -76,8 +77,8 @@ const Planner = ({ isLoggedIn, userId }) => {
 
       if (response.ok) {
         const data = await response.json()
-        console.log("data", data);
-        dispatch(setSlotTypesData(data))
+        console.log("data", data.data);
+        dispatch(setSlotTypesData(data.data))
       } else {
         console.log("Issue here planner line 24");
       }
@@ -116,12 +117,6 @@ const Planner = ({ isLoggedIn, userId }) => {
 
   
 
-
-
-
-  const setPlanning = () => {
-
-  }
 
 
   return (
