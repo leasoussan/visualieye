@@ -20,3 +20,4 @@ export default PrivateRoute;
 //     return isLoggedIn ? <Outlet /> : <Navigate to="/" />;
 //   };
 // export default PrivateRoute
+

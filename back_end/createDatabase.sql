@@ -86,7 +86,7 @@ CREATE TABLE checkpoint_step (
     ckpt_step_title VARCHAR(255) NOT NULL,
     ckpt_step_action_time INTEGER NOT NULL,
     ckpt_step__notes TEXT,
-    ckpt_step_resource INTEGER REFERENCES checkpoint_resource(ckpt_resource_id) NOT NULL ON DELETE CASCADE,
+    ckpt_step_resource INTEGER REFERENCES checkpoint_resource(ckpt_resource_id)  ON DELETE CASCADE,
     ckpt_step_status INTEGER,    
 );
 
