@@ -7,8 +7,8 @@ back_end/knexfile.cjs
 front_end/node_modules
 /.pnp
 .pnp.js
+back_end/.env
 
-admin/
 # testing
 /coverage
 
