@@ -71,7 +71,8 @@ const NavBar = ({ isLoggedIn, user_id }) => {
 
   return (
     <>
-      <nav className="navbar">
+      <nav >
+        
         {isLoggedIn ? loggedInLinks : loggedOutLinks}
       </nav>
     </>

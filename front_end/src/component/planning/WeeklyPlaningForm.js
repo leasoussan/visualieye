@@ -17,6 +17,7 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [state, setState] = useState()
 
     const setSlotTypeInputForm = globalSlotsTypes.map((slot_type, index)=>{
 

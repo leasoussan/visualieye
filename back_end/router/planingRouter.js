@@ -1,6 +1,6 @@
 import express from 'express';
 import { add_weekly_planner_and_slots } from '../controllers/weekly_planning/SavingWeeklyPlanningController.js';
-import { get_user_current_week_data } from '../controllers/weekly_planning/UserWeeklyPLannerController.js';
+import { get_user_current_week_data } from '../controllers/weekly_planning/UserWeeklyPlannerController.js';
 import { get_slots_types } from '../controllers/weekly_planning/SlotsTypeController.js';
 
  const planning_router = express.Router();

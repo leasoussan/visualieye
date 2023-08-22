@@ -1,7 +1,9 @@
+import db from '../../data/database.js'
+
 
 // here is to get slots types 
 export const get_slots_types = async (req, res) => {
-
+    console.log("entered the slottype req back end");
     try {
         const slots_types = await db.select('*')
             .from('slot_type')

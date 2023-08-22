@@ -33,6 +33,7 @@ const Planner = ({ isLoggedIn, userId }) => {
 
 
   useEffect(() => {
+    console.log("in the useEffect ");
     renderWeek();
     getSlotsTypesCategories();
     fetchUserCurrentWeek();
@@ -73,8 +74,9 @@ const Planner = ({ isLoggedIn, userId }) => {
 
   const getSlotsTypesCategories = async () => {
     try {
+      console.log("yoyoyoyoyoy");
       const response = await fetch(`http://localhost:5000/get_slots_types`);
-
+      console.log(response);
       if (response.ok) {
         const data = await response.json()
         console.log("data", data.data);
@@ -122,7 +124,7 @@ const Planner = ({ isLoggedIn, userId }) => {
   return (
 
     <div>
-      <WeeklyPlanningForm currentWeek={currentWeek}  userId={userId} showModal={showModal} closeModal={closeModal} />
+      <WeeklyPlanningForm currentWeek={currentWeek}  userId={userId} showModal={showModal} closeModal={closeModal} />  
       <button >PAST WEEK </button>
       <button >NEXT WEEK  </button>
       <WeeklyPlannerDisplay currentWeek={currentWeek} slotsTypes={slotsTypes} userId={userId} />

@@ -3,6 +3,7 @@ import React from "react";
 const WeeklySlotsDisplay = () => {
     
     const fullDay = Array.from(Array(24), (_, index) => index + 1);
+    console.log("here is what I write ", fullDay);
     //   
     const slots = fullDay.flatMap((hour) => {
         const minutes = [0, 20, 40]

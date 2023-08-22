@@ -1,3 +1,4 @@
+import db from '../../data/database.js'
 
 
 
@@ -12,10 +13,10 @@ export const get_user_current_week_data = async (req, res) => {
         const week_number = parseInt(req.params.week_number)
         console.log(user_id,);
 
-        const getUserWeekData = await db ('weekly_planner')
+        const getUserWeekData = await db('weekly_planner')
         .join('weekly_slots_per_category', function() {
             this.on('weekly_planner.weekly_planner_user_id', '=', user_id)
-                .andOn('weekly_planner.weekly_planner_week_number', '=', week_number +1)
+                .andOn('weekly_planner.weekly_planner_week_number', '=', week_number )
         })
         .select('*');
 

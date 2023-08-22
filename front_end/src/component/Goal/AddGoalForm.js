@@ -126,3 +126,15 @@ class AddGoalForm extends React.Component {
 }
 
 export default AddGoalForm
+
+
+
+const comp = ()=>{
+
+
+
+
+
+}
+
+
