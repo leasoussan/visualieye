@@ -6,7 +6,7 @@ import WeeklySlotsDisplay from "./WeeklySlotsDisplay.js";
 import WeeklySlotsForm from "./WeeklyPlaningForm.js";
 import WeeklyPlanningForm from "./WeeklyPlaningForm.js";
 import { setUserCurrentWeekData,setSlotTypesData } from "../../actions.js"
-
+// import { RenderWeek } from "./RenderWeek.js";
 // The Planner Component usage is to hold data that will allow to display Callendar of 
 // Present week, with a button to display past week and the next week.
 // slots types import is important in order to be able to manipulate data according to type.
@@ -22,9 +22,10 @@ import { setUserCurrentWeekData,setSlotTypesData } from "../../actions.js"
 const Planner = ({ isLoggedIn, userId }) => {
   const dispatch = useDispatch();
   
+  const currentWeek = useSelector(state => state.globalDataReducer.currentWeekDateData)
+  
   const [slotsTypes, setSlotsTypes] = useState([]);
-  const [currentWeek, setCurrentWeek] = useState({currentWeekNumber: 0 , weekDates :[]});
-  const [weekNumber, setWeekNumber] = useState(null);
+  const [isCurrentWeek, setIsCurrentWeek] = useState('');
   // Modal -set Week open/close Management
   const [show, setShow] = useState(false);
   const closeModal = () => setShow(false);
@@ -33,56 +34,30 @@ const Planner = ({ isLoggedIn, userId }) => {
 
 
   useEffect(() => {
-    console.log("in the useEffect ");
-    renderWeek();
+    console.log("in the useEffect currentWeek", currentWeek);
+    // RenderWeek();
     getSlotsTypesCategories();
-    fetchUserCurrentWeek();
 
     // Call the fetchUserCurrentWeek function and then renderWeek
-  }, [dispatch])
+  }, [dispatch]);
 
 
-
-  const renderWeek = () => {
-    const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-    
-    const getWeekDates = () => {
-      const setDate = DateTime.now();
-      const date = setDate;
-      console.log("date", date);
-      
-      const dayOfMonth = date.day;
-      const weekDay = date.weekday  === 7 ? 0  : date.weekday;
-      const currentMonth = date.month;
-      const currentWeekNumber = date.weekNumber +1;
-
-
-      const startDay = dayOfMonth - weekDay;
-      const startOfWeek = date.set({'weekday':0});
-
-      const weekDates = days.map((day, index) => {
-        return { day, value: (`${startDay + index}/${currentMonth}`) };
-      });
-      console.log(typeof weekDates);
-      setWeekNumber(currentWeekNumber)
-      setCurrentWeek({currentWeekNumber, weekDates});
-    };
-    getWeekDates();
-  };
+  useEffect(()=>{
+    console.log("in the seconb use Effect here ");
+    fetchUserCurrentWeek();
+  },[currentWeek])
 
 
 
   const getSlotsTypesCategories = async () => {
     try {
-      console.log("yoyoyoyoyoy");
       const response = await fetch(`http://localhost:5000/get_slots_types`);
       console.log(response);
       if (response.ok) {
         const data = await response.json()
-        console.log("data", data.data);
         dispatch(setSlotTypesData(data.data))
       } else {
-        console.log("Issue here planner line 24");
+        console.log("Issue here planner line59");
       }
     }
     catch (e) {
@@ -94,15 +69,15 @@ const Planner = ({ isLoggedIn, userId }) => {
 
 
   const fetchUserCurrentWeek = async () => {
+    const week_number = currentWeek.currentWeekNumber;
     try {
       const user_id = userId;
-      const week_number = weekNumber;
-     
+      console.log("week Numberrrrrrr", week_number);
       const response = await fetch(`http://localhost:5000/get_user_current_week_data/${user_id}/${week_number}`);
 
       if (response.ok) {
         const data = await response.json();
-
+          console.log("data to displacht ",data);
         dispatch(setUserCurrentWeekData(data));
        
       } else {

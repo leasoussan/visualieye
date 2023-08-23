@@ -11,3 +11,9 @@ export const setSlotTypesData = slotsTypes => ({
     type: 'SET_SLOTS_TYPES',
     payload : slotsTypes
 })
+
+
+export const setCurretnWeekDateData = currentWeekDateData =>({
+    type: 'SET_CURRENT_WEEK_DATE_DATA',
+    payload: currentWeekDateData
+})

@@ -11,7 +11,7 @@ export const get_user_current_week_data = async (req, res) => {
     try {
         const user_id = parseInt(req.params.user_id);
         const week_number = parseInt(req.params.week_number)
-        console.log(user_id,);
+        console.log("user_id $week_number",user_id, week_number);
 
         const getUserWeekData = await db('weekly_planner')
         .join('weekly_slots_per_category', function() {
@@ -20,9 +20,9 @@ export const get_user_current_week_data = async (req, res) => {
         })
         .select('*');
 
-
+        console.log("getUserWeekData BACK IN USER WEEKLY PLANNER CONTROLER ", getUserWeekData);
         if (getUserWeekData.length > 0) {
-            console.log(getUserWeekData);
+            console.log("un autre log in the get user data line 25",getUserWeekData);
             res.json(getUserWeekData)
         }
         else {

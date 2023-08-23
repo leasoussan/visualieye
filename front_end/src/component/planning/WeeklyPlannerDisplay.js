@@ -8,11 +8,19 @@ import { useSelector } from "react-redux";
 // all slots are not mandatory yet.
 
 
-const WeeklyPlannerDisplay = ({currentWeek}) => {
+const WeeklyPlannerDisplay = () => {
   
   const globalSlotsTypes = useSelector(state => state.globalDataReducer.slotsTypes);
   const userWeeklyData = useSelector(state => state.userReducer.userCurrentWeekData);
- 
+  const currentWeek = useSelector(state => state.globalDataReducer.currentWeekDateData);
+  const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
+  console.log("weekly planner display currentWeek", currentWeek);
+  const startDay = 0;
+  const currentMonth = 8
+
+  
+
 
   const renderPlanning =Object.entries(currentWeek.weekDates).map(([index, value]) =>(
     
@@ -28,10 +36,14 @@ const WeeklyPlannerDisplay = ({currentWeek}) => {
   ));
 
 
+  
+    
+
   return (
     <>
       <div className="weekly_planing_display">
-        {renderPlanning}
+        {/* {weekDates}
+        {renderPlanning} */}
 
 
       </div>

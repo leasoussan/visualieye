@@ -1,5 +1,9 @@
 const initialState={
     slotsTypes : [],
+    currentWeekDateData : {
+        currentWeekNumber: null , 
+        weekDates :[]
+    }
 }
 
 const globalDataReducer = (state= initialState, action)=>{
@@ -12,6 +16,13 @@ const globalDataReducer = (state= initialState, action)=>{
         ...state,
         slotsTypes: action.payload
     };
+
+    case 'SET_CURRENT_WEEK_DATE_DATA':
+        return{
+        ...state,
+        currentWeekDateData: action.payload
+        }
+
     default :
         return { ...state}
     };

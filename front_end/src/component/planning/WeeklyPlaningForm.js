@@ -21,7 +21,6 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
 
     const setSlotTypeInputForm = globalSlotsTypes.map((slot_type, index)=>{
 
-        console.log(globalSlotsTypes, index);
         return(
             <div key={index} className=" slot_form_category">
             <h2>{slot_type.slot_type_name}</h2>
