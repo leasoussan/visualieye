@@ -34,49 +34,55 @@ const NavBar = ({ isLoggedIn, user_id }) => {
     navigate('/');
   };
 
-  const loggedInLinks = (
-    <Container fluid>
-    <Navbar.Toggle aria-controls="navbarScroll" />
-    <Navbar.Collapse id="navbarScroll">
-          <Nav>
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href={`/profiler/${user_id}/*`}>Profiler</Nav.Link>
-            <Nav.Link href={`/vision_board/${user_id}/*`}>vision_board</Nav.Link>
-            <Nav.Link  href={`/planner/${user_id}/*`}>Planner</Nav.Link>
-          </Nav>
-          </Navbar.Collapse>
-          <NavDropdown title="Logout" id="basic-nav-dropdown">
-          <NavDropdown.Item href="/logout" onClick={Logout}>Logout</NavDropdown.Item>
-        </NavDropdown>
-        </Container>
+  const loggedInLinksLeft = (
+  <>
+    <Nav.Link href="/">Home</Nav.Link>
+    <Nav.Link href={`/profiler/${user_id}/*`}>Profiler</Nav.Link>
+    <Nav.Link href={`/vision_board/${user_id}/*`}>vision_board</Nav.Link>
+    <Nav.Link  href={`/planner/${user_id}/*`}>Planner</Nav.Link>
+  </>
+  );
+
+  const loggedInLinksRight = (
+    <NavDropdown title="Logout" id="basic-nav-dropdown">
+      <NavDropdown.Item href="/logout" onClick={Logout}>Logout</NavDropdown.Item>
+    </NavDropdown>
   );
             
 
-  const loggedOutLinks = (
+  const loggedOutLinksLeft = (
+      <>
+      <Nav.Link href="/">Home</Nav.Link>
+      </>
+  );
+
+  const loggedOutLinksRight = (
+  <>
+    <Nav.Link href="/login">Login</Nav.Link>
+    <Nav.Link href="/register">Register</Nav.Link>
+  </>
+  );
+
+  return (
+  <Navbar expand="lg" bg="light" className="bg-body-tertiary">
     <Container fluid>
-    <Navbar.Toggle aria-controls="navbarScroll" />
-    <Navbar.Collapse id="navbarScroll">
+      <Navbar.Toggle aria-controls="navbarScroll" />
+      <Navbar.Collapse id="navbarScroll">
         <Nav
           className="me-auto my-2 my-lg-0"
           style={{ maxHeight: '100px' }}
           navbarScroll
         >
-          <Nav>
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/register">Register</Nav.Link>
-          </Nav>
+          {isLoggedIn ? loggedInLinksLeft : loggedOutLinksLeft}
         </Nav>
-        </Navbar.Collapse>
-        </Container>
-  );
-
-  return (
-    <Navbar expand="lg" bg="light" className="bg-body-tertiary">
-      {isLoggedIn ? loggedInLinks : loggedOutLinks}
-      </Navbar>
+      </Navbar.Collapse>
+      <Nav>
+        {isLoggedIn ? loggedInLinksRight : loggedOutLinksRight}
+      </Nav>
+    </Container>
+  </Navbar>
 );
-  }
+  };
 
 export default NavBar
 
