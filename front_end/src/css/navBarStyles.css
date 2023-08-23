@@ -1,5 +1,16 @@
 .navbar {
     margin-bottom: 5vh;
-    color: white;
     font-size: large;
 }
+
+.navBar_display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 3px solid red;
+}
+
+
+/* .navbar-nav { */
+    /* border: 3px solid red; */
+/* } */
