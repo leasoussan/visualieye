@@ -74,14 +74,14 @@
 
 
 
-.homePageDispaly{
+.homePageDisplay{
     width: 100%;
     height: 80vh;
     background-color: rgb(206, 221, 212);
 }
 
 
-.homePageDispaly img{
+.homePageDisplay img{
     margin-left:5% ;
     height: 100%;
     max-width: auto;
