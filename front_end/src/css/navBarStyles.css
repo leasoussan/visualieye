@@ -1,16 +1,4 @@
-.navbar {
-    margin-bottom: 5vh;
-    font-size: large;
+.navbarMain {
+    margin-bottom: 5rem;
 }
 
-.navBar_display {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border: 3px solid red;
-}
-
-
-/* .navbar-nav { */
-    /* border: 3px solid red; */
-/* } */

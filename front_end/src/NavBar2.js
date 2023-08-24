@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import CheckUserLogIn from './CheckUserLogIn.js';
-import '../css/navBarStyles.css';
+import '../css/navbarStyles.css';
 // import Logout from './Logout.js';
 
 const NavBar = ({ isLoggedIn, user_id }) => {

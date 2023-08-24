@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import '../css/navBarStyles.css';
+import '../css/navbarStyles.css';
 import CheckUserLogIn from './CheckUserLogIn.js';
 import Logout from './Logout.js';
 
@@ -64,18 +64,18 @@ const NavBar = ({ isLoggedIn, user_id }) => {
   );
 
   return (
-  <Navbar expand="lg" bg="light" className="bg-body-tertiary">
-    <Container fluid>
+  <Navbar expand="lg"  variant="light" data-bs-theme="light" className='navbarMain'>
+    <Container>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav
           className="me-auto my-2 my-lg-0"
-          style={{ maxHeight: '100px' }}
+          style={{ maxHeight: '100px'}}
           navbarScroll
         >
           {isLoggedIn ? loggedInLinksLeft : loggedOutLinksLeft}
         </Nav>
-      </Navbar.Collapse>
+      </Navbar.Collapse >
       <Nav>
         {isLoggedIn ? loggedInLinksRight : loggedOutLinksRight}
       </Nav>
