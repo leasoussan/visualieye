@@ -1,5 +1,11 @@
-.navbarMain {
-    margin-top: 0.5rem;
+#body .navbarMain {
+    width: auto;
+    /* margin-top: -1rem; */
     margin-bottom: 5rem;
     opacity: 0.7;
+}
+
+#body .navbarMain div {
+    margin-top: 0;
+    margin-bottom: 0;
 }
