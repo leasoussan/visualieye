@@ -1,3 +1,5 @@
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -64,7 +66,16 @@ const NavBar = ({ isLoggedIn, user_id }) => {
   );
 
   return (
-  <Navbar expand="lg"  variant="light" data-bs-theme="light" className='navbarMain'>
+    <>
+    <style type='text/css'>
+      {`
+      .navbar {
+        --bs-navbar-color: black;
+        background: white;
+        --bs-navbar-hover-color: #e4734f;
+      }`}
+    </style>
+  <Navbar expand="lg"  className='navbarMain'>
     <Container>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
@@ -81,6 +92,8 @@ const NavBar = ({ isLoggedIn, user_id }) => {
       </Nav>
     </Container>
   </Navbar>
+  </>
+
 );
   };
 
