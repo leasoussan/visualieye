@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card';
 import { Link, useNavigate } from "react-router-dom"
+import '../css/GlobalStyles.css'
 import { CheckUserLogIn } from './CheckUserLogIn';
+import { width } from '@mui/system';
 
 
 const Login = ({setIsLoggedIn}) => {
@@ -23,6 +30,7 @@ const Login = ({setIsLoggedIn}) => {
     const { email, password } = formData;
     const validEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     if (!validEmail.test(email)) {
+      console.log(`Mail is ${email}`);
       setError("Please enter a valid email");
       return;
     }
@@ -53,19 +61,53 @@ const Login = ({setIsLoggedIn}) => {
   
 
   return (
+    // <>
+    //   <form onSubmit={handleSubmit}>
+    //     <label htmlFor="email">Email</label>
+    //     <input type="text" name="email" id="email" onChange={handleChange} />
+    //     <label htmlFor="password">Password</label>
+    //     {error.length > 0 && (
+    //       <div>{error}</div>
+    //     )}
+    //     <input type="password" name="password" id="password" onChange={handleChange} />
+    //     <input type="submit" />
+    //   </form>
+    // </>
     <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input type="text" name="email" id="email" onChange={handleChange} />
-        <label htmlFor="password">Password</label>
-        {error.length > 0 && (
-          <div>{error}</div>
-        )}
-        <input type="password" name="password" id="password" onChange={handleChange} />
-        <input type="submit" />
-      </form>
+    <div className="login template d-flex justify-content-center align-items-center 100-w">
+      <div className="form_container p-4 rounded bg-white">
+        <form onSubmit={handleSubmit} >
+          <h3 className="mb-4">Log In</h3>
+          <div className="mb-4 text-start">
+            <label className="mb-2" htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              onChange={handleChange}
+              placeholder="Email"
+              className='form-control'
+            />
+          </div>
+          <div className="mb-4 text-start">
+            <label className="mb-2" htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              onChange={handleChange}
+              placeholder="Password"
+              className='form-control'
+            />
+          </div>
+          {error && <p className="error">{error}</p>}
+          <div className='d-grid'>
+            <button className="btn btn-warning" type="submit">Log In</button>
+          </div>
+        </form>
+      </div>
+    </div>
     </>
-
   )
 }
 

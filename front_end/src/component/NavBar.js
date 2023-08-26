@@ -60,7 +60,7 @@ const NavBar = ({ isLoggedIn, user_id }) => {
 
   const loggedOutLinksRight = (
   <>
-    <Nav.Link href="/login">Login</Nav.Link>
+    <Nav.Link href="/login">Log in</Nav.Link>
     <Nav.Link href="/register">Register</Nav.Link>
   </>
   );
