@@ -4,10 +4,9 @@ import Modal from 'react-bootstrap/Modal';
 
 
 function EditGoalForm({ closeModal, goal_data, onRefresh}) {
-
     const [editedGoalData, setEditedGoalData] = useState({ ...goal_data });
     const [error, setError] = useState('');
-    const goalId = editedGoalData.goal_id
+    const goalId = editedGoalData.goal_id;
 
     const handleTitleChange = (e) => {
         const newTitle = e.target.value;
@@ -22,7 +21,9 @@ function EditGoalForm({ closeModal, goal_data, onRefresh}) {
             ...editedGoalData,
             end_date: end_date,
         });
-    }
+    };
+    
+
     const handledeleteGoal = async (e)=>{
         e.preventDefault();
         // const {goal_id} = editedGoalData;

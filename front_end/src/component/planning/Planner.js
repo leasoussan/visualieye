@@ -7,6 +7,7 @@ import WeeklySlotsForm from "./WeeklyPlaningForm.js";
 import WeeklyPlanningForm from "./WeeklyPlaningForm.js";
 import { setUserCurrentWeekData,setSlotTypesData } from "../../actions.js"
 // import { RenderWeek } from "./RenderWeek.js";
+
 // The Planner Component usage is to hold data that will allow to display Callendar of 
 // Present week, with a button to display past week and the next week.
 // slots types import is important in order to be able to manipulate data according to type.
@@ -14,7 +15,7 @@ import { setUserCurrentWeekData,setSlotTypesData } from "../../actions.js"
 // - user wants to be able to go on the planner page- to visualze his week clearly and to understant how his time is managed
 //  -User wants to be able to Plan hi week at once a week via the FORM.
 //  -User wants to be able to modify his weekly planner
-// - user want to be able to see what time is left to be planed
+// - user want to be able to see what time is left to be planed - empty spots 
 //  - user wants to be able visualized past week, and understand paterns and success
 // - users want to be able to visualize next week - but wont be able to save neither past week and future week
 
@@ -22,8 +23,8 @@ import { setUserCurrentWeekData,setSlotTypesData } from "../../actions.js"
 const Planner = ({ isLoggedIn, userId }) => {
   const dispatch = useDispatch();
   
-  const currentWeek = useSelector(state => state.globalDataReducer.currentWeekDateData)
-  
+  const current_week = useSelector((state) => state.globalDataReducer.currentWeekDateData)
+  console.log("the current week from the store ", current_week);
   const [slotsTypes, setSlotsTypes] = useState([]);
   const [isCurrentWeek, setIsCurrentWeek] = useState('');
   // Modal -set Week open/close Management
@@ -31,10 +32,10 @@ const Planner = ({ isLoggedIn, userId }) => {
   const closeModal = () => setShow(false);
   const showModal = () => setShow(true);
 
-
+  
 
   useEffect(() => {
-    console.log("in the useEffect currentWeek", currentWeek);
+    // console.log("in the useEffect currentWeek", current_week);
     // RenderWeek();
     getSlotsTypesCategories();
 
@@ -43,9 +44,10 @@ const Planner = ({ isLoggedIn, userId }) => {
 
 
   useEffect(()=>{
-    console.log("in the seconb use Effect here ");
     fetchUserCurrentWeek();
-  },[currentWeek])
+    return () => {
+    };
+  },[current_week])
 
 
 
@@ -69,7 +71,7 @@ const Planner = ({ isLoggedIn, userId }) => {
 
 
   const fetchUserCurrentWeek = async () => {
-    const week_number = currentWeek.currentWeekNumber;
+    const week_number = current_week.currentWeekNumber;
     try {
       const user_id = userId;
       console.log("week Numberrrrrrr", week_number);
@@ -99,10 +101,10 @@ const Planner = ({ isLoggedIn, userId }) => {
   return (
 
     <div>
-      <WeeklyPlanningForm currentWeek={currentWeek}  userId={userId} showModal={showModal} closeModal={closeModal} />  
+      <WeeklyPlanningForm currentWeek={current_week}  userId={userId} showModal={showModal} closeModal={closeModal} />  
       <button >PAST WEEK </button>
       <button >NEXT WEEK  </button>
-      <WeeklyPlannerDisplay currentWeek={currentWeek} slotsTypes={slotsTypes} userId={userId} />
+      <WeeklyPlannerDisplay currentWeek={current_week} slotsTypes={slotsTypes} userId={userId} />
 
     </div>
   );

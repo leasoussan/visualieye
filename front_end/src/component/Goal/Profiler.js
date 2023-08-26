@@ -8,7 +8,7 @@ import GoalDisplay from "./GoalDisplay";
 import AddGoalForm from "./AddGoalForm";
 import ModalForm from "./ModalForm.js";
 
-function Profiler() {
+function Profiler({isLoggedIn}) {
   const [goals, setGoals] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [goalTypes, setGoalTypes] = useState([]);

@@ -9,15 +9,15 @@ import './planning.css'
 function WeeklyPlaningForm({ userId , currentWeek}) {
 
     const user_id = userId;
-    console.log("current week ", currentWeek);
+    // console.log("current week ", currentWeek);
     const globalSlotsTypes = useSelector(state => state.globalDataReducer.slotsTypes);
   
-    console.log("slots_type", globalSlotsTypes);
+    // console.log("slots_type", globalSlotsTypes);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [state, setState] = useState()
+
 
     const setSlotTypeInputForm = globalSlotsTypes.map((slot_type, index)=>{
 
@@ -25,7 +25,8 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
             <div key={index} className=" slot_form_category">
             <h2>{slot_type.slot_type_name}</h2>
             <div className="input_week_checkbox">
-            <SlotsPlanningFormDetails slot_type={slot_type} currentWeek={currentWeek}/>
+                 
+            <SlotsPlanningFormDetails slot_type={slot_type} currentWeek={currentWeek} />
 
             </div>
 
@@ -35,8 +36,10 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
     );
     
     
-   
-    
+    const handleChange=(e)=>{
+        console.log(e.target);
+       }
+        
 
     const handleSubmit =(e)=>{
         e.preventDefault();
@@ -65,7 +68,7 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
                     </Modal.Header>
                     <Modal.Body>
 
-                       <form onSubmit={handleSubmit}>
+                       <form onSubmit={handleSubmit} onChange={handleChange}>
 
 
                         {setSlotTypeInputForm}

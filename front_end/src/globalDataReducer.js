@@ -18,6 +18,7 @@ const globalDataReducer = (state= initialState, action)=>{
     };
 
     case 'SET_CURRENT_WEEK_DATE_DATA':
+        console.log("dispatch from DateSettings", action.payload);
         return{
         ...state,
         currentWeekDateData: action.payload

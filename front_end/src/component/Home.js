@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Redirect } from 'react-router'
+import { Route, Redirect } from 'react-router';
+import {useSelector}  from 'react-redux/es/hooks/useSelector';
 import { CheckUserLogIn } from './CheckUserLogIn';
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import VisionsBoard from './VisionBoard';
-import { UseSelector } from 'react-redux/es/hooks/useSelector';
 import { useDispatch } from 'react-redux';
 import DateSetting from './utils/DateSetting.js';
 
 
 function Home() {
     const dispatch = useDispatch();
+    const currentWeek = useSelector((state) => state.globalDataReducer.currentWeekDateData)
+
     console.log("localStorage",localStorage);
 
-    const getWeeklyDateData = DateSetting(dispatch);
 
     useEffect(()=>{
-        
-        console.log("homeSUeEffect");
-       
-    },[getWeeklyDateData])
+        const getFromDispatchWeeklyData = DateSetting(dispatch);       
+    },[dispatch])
 
     
   
