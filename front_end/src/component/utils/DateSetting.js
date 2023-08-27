@@ -11,14 +11,14 @@ function DateSetting  (dispatch) {
     const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     //    i need to get date, and to see what date ar we then set the week range. 
 
-    const getCurrentDate = DateTime.now().plus({"day":1});
+    const getCurrentDate = DateTime.now();
     const setDate = getCurrentDate;
     console.log("setDate",setDate);
 
     const setWeekRange =(currentDay) =>{
 
         console.log("current Date question", currentDay.weekday);
-        const weekStartDate = currentDay.weekday  ;
+        const weekStartDate = currentDay  ;
         const weekEndDate = currentDay.plus({'day':6});
        
             

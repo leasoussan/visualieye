@@ -11,7 +11,7 @@ import DateSetting from './utils/DateSetting.js';
 
 function Home() {
     const dispatch = useDispatch();
-    const currentWeek = useSelector((state) => state.globalDataReducer.currentWeekDateData)
+    // const currentWeek = useSelector((state) => state.globalDataReducer.currentWeekDateData)
 
     console.log("localStorage",localStorage);
 
