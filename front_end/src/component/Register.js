@@ -123,7 +123,7 @@ const Register =()=> {
               </div>
               {error && <p className="error">{error}</p>}
               <div className='d-grid'>
-                <button className="btn btn-warning" type="submit">Register</button>
+                <button className="h-8 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/50" type="submit">Register</button>
               </div>
             </form>
           </div>
