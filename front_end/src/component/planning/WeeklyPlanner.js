@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './planning.css';
+import './planningStyles.css';
 import SlotDetail from "./SlotDetail.js";
 
 
@@ -86,7 +86,7 @@ export default WeeklyPlanner
 
 
 // import React, { useState } from 'react';
-// import './planning.css';
+// import './planningStyles.css';
 
 // const WeeklyPlanner = () => {
 //   const [currentWeek, setCurrentWeek] = useState(0);

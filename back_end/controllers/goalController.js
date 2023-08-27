@@ -13,6 +13,7 @@ export const add_goal = (req, res) => {
         starting_date,
         end_date,
     } = req.body;
+    
     db('goal')
         .insert(req.body)
         .returning('*')

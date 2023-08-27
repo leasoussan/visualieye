@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Home from './Home';
-import NavBar from './NavBar';
+// import NavBar from './NavBar';
 import {navigate}  from '../App.js'
 
 
