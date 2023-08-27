@@ -24,16 +24,11 @@ function Home() {
   
     
     // localStorage.clear()
-   
-
-
 
     return (
         <>
-
-            <div className='homePageDispaly'>
+            <div className='homePageDisplay'>
                 <img src={'https://www.oberlo.com/media/1608267092-life-goals.jpg?w=1824&fit=max'} style={{width:'60%', background:'cover'}} />
-
             </div>
         </>
     )
@@ -41,3 +36,5 @@ function Home() {
 }
 
 export default Home
+
+

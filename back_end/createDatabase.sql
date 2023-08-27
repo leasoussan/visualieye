@@ -46,14 +46,14 @@ CREATE TABLE goal (
 
 
 
-CREATE TABLE goal_subject (
-    goal_subject_id SERIAL PRIMARY KEY,
-    goal_subject_goal_type_id INTEGER REFERENCES goal_type(id) NOT NULL ON DELETE CASCADE,
-    goal_subject_name VARCHAR(100) NOT NOT, 
-    goal_subject_start_date TIMESTAMP, 
-    goal_subject_status VARCHAR(50),
-    goal_subject_grade INTEGER
-)
+-- CREATE TABLE goal_subject (
+--     goal_subject_id SERIAL PRIMARY KEY,
+--     goal_subject_goal_type_id INTEGER REFERENCES goal_type(id) NOT NULL ON DELETE CASCADE,
+--     goal_subject_name VARCHAR(100) NOT NOT,
+--     goal_subject_start_date TIMESTAMP,
+--     goal_subject_status VARCHAR(50),
+--     goal_subject_grade INTEGER
+-- )
 
 -- the checkoipints are milestones for the projects to be acheived- like a chapter to reach 
 -- this checkopint will have steps that are connected to it. 
@@ -89,6 +89,37 @@ CREATE TABLE checkpoint_step (
     ckpt_step_resource INTEGER REFERENCES checkpoint_resource(ckpt_resource_id)  ON DELETE CASCADE,
     ckpt_step_status INTEGER,    
 );
+-- CREATE TABLE goal_checkpoint (
+--     goal_ckpt_id SERIAL PRIMARY KEY,
+--     goal_ckpt_goal_id INTEGER REFERENCES goal(goal_id) ON DELETE CASCADE,
+--     goal_ckpt_title VARCHAR(255) NOT NULL,
+--     goal_ckpt_expected_time DATE NOT NULL,
+--     goal_ckpt_notes TEXT,
+--     goal_ckpt_order  INTEGER
+--     );
+--
+--
+-- CREATE TABLE ckpt_res_type (
+--     ckpt_res_type_id SERIAL PRIMARY KEY,
+--     ckpt_res_type_name INTEGER NOT NULL
+-- );
+--
+--
+-- CREATE TABLE checkpoint_resource (
+--     ckpt_resource_id SERIAL PRIMARY KEY,
+--     ckpt_resource_type INTEGER REFERENCES ckpt_res_type(ckpt_res_type_id)  NOT NULL,
+--     ckpt_resource_content TEXT NOT NULL,
+-- );
+--
+--
+-- CREATE TABLE checkpoint_step (
+--     ckpt_step_id SERIAL PRIMARY KEY,
+--     ckpt_step_title VARCHAR(255) NOT NULL,
+--     ckpt_step_action_time INTEGER NOT NULL,
+--     ckpt_step__notes TEXT,
+--     ckpt_step_resource INTEGER REFERENCES checkpoint_resource(ckpt_resource_id) NOT NULL ON DELETE CASCADE,
+--     ckpt_step_status INTEGER,
+-- );
 
 
 --------------------------------PLANNER
