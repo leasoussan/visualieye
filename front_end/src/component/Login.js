@@ -101,8 +101,8 @@ const Login = ({setIsLoggedIn}) => {
             />
           </div>
           {error && <p className="error">{error}</p>}
-          <div className='d-grid'>
-            <button className="h-8 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/50" type="submit">Log In</button>
+          <div className='d-flex justify-content-center mb-2'>
+            <button className="w-3/4 h-8 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/50" type="submit">Log In</button>
           </div>
         </form>
       </div>

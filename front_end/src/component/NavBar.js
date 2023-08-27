@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import '../css/navbarStyles.css';
+// import '../css/navbarStyles.css';
 import CheckUserLogIn from './CheckUserLogIn.js';
 import Logout from './Logout.js';
 
