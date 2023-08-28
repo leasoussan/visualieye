@@ -63,18 +63,25 @@
     flex-direction: column; 
     /* border: solid 3px green; */
     height: 100%;
-    width: 50%;
+    /* width: 50%; */
   
+  }
+
+  .weekdays {
+    width: auto;
   }
   
   .hours_label_box{
     overflow: scroll;
+    /* margin: 3px; */
     background-color: rgb(239, 179, 139);
+    /* border: 3px solid red ; */
     opacity: 0.8;
   }
   
   .slots {
     height: 100vh;
+    width: auto;
     display: flex;
     /* flex-direction: column; */
     flex-wrap: wrap;
@@ -87,6 +94,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 3px solid rgb(0, 0, 0) ;
     /* border: solid 1px rgb(217, 184, 184); */
     margin: 0;  
     font-size: small;
