@@ -11,10 +11,10 @@ const Planner = ({ isLoggedIn }) => {
 
   console.log("profiler component isLoggedIn: ", isLoggedIn);
   return (
-    <div>
-      <h1>profiler</h1>
+    <div className="plannerContainer">
+      <h1>Profiler</h1>
 
-    <button onClick={setPlanning}> Set Weekly Planning</button>
+    <button className="w-1/6 h-9 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80"onClick={setPlanning}> Set Weekly Planning</button>
 
     <WeeklyPlanner />
     </div>
