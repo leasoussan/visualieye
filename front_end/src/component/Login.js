@@ -4,10 +4,9 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
-import { Link, useNavigate } from "react-router-dom"
-import '../css/GlobalStyles.css'
+import { Link, useNavigate } from "react-router-dom";
+import '../css/GlobalStyles.css';
 import { CheckUserLogIn } from './CheckUserLogIn';
-import { width } from '@mui/system';
 
 
 const Login = ({setIsLoggedIn}) => {
@@ -112,4 +111,5 @@ const Login = ({setIsLoggedIn}) => {
 }
 
 export default Login
+
 

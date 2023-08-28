@@ -1,12 +1,27 @@
-import { Route, Redirect } from 'react-router'
+import React, { useState, useEffect } from 'react';
+import { Route, Redirect } from 'react-router';
+import {useSelector}  from 'react-redux/es/hooks/useSelector';
 import { CheckUserLogIn } from './CheckUserLogIn';
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import VisionsBoard from './VisionBoard';
+import { useDispatch } from 'react-redux';
+import DateSetting from './utils/DateSetting.js';
 
 
-export function Home() {
-    console.log(localStorage);
+function Home() {
+    const dispatch = useDispatch();
+    // const currentWeek = useSelector((state) => state.globalDataReducer.currentWeekDateData)
+
+    console.log("localStorage",localStorage);
+
+
+    useEffect(()=>{
+        const getFromDispatchWeeklyData = DateSetting(dispatch);       
+    },[dispatch])
+
+    
+  
     
     // localStorage.clear()
 

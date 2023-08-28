@@ -12,7 +12,37 @@
 
 }
 
+.slot_form_category {
+  display: flex;
+  flex-direction: column;
+}
 
+.input_week_checkbox{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.modal-dialog {
+  border: solid 4px red;
+  min-width: 90vw;
+  min-height: 90vh;
+}
+
+.modal-content {
+  height: auto;
+  overflow: scroll;
+}
+
+.category_form_container{
+  display: flex;
+  flex-direction: column;
+  height: 5rem;
+}
+.pomedoro_slots{
+  border: solid 13px red;
+  background-color: aqua;
+}
 /* .planner-header {
     display: flex;
     justify-content: space-between;
