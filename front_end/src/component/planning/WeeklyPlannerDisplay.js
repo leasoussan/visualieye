@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './planning.css';
+import '../../css/plannerStyles.css'
 import WeeklySlotsDisplay from "./WeeklySlotsDisplay.js";
 import { useSelector } from "react-redux";
 // This Component aim to Display a weekly planner Vizual, with time slots for 24 hours a day.

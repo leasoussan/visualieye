@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { SlotsPlanningFormDetails } from "./SlotsPlanningFormDetails";
-import './planning.css'
+import '../../css/plannerStyles.css'
 
 
 function WeeklyPlaningForm({ userId , currentWeek}) {
