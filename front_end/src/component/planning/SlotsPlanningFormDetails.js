@@ -1,5 +1,5 @@
 import React from "react";
-import './planning.css'
+import '../../css/plannerStyles.css'
 
 
 export const SlotsPlanningFormDetails = ({ slot_type, currentWeek }) => {
