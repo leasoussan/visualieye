@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './planning.css';
+import '../../css/plannerStyles.css';
 import WeeklySlotsDisplay from "./WeeklySlotsDisplay.js";
 import { useSelector } from "react-redux";
 // This Component aim to Display a weekly planner Vizual, with time slots for 24 hours a day.
@@ -8,27 +8,28 @@ import { useSelector } from "react-redux";
 // all slots are not mandatory yet.
 
 
-const WeeklyPlannerDisplay = ({current_week}) => {
+const WeeklyPlannerDisplay = () => {
   
   const globalSlotsTypes = useSelector(state => state.globalDataReducer.slotsTypes);
   const userWeeklyData = useSelector(state => state.userReducer.userCurrentWeekData);
   const currentWeek = useSelector(state => state.globalDataReducer.currentWeekDateData);
-
   console.log("weekly planner display currentWeek", currentWeek);
 
   
-  const renderPlanning =Object.entries(currentWeek.weekDates).map(([index, day]) =>(
+  const renderPlanning =Object.entries(currentWeek.weekDates).map(([index, day]) => 
+  (
     
     <div key={index} className="daily_hours_container">
       <h4>{day.day_name} {`${day.day_date.substring(8,10)}/${day.day_date.substring(5,7)}`}</h4>
       <div className="hours_label_box">
 
-    <WeeklySlotsDisplay  currentWeek={current_week}/>
+    <WeeklySlotsDisplay  currentWeek={currentWeek}/>
 
       </div>
 
     </div>
-  ));
+  )
+  );
 
 
   
