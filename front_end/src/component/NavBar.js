@@ -6,7 +6,11 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 // import '../css/navbarStyles.css';
+=======
+import '../css/navbarStyles.css';
+>>>>>>> d78aa8673ac6941fca3270adefd7d9f31f0de41d
 import CheckUserLogIn from './CheckUserLogIn.js';
 import Logout from './Logout.js';
 

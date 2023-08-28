@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+=======
+>>>>>>> d78aa8673ac6941fca3270adefd7d9f31f0de41d
 #body {
     margin: 0;
     background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
@@ -22,10 +25,17 @@
   text-align: center;
 }
 
+<<<<<<< HEAD
 /* .homePageDisplay{
   text-align: center;
   width: 100%;
 } */
+=======
+.homePageDisplay{
+  /* text-align: center; */
+  width: 100%;
+}
+>>>>>>> d78aa8673ac6941fca3270adefd7d9f31f0de41d
 
 #body h1 {
   font-size: 3rem;
@@ -58,6 +68,7 @@
   align-items: center;
 }
 
+<<<<<<< HEAD
 .form_container {
   width: 30%;
 }
@@ -85,6 +96,27 @@
     width: 70%;
   }
   }
+=======
+
+
+.form_container {
+  width: auto;
+  background-color: aliceblue;
+}
+
+@media only screen and (max-width: 375px){
+.form_container {
+  width: 80%;
+}
+}
+
+/* @media only screen and (max-width: 450px){
+  form {
+    width: 55%;
+  }
+  } */ 
+
+>>>>>>> d78aa8673ac6941fca3270adefd7d9f31f0de41d
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

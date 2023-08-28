@@ -4,10 +4,9 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
-import { Link, useNavigate } from "react-router-dom"
-import '../css/GlobalStyles.css'
+import { Link, useNavigate } from "react-router-dom";
+import '../css/GlobalStyles.css';
 import { CheckUserLogIn } from './CheckUserLogIn';
-import { width } from '@mui/system';
 
 
 const Login = ({setIsLoggedIn}) => {
@@ -101,8 +100,9 @@ const Login = ({setIsLoggedIn}) => {
             />
           </div>
           {error && <p className="error">{error}</p>}
-          <div className='d-flex justify-content-center mb-2'>
-            <button className="w-3/4 h-8 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/50" type="submit">Log In</button>
+          
+          <div className='d-grid'>
+            <button className="btn btn-warning" type="submit">Log In</button>
           </div>
         </form>
       </div>

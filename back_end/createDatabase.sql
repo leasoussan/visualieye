@@ -58,6 +58,7 @@ CREATE TABLE goal (
 -- the checkoipints are milestones for the projects to be acheived- like a chapter to reach 
 -- this checkopint will have steps that are connected to it. 
 
+
 CREATE TABLE goal_checkpoint (
     goal_ckpt_id SERIAL PRIMARY KEY,
     goal_ckpt_goal_id INTEGER REFERENCES goal(goal_id) ON DELETE CASCADE,
