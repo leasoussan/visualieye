@@ -115,7 +115,7 @@
   height: calc(100% / 72);
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   border: solid 1px rgb(217, 184, 184);
   margin: 0;  
   font-size: small;

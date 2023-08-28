@@ -28,10 +28,19 @@ const VisionBoard = ({ isLoggedIn }) => {
     
             
   return (
-    <div>
-      <h1>VisionBoard YO</h1>
-      <h1>In Construction</h1>
-
+    <div className="flex justify-center">
+    <div className="w-11/12 h-screen p-4 grid grid-cols-5 gap-4 bg-[white] ">
+      <h1>1</h1>
+      <h1>2</h1>
+      <h1>3</h1>
+      <h1>4</h1>
+      <h1>5</h1>
+      <h1>1</h1>
+      <h1>2</h1>
+      <h1>3</h1>
+      <h1>4</h1>
+      <h1>5</h1>
+    </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import Register from './component/Register.js';
 import React, { useState, useEffect } from 'react';
 // import '../src/component/styles.css'
+import './css/GlobalStyles.css';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom";
 import PrivateRoute from './component/PrivateRoute.js';
 import Home from './component/Home';
@@ -21,14 +22,10 @@ export default function App(props) {
  
 
   return (
-
-
     <div>
       <NavBar isLoggedIn={isLoggedIn} user_id={userId} setIsLoggedIn={setIsLoggedIn} />
-
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/logout" element={<Logout setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/register" element={<Register />} />
