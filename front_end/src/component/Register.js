@@ -123,7 +123,7 @@ const Register =()=> {
               </div>
               {error && <p className="error">{error}</p>}
               <div className='d-flex justify-content-center mb-2'>
-                <button className="w-3/4 h-8 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/50" type="submit">Register</button>
+                <button className="w-3/4 h-8 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80" type="submit">Register</button>
               </div>
             </form>
           </div>

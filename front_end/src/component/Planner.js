@@ -14,7 +14,11 @@ const Planner = ({ isLoggedIn }) => {
     <div className="plannerContainer">
       <h1>profiler</h1>
 
+<<<<<<< HEAD
     <button onClick={setPlanning}> Set Weekly Planning</button>
+=======
+    <button className="w-1/6 h-9 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80"onClick={setPlanning}> Set Weekly Planning</button>
+>>>>>>> 25d5fcfacb8c98e84ee54e27a556dd8d1960c83e
 
     <WeeklyPlanner />
     </div>

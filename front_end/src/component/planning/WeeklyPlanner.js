@@ -61,6 +61,7 @@ const WeeklyPlanner = () => {
   const renderPlanning =currentWeek.map((day, index) => (
     <div key={index} className="daily_hours_container">
       <h4>{day.day} {day.value}</h4>
+      <h4 className="weekdays">{day.day} {day.value}</h4>
       <div className="hours_label_box">
       {setdayHours()}
 
@@ -72,9 +73,8 @@ const WeeklyPlanner = () => {
 
   return (
     <>
-      <div className="weekly_planing_display">
-        {renderPlanning}
-
+      <div className="weekly_planing_display bg-white">
+          {renderPlanning}
         {/* <SlotDetail /> */}
 
       </div>
