@@ -9,10 +9,12 @@ import '../../css/plannerStyles.css'
 function WeeklyPlaningForm({ userId , currentWeek}) {
 
     const user_id = userId;
-    // console.log("current week ", currentWeek);
+    console.log("current week ", currentWeek);
     const globalSlotsTypes = useSelector(state => state.globalDataReducer.slotsTypes);
-  
-    // console.log("slots_type", globalSlotsTypes);
+    const [weeklyFormData , setWeeklyFormData] = useState()
+
+    // this is for the days checkbox form
+    const [isChecked, setIsChecked ] = useState(false);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -26,7 +28,7 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
             <h2>{slot_type.slot_type_name}</h2>
             <div className="input_week_checkbox">
                  
-            <SlotsPlanningFormDetails slot_type={slot_type} currentWeek={currentWeek} />
+            <SlotsPlanningFormDetails slot_type={slot_type} currentWeek={currentWeek} isChecked = {setIsChecked}/>
 
             </div>
 
@@ -37,6 +39,7 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
     
     
     const handleChange=(e)=>{
+        console.log("isChecked",isChecked);
         console.log(e.target);
        }
         
