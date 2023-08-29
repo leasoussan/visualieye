@@ -4,7 +4,7 @@ const initialState={
         currentWeekNumber: null , 
         weekDates :[]
     }
-}
+};
 
 const globalDataReducer = (state= initialState, action)=>{
 
@@ -24,8 +24,10 @@ const globalDataReducer = (state= initialState, action)=>{
         currentWeekDateData: action.payload
         }
 
-    default :
-        return { ...state}
+        default:
+        console.error('Unhandled action type:', action.type);
+        return state;
+    
     };
     
 };

@@ -59,9 +59,12 @@ CREATE TABLE goal (
 -- this checkopint will have steps that are connected to it. 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> d0c80186e68e72fc476a0c695de2461189eae4b5
+=======
+>>>>>>> planner
 CREATE TABLE goal_checkpoint (
     goal_ckpt_id SERIAL PRIMARY KEY,
     goal_ckpt_goal_id INTEGER REFERENCES goal(goal_id) ON DELETE CASCADE,

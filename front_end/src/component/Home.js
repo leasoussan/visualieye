@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import VisionsBoard from './VisionBoard';
 import { useDispatch } from 'react-redux';
 import DateSetting from './utils/DateSetting.js';
+import { setCurrentWeekData } from '../actions';
 
 
 function Home() {
@@ -17,7 +18,8 @@ function Home() {
 
 
     useEffect(()=>{
-        const getFromDispatchWeeklyData = DateSetting(dispatch);       
+        const weekData = DateSetting();  
+        dispatch(setCurrentWeekData(weekData))
     },[dispatch])
 
     
