@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import './goalStyles.css'
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
@@ -8,7 +9,11 @@ import GoalDisplay from "./GoalDisplay";
 import AddGoalForm from "./AddGoalForm";
 import ModalForm from "./ModalForm.js";
 
+
 function Profiler({isLoggedIn}) {
+  const current_week = useSelector((state) => state)
+  
+console.log("profiler current_week", current_week);
   const [goals, setGoals] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [goalTypes, setGoalTypes] = useState([]);

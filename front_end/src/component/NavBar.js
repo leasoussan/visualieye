@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { LinkContainer } from 'react-router-bootstrap'; // Import LinkContainer for integration with React Router
+
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 // import '../css/navbarStyles.css';
@@ -38,10 +40,20 @@ const NavBar = ({ isLoggedIn, user_id }) => {
 
   const loggedInLinksLeft = (
   <>
-    <Nav.Link href="/">Home</Nav.Link>
-    <Nav.Link href={`/profiler/${user_id}/*`}>Profiler</Nav.Link>
-    <Nav.Link href={`/vision_board/${user_id}/*`}>vision_board</Nav.Link>
-    <Nav.Link  href={`/planner/${user_id}/*`}>Planner</Nav.Link>
+    <Nav>
+  <LinkContainer to="/">
+    <Nav.Link>Home</Nav.Link>
+  </LinkContainer>
+  <LinkContainer to={`/profiler/${user_id}/*`}>
+    <Nav.Link>Profiler</Nav.Link>
+  </LinkContainer>
+  <LinkContainer to={`/vision_board/${user_id}/*`}>
+    <Nav.Link>vision_board</Nav.Link>
+  </LinkContainer>
+  <LinkContainer to={`/planner/${user_id}/*`}>
+    <Nav.Link>Planner</Nav.Link>
+  </LinkContainer>
+</Nav>
   </>
   );
 
