@@ -37,7 +37,7 @@ const WeeklyPlanner = () => {
   };
 
   const setdayHours = ()=>{
-    const fullDay = Array.from(Array(24), (_, index)=> index + 1);
+    const fullDay = Array.from(Array(24), (_, index)=> index);
 
     const slots = fullDay.flatMap((hour)=>{
       const minutes = ['00', 20, 40]

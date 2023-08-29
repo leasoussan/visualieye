@@ -70,9 +70,13 @@ const NavBar = ({ isLoggedIn, user_id }) => {
     <style type='text/css'>
       {`
       .navbar {
+        font-size: x-large;
         --bs-navbar-color: black;
         background: white;
         --bs-navbar-hover-color: #e4734f;
+      }
+      a {
+        margin: 0 2rem;
       }`}
     </style>
   <Navbar expand="lg"  className='navbarMain'>

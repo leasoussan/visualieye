@@ -57,45 +57,116 @@
       font-weight: bold;
       text-align: center
     } */
-  
+
+.daily_hours_container {
+  display: flex;
+  flex-direction: column; 
+  /* justify-content: center;
+  align-items: center; */
+  /* border: solid 3px green; */
+  /* height: 100%; */
+  width: 15%;
+}
+
+.weekdays {
+  /* width: 100%; */
+  height: 10vh;
+}
+
+.hours_label_box{
+  display: flex;
+  overflow: scroll;
+  /* justify-content: center;
+  align-items: center; */
+  /* margin: 3px; */
+  background-color: rgb(239, 179, 139);
+  /* border: 3px solid red ; */
+  opacity: 0.8;
+  width: 100%;
+}
+
+.slots {
+  /* height: 30vh; */
+  width: auto;
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+}
+
+
+.pomedoro_slots {
+  width: 100%;
+  /* height: calc(100% / 72); */
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center; */
+  border-bottom: 3px solid rgb(0, 0, 0) ;
+  /* border: solid 1px rgb(217, 184, 184); */
+  margin: 0;  
+}
+
+@media only screen and (max-width: 1024px){
   .daily_hours_container {
-    display: flex;
-    flex-direction: column; 
-    /* border: solid 3px green; */
-    height: 100%;
-    /* width: 50%; */
-  
+    margin: 0 0.2rem;
+  }
+
+  .w-1\/6 {
+    width: 25%;
   }
 
   .weekdays {
-    width: auto;
+    /* width: 100%; */
+    font-size: large;
+    height: 3vh;
   }
-  
-  .hours_label_box{
-    overflow: scroll;
-    /* margin: 3px; */
-    background-color: rgb(239, 179, 139);
-    /* border: 3px solid red ; */
-    opacity: 0.8;
+
+  #body p {
+    font-size: medium;
   }
-  
-  .slots {
-    height: 100vh;
-    width: auto;
-    display: flex;
-    /* flex-direction: column; */
-    flex-wrap: wrap;
-  }
-  
-  
-  .pomedoro_slots {
-    width: 100%;
-    /* height: calc(100% / 72); */
-    display: flex;
-    align-items: center;
+}
+
+@media only screen and (max-width: 768px){
+  /* .weekly_planing_display {
     justify-content: center;
-    border-bottom: 3px solid rgb(0, 0, 0) ;
-    /* border: solid 1px rgb(217, 184, 184); */
-    margin: 0;  
-    font-size: small;
+
+  } */
+
+  .daily_hours_container {
+    margin: 0 0.2rem;
   }
+
+  .weekdays {
+    /* width: 100%; */
+    font-size: medium;
+    height: 3vh;
+  }
+
+  /* .w-1\/6 {
+    width: 25%;
+  } */
+}
+
+@media only screen and (max-width: 426px){
+  .weekly_planing_display {
+    justify-content: center;
+
+  }
+  .daily_hours_container {
+    /* margin: 0 0rem; */
+    width: 13%;
+  }
+
+  .w-1\/6 {
+    width: 45%;
+  }
+
+  .weekdays {
+    /* width: 100%; */
+    font-size: 7px;
+    height: 3vh;
+  }
+
+  #body p {
+    font-size: medium;
+  }
+}
