@@ -98,9 +98,9 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  #body :is(h1, h2, h3, h4, p){
+  /* #body :is(h1, h2, h3, h4, p){
     margin: 1rem 2rem;
-  }
+  } */
   #body h1 {
     font-size: 2.5rem;
   }

@@ -100,12 +100,13 @@ const Planner = ({ isLoggedIn, userId }) => {
 
   return (
 
-    <div>
+    <div className="planner_container">
       <WeeklyPlanningForm currentWeek={current_week}  userId={userId} showModal={showModal} closeModal={closeModal} />  
-      <button >PAST WEEK </button>
-      <button >NEXT WEEK  </button>
+      <div className="flex flex-row">
+      <button className="mr-1">PAST WEEK </button>
+      <button className="ml-1">NEXT WEEK  </button>
+      </div>
       <WeeklyPlannerDisplay currentWeek={current_week} slotsTypes={slotsTypes} userId={userId} />
-
     </div>
   );
 };
