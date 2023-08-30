@@ -7,28 +7,60 @@ import '../../css/plannerStyles.css'
 
 
 function WeeklyPlaningForm({ userId , currentWeek}) {
-
+  // this is for the days checkbox form
+    
     const user_id = userId;
-    console.log("current week ", currentWeek);
     const globalSlotsTypes = useSelector(state => state.globalDataReducer.slotsTypes);
-    const [weeklyFormData , setWeeklyFormData] = useState()
-
-    // this is for the days checkbox form
-    const [isChecked, setIsChecked ] = useState(false);
+    const [weeklyFormData , setWeeklyFormData] = useState({weekDaysChecked: [], hours_per_day:[]})
+    console.log("currentweeek", typeof currentWeek.weekDates);
+  
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const checkBoxInitialState= Array.from(currentWeek.weekDates , (day, index)=>({
+        day: day['day_name'],
+        isChecked : false,
+        index:index, 
+    }));
+
+    console.log("checkBoxInitialState", checkBoxInitialState);
+    const [checkedBoxes, setCheckedBoxes ] = useState(checkBoxInitialState);
+
+    const handelCheckBoxChange = (newCheckedDay)=>{
+    
+        const day_name = newCheckedDay['name']
+     
+        setCheckedBoxes((prevCheckedBoxesState)=> {
+            console.log("prevCheckedBoxesState",prevCheckedBoxesState);
+            const findDayIndex = prevCheckedBoxesState.findIndex((day)=> day.day=== day_name);
+            console.log(findDayIndex);
+        })
+
+        
+        
+        
+        
+        // ({
+        //     ...prevCheckedBoxesState,
+        //     [day_name]: {...prevCheckedBoxesState[day_name], isChecked:true}
+        // }));
+
+        setWeeklyFormData((prevWeeklyFormData) => ({
+            ...prevWeeklyFormData,
+            weekDaysChecked :[ ...prevWeeklyFormData.weekDaysChecked, newCheckedDay],
+    }));
+    };
 
 
     const setSlotTypeInputForm = globalSlotsTypes.map((slot_type, index)=>{
 
         return(
-            <div key={index} className=" slot_form_category">
+            <div key={`slot_type${index}`} className=" slot_form_category">
             <h2>{slot_type.slot_type_name}</h2>
             <div className="input_week_checkbox">
                  
-            <SlotsPlanningFormDetails slot_type={slot_type} currentWeek={currentWeek} isChecked = {setIsChecked}/>
+            <SlotsPlanningFormDetails slot_type={slot_type} currentWeek={currentWeek} isChecked = {checkBoxInitialState.isChecked} handleData ={handelCheckBoxChange}/>
 
             </div>
 
@@ -37,15 +69,15 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
     }
     );
     
-    
+
     const handleChange=(e)=>{
-        console.log("isChecked",isChecked);
-        console.log(e.target);
+        console.log("checkedBoxes", checkedBoxes);
        }
         
 
     const handleSubmit =(e)=>{
         e.preventDefault();
+        console.log(checkedBoxes);
 
     };
 
@@ -75,7 +107,8 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
 
 
                         {setSlotTypeInputForm}
-{/*  */}
+{/*  */}                    
+                                <button type="submit">  send</button>
                        </form>
 
 
