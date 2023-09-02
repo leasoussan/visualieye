@@ -37,7 +37,7 @@ const WeeklyPlannerDisplay = () => {
 
   return (
     <>
-      <div className="weekly_planing_display">
+      <div className="weekly_planing_display bg-light">
         {renderPlanning} 
 
 

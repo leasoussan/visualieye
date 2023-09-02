@@ -111,14 +111,19 @@ class AddGoalForm extends React.Component {
         return (
             <>
                 <form className="form_holder" onSubmit={this.handleSubmit}>
-                    <label>{`Your ${this.state.goal_type_name} Goal`}  </label>
-                    <input type="title" name="title" placeholder="title" onChange={this.handleChange} />
-
-                    <label>Goal Date</label>
-
-                    <DatePicker selected={this.state.end_date} name="select_end_date" format='yyyy-MM-dd' onChange={(e) => { this.setState({ end_date: e }) }} onClick={this.handleDate} />
-
-                    <input type="submit" name="submit" placeholder="submit" />
+                    <div className="mb-5">
+                        <label className="mb-3">{`Your ${this.state.goal_type_name} Goal`}</label>
+                        <input className='form-control' type="title" name="title" placeholder="title" onChange={this.handleChange} />
+                    </div>
+                    <div className="mb-3">
+                        <label>Goal Date</label>
+                        <DatePicker className='form-control' selected={this.state.end_date} name="select_end_date" format='yyyy-MM-dd' onChange={(e) => { this.setState({ end_date: e }) }} onClick={this.handleDate} />
+                    </div>
+                    <div className='flex justify-center'>
+                        <button className="w-1/2 h-9 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80">
+                            <input type="submit" name="submit" placeholder="submit" />
+                        </button>
+                    </div>
                 </form>
             </>
         )

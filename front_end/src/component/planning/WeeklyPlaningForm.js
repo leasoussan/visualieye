@@ -52,7 +52,7 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
 
         <>
             <div className="planner_form_container">
-                <Button variant="primary" onClick={handleShow}>
+                <Button class="btn btn-light" onClick={handleShow}>
                     SET YOUR WEEK 
                 </Button>
 

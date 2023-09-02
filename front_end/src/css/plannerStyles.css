@@ -116,7 +116,28 @@
   margin: 0;
 }
 
+@media only screen and (max-width: 1440px){
+
+  .planner_form_container .btn {
+    font-size: xx-large;
+  }
+
+  .flex .btn{
+    font-size: x-large;
+  }
+
+}
+
 @media only screen and (max-width: 1024px){
+
+  .planner_form_container .btn {
+    font-size: x-large;
+  }
+
+  .flex .btn {
+    font-size: medium;
+  }
+
   .daily_hours_container {
     width: 15%;
   }
@@ -131,6 +152,15 @@
 }
 
 @media only screen and (max-width: 768px){
+
+  .planner_form_container .btn {
+    font-size: medium;
+  }
+
+  .flex .btn {
+    font-size: small;
+  }
+
   .weekly_planing_display {
     padding-top: 1rem;
   }
@@ -149,6 +179,15 @@
 }
 
 @media only screen and (max-width: 426px){
+
+  .planner_form_container .btn {
+    font-size: small;
+  }
+
+  .flex .btn {
+    font-size: x-small;
+  }
+
   .weekly_planing_display {
     padding: 1rem;
     padding-top: 0;

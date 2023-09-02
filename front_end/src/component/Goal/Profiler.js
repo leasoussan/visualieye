@@ -70,16 +70,16 @@ console.log("profiler current_week", current_week);
 
   return (
     <>
-
-      <div className="display_manager">
+    <div className="goal_container">
+      <div className="display_manager rounded">
        
         {goalTypes.map((goalType) => {
           
           const currentGoal = goals.find((goal) => goal.goal_type === goalType.id);
           console.log(currentGoal);
           return (
-            <div key={goalType.id} className={'goal_box'}>
-              <h1 style={{ color: 'green' }}>{goalType.name.toUpperCase()}</h1>
+            <div key={goalType.id} className={`goal_box rounded bg-danger ${goalType.name}`}>
+              <h1 className="goal_title">{goalType.name.toUpperCase()}</h1>
               {currentGoal ? (
                 <div>
                   <h1 style={{ width: '90%' }}> {currentGoal.title.toUpperCase()}</h1>
@@ -88,9 +88,8 @@ console.log("profiler current_week", current_week);
                   <Link to={`/goal/${currentGoal.goal_id}` } >Goal</Link>
                 </div>
               ) : (
-                <div>
-
-                  <Button variant="primary" onClick={()=> handleShowModal(goalType)}>
+                <div className="goal_btn">
+                  <Button variant="light" onClick={()=> handleShowModal(goalType)}>
                     ADD YOUR {goalType.name} Goal
                   </Button>
                  <ModalForm show={showModal} close={ToggleModal} goalType={selected_goal_type} user_id={userId}/>
@@ -99,6 +98,7 @@ console.log("profiler current_week", current_week);
             </div>
           )
         })}
+      </div>
       </div>
     </>
   );
