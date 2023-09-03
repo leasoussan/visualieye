@@ -23,7 +23,7 @@ import { setUserCurrentWeekData,setSlotTypesData } from "../../actions.js"
 const Planner = ({ isLoggedIn, userId }) => {
   const dispatch = useDispatch();
   
-  const current_week = useSelector((state) => state.globalDataReducer.currentWeekDateData.weekData)
+  const current_week = useSelector((state) => state.globalDataReducer.currentWeekDateData)
   console.log("the current week from the store ", current_week);
   const [slotsTypes, setSlotsTypes] = useState([]);
   const [isCurrentWeek, setIsCurrentWeek] = useState('');
@@ -40,7 +40,7 @@ const Planner = ({ isLoggedIn, userId }) => {
     getSlotsTypesCategories();
 
     // Call the fetchUserCurrentWeek function and then renderWeek
-  }, [dispatch, current_week]);
+  }, [dispatch]);
 
 
   useEffect(()=>{
