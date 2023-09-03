@@ -20,7 +20,7 @@ const WeeklyPlannerDisplay = () => {
   (
     
     <div key={index} className="daily_hours_container">
-      <h4>{day.day_name} {`${day.day_date.substring(8,10)}/${day.day_date.substring(5,7)}`}</h4>
+    <h4 className="weekdays">{day.day_name} {`${day.day_date.substring(8,10)}/${day.day_date.substring(5,7)}`}</h4>
       <div className="hours_label_box">
 
     <WeeklySlotsDisplay  currentWeek={currentWeek}/>
@@ -37,7 +37,7 @@ const WeeklyPlannerDisplay = () => {
 
   return (
     <>
-      <div className="weekly_planing_display">
+      <div className="weekly_planing_display bg-light">
         {renderPlanning} 
 
 

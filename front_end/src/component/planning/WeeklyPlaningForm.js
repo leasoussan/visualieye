@@ -6,43 +6,121 @@ import { SlotsPlanningFormDetails } from "./SlotsPlanningFormDetails";
 import '../../css/plannerStyles.css'
 
 
-function WeeklyPlaningForm({ userId , currentWeek}) {
+function WeeklyPlaningForm({ userId, currentWeek }) {
+    // this is for the days checkbox form
 
     const user_id = userId;
-    // console.log("current week ", currentWeek);
     const globalSlotsTypes = useSelector(state => state.globalDataReducer.slotsTypes);
-  
-    // console.log("slots_type", globalSlotsTypes);
+    const [weeklyFormData, setWeeklyFormData] = useState({ weekDaysChecked: [], hours_per_day: [] })
+    // console.log("currentweeek", currentWeek.weekDates);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const checkBoxDayInititalState= Array.from(currentWeek.weekDates , (day, index) =>({
+        day: day['day_name'],
+        isChecked : false,
+        index:index, 
+    })
+    );
+    const checkedBoxesInitialState = globalSlotsTypes.map((type) => {
+        const current_week_number = currentWeek.currentWeekNumber;
+        // console.log("cure week", current_week_number);
+        const slot_type = type.slot_type_name;
+
+        return (
+            {
+                "slot_type": slot_type,
+                "current_week_number":current_week_number,
+                "days_selected": {
+                    checkBoxDayInititalState,
+                    }
+            }
+
+        )
+
+    });
+
+  
+
+    console.log("checkedBoxesInitialState", checkedBoxesInitialState);
+    const [checkedBoxes, setCheckedBoxes] = useState(checkedBoxesInitialState);
+
+    const handelTypeAndDayCheckBoxChange = (newCheckedDay) => {
+
+        const day_name = newCheckedDay['name'];
+        const slot_type_name = newCheckedDay['slot_type'];
+        console.log("newCheckedDay", newCheckedDay);
+
+        console.log("slot_type", slot_type_name);
+        const updateCheckedBoxes = checkedBoxes.map((slot_type_checkbox, index) => {
+
+            // console.log("slot",slot_type_checkbox, index);
+            if (slot_type_checkbox === slot_type_name){
+
+                console.log("Slot type ", slot_type_checkbox, slot_type_name);
+            // }
+            // if (day.day === day_name) {
+            //     console.log("foudn it");
+            //     return { ...checkedBoxes[day.day_name], day: day_name, isChecked: true, index: day.index }
+            // }
+            // return day;
+        }})
+
+        setCheckedBoxes(updateCheckedBoxes)
+    }
+
+    //     // {
+    //     //     console.log("prevCheckedBoxesState",prevCheckedBoxesState);
+    //     //     const findDayIndex = prevCheckedBoxesState.findIndex((day)=> day.day === day_name);
+    //     //     console.log(findDayIndex);
+    //     // })
 
 
-    const setSlotTypeInputForm = globalSlotsTypes.map((slot_type, index)=>{
 
-        return(
-            <div key={index} className=" slot_form_category">
-            <h2>{slot_type.slot_type_name}</h2>
-            <div className="input_week_checkbox">
-                 
-            <SlotsPlanningFormDetails slot_type={slot_type} currentWeek={currentWeek} />
+    //     ({
+    //         // const findDayIndex = prevCheckedBoxesState.findIndex((day)=> day.day === day_name),
 
-            </div>
+    //         ...prevCheckedBoxesState,
+    //         [day_name]: {...prevCheckedBoxesState[day_name], isChecked:true}
+    //     }));
+
+    //     setWeeklyFormData((prevWeeklyFormData) => ({
+    //         ...prevWeeklyFormData,
+    //         weekDaysChecked :[ ...prevWeeklyFormData.weekDaysChecked, newCheckedDay[checked]: true],
+    // }));
+    // };
+
+
+    const setSlotTypeInputForm = globalSlotsTypes.map((slot_type, index) => {
+
+        const select_slot_type = slot_type.slot_type_name;
+        console.log("select_slot_type", slot_type);
+
+        return (
+            <div key={`slot_type${index}`} className=" slot_form_category">
+                <h2>{slot_type.slot_type_name}</h2>
+                <div className="input_week_checkbox">
+
+                    <SlotsPlanningFormDetails slot_type_selected={slot_type.slot_type_name} currentWeek={currentWeek} handleData={handelTypeAndDayCheckBoxChange} />
+
+                </div>
 
             </div>
         )
     }
     );
-    
-    
-    const handleChange=(e)=>{
-        console.log(e.target);
-       }
-        
 
-    const handleSubmit =(e)=>{
+
+    const handleChange = (e) => {
+
+        console.log("checkedBoxes", e.target);
+    }
+
+
+    const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(checkedBoxes);
 
     };
 
@@ -52,7 +130,7 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
 
         <>
             <div className="planner_form_container">
-                <Button variant="primary" onClick={handleShow}>
+                <Button class="btn btn-light" onClick={handleShow}>
                     SET YOUR WEEK 
                 </Button>
 
@@ -68,12 +146,13 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
                     </Modal.Header>
                     <Modal.Body>
 
-                       <form onSubmit={handleSubmit} onChange={handleChange}>
+                        <form onSubmit={handleSubmit} onChange={handleChange}>
 
 
-                        {setSlotTypeInputForm}
-{/*  */}
-                       </form>
+                            {setSlotTypeInputForm}
+                            {/*  */}
+                            <button type="submit">  send</button>
+                        </form>
 
 
 
@@ -87,7 +166,7 @@ function WeeklyPlaningForm({ userId , currentWeek}) {
                 </Modal>
 
 
-        </div >
+            </div >
         </>
     )
 

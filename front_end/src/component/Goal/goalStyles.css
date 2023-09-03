@@ -1,4 +1,157 @@
+/* internship version */
+.goal_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .display_manager {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-areas: 
+    ". . . . planner"
+    ". main main main planner"
+    ". main main main ."
+    "health health . money money"
+    "health health . money money";  
+    height: 95vh;
+    width: 80%;
+    background-color: white;
+    /* opacity: 0.7; */
+    box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1);
+}
+
+.planner {
+    margin-top: 2rem;
+    grid-area: planner;
+  }
+
+.planner h1 {
+    font-size: xx-large;
+}
+
+.planner .goal_title {
+    font-size: medium;
+}
+ 
+.main {
+    grid-area: main;
+}
+
+.goal_btn {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    width: 75%;
+    
+}
+
+
+.health {
+    grid-area: health;
+}
+
+.money {
+    grid-area: money;
+}
+
+/* .goal_conainer{
+    display: flex;
+    width: 90vw;
+    flex-direction: column;
+    background-color: aquamarine;
+    margin: 2rem;
+} */
+
+.goal_header{
+    width: 50%;
+}
+
+.goal_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 70%;
+    width: 70%;
+}
+
+.goal_title {
+    font-size: medium;
+    color: aliceblue;
+}
+
+.btn-warning {
+    --bs-btn-hover-bg: #00fffb;
+}
+
+@media only screen and (max-width: 1024px){
+    .goal_type_title {
+        font-size: x-large;
+    }
+
+    .goal_title {
+        font-size: medium;
+    }
+
+    .planner h1 {
+        font-size: large;
+    }
+
+    .goal_box p {
+        font-size: small;
+    }
+
+    .goal_box button {
+        font-size: medium;
+        line-height: 0.9;
+    }
+
+    .goal_box button a {
+        font-size: small;
+    }
+
+
+  }
+  
+@media only screen and (max-width: 768px){
+    .planner h1 {
+        font-size: medium;
+    } 
+    .planner .goal_btn button {
+        font-size: xx-small;
+    }
+}
+
+@media only screen and (max-width: 426px){
+    .goal_type_title {
+        font-size: medium;
+    }
+    .planner h1 {
+        font-size: xx-small;
+    }
+
+    .planner button a {
+        font-size: xx-small;
+    }
+
+    .goal_btn button {
+        font-size: small;
+    }
+
+    .planner .goal_btn button {
+        font-size: 0.2rem;
+    }
+}
+
+
+
+
+/* original css */
+
+/* .display_manager {
     display: grid;
     row-gap: 3rem;
     grid-template-columns: 6fr 6fr;
@@ -31,10 +184,10 @@
 
     width: 70%;
     border: solid 2px orange;
-}
+} */
 
-/* 
-.goal_box{
+
+/* .goal_box{
     display: flex;
     flex-direction: column;
     justify-content: start;

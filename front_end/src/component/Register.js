@@ -73,8 +73,8 @@ const Register =()=> {
           <div className="form_container p-4 rounded bg-white">
             <form onSubmit={handleSubmit} >
               <h3 className="mb-4">Register</h3>
-              <div className="mb-4 text-start">
-                <label className="mb-2" htmlFor="username" >User Name</label>
+              <div className="row mb-4">
+                <label className="col mb-1 mt-2" htmlFor="username" >User Name</label>
                 <input
                   type="text"
                   name="username"
@@ -82,11 +82,11 @@ const Register =()=> {
                   value={formData.username}
                   onChange={handleInputChange}
                   placeholder="UsernameName"
-                  className='form-control'
+                  className='form-control col me-2'
                 />
               </div>
-              <div className="mb-4 text-start">
-                <label className="mb-2" htmlFor="email">Email</label>
+              <div className="row mb-4">
+                <label className="col mb-1 mt-2" htmlFor="email">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -94,11 +94,11 @@ const Register =()=> {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Email"
-                  className='form-control'
+                  className='form-control col me-2'
                 />
               </div>
-              <div className="mb-4 text-start">
-                <label className="mb-2" htmlFor="password">Password</label>
+              <div className="row mb-4">
+                <label className="col mb-1 mt-2" htmlFor="password">Password</label>
                 <input
                   type="password"
                   name="password"
@@ -106,11 +106,11 @@ const Register =()=> {
                   value={formData.password}
                   onChange={handleInputChange}
                   placeholder="Password"
-                  className='form-control'
+                  className='form-control col me-2'
                 />
               </div>
-              <div className="mb-4 text-start">
-                <label className="mb-2" htmlFor="confirmPassword">Confirm Password</label>
+              <div className="row mb-4">
+                <label className="col mb-1 mt-2" htmlFor="confirmPassword">Confirm Password</label>
                 <input
                   type="password"
                   name="confirmPassword"
@@ -118,12 +118,12 @@ const Register =()=> {
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
                   placeholder="Confirm Password"
-                  className='form-control'
+                  className='form-control col me-2'
                 />
               </div>
               {error && <p className="error">{error}</p>}
               <div className='d-flex justify-content-center mb-2'>
-                <button className="w-3/4 h-8 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80" type="submit">Register</button>
+                <button className="w-1/2 h-8 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80" type="submit">Register</button>
               </div>
             </form>
           </div>

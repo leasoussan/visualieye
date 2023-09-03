@@ -76,32 +76,32 @@ const Login = ({setIsLoggedIn}) => {
     <div className="login template d-flex justify-content-center align-items-center 100-w">
       <div className="form_container p-4 rounded bg-white">
         <form onSubmit={handleSubmit} >
-          <h3 className="mb-4">Log In</h3>
-          <div className="mb-4 text-start">
-            <label className="mb-2" htmlFor="email">Email</label>
+          <h3 className="mb-4 pb-4">Log In</h3>
+          <div className="row mb-4">
+            <label className="col mb-1 mt-2" htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
               id="email"
               onChange={handleChange}
               placeholder="Email"
-              className='form-control'
+              className='form-control col me-2'
             />
           </div>
-          <div className="mb-4 text-start">
-            <label className="mb-2" htmlFor="password">Password</label>
+          <div className="row mb-4 pb-4">
+            <label className="col mb-1 mt-2" htmlFor="password">Password</label>
             <input
               type="password"
               name="password"
               id="password"
               onChange={handleChange}
               placeholder="Password"
-              className='form-control'
+              className='form-control col me-2'
             />
           </div>
           {error && <p className="error">{error}</p>}
           <div className='d-flex justify-content-center mb-2'>
-            <button className="w-3/4 h-8 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80" type="submit">Log In</button>
+            <button className="w-1/2 h-8 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80" type="submit">Log In</button>
           </div>
         </form>
       </div>

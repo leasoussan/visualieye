@@ -1,4 +1,5 @@
 #body .navbarMain {
+    font-size: x-large;
     width: auto;
     /* margin-top: -1rem; */
     margin-bottom: 5rem;
@@ -8,4 +9,34 @@
 #body .navbarMain div {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+@media only screen and (max-width: 1440px){
+    #body .navbarMain {
+        font-size: xx-large;
+    }      
+}
+
+@media only screen and (max-width: 1024px){
+    #body .navbarMain {
+        font-size: x-large;
+    }      
+}
+
+@media only screen and (max-width: 768px){
+    #body .navbarMain {
+        font-size: medium;
+    }      
+}
+
+@media only screen and (max-width: 426px){
+    #body .navbarMain {
+        font-size: small;
+    }      
+}
+
+@media only screen and (max-width: 426px){
+    #body .navbarMain {
+        font-size: x-small;
+    }      
 }

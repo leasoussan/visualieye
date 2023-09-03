@@ -55,21 +55,35 @@ function GoalDisplay(props) {
 
     return (
         <>
+        <style type='text/css'>
+      {`
+      h1 {
+        0.7
+      }
+      .btn-warning {
+        --bs-btn-hover-bg: #e9ff4e;
+        }
+      a {
+        text-decoration: none;
+        color: inherit; 
+      }
+      a:hover {
+        color: black;
+      }`}
+    </style>
 
 
-            <div className="goal_conainer">
-                <div className="goal_header">
-
-                    <Button onClick={handleShow}>edit</Button>
-
+            <div className="goal_container">
+                <div className="goal_header rounded bg-light">
                     {show && (
                         <EditGoalForm closeModal={handleClose} goal_data={goalData} onRefresh={handleRefresh} />
                     )}
 
-                    <h1>{goalData?.title ? goalData.title : "What is your Next Goal"}</h1>
+                    <h1 className="mt-5">{goalData?.title ? goalData.title : "What is your Next Goal"}</h1>
                     {/* <h1>{goalData.title && goalData.title }</h1> */}
-                    <h3>On the :</h3>
-                    <h1>{goalData?.end_date ? goalData.end_date : "When Did it Happened"}</h1>
+                    <h3 className="mt-5">On the :</h3>
+                    <h3>{goalData?.end_date ? goalData.end_date : "When Did it Happened"}</h3>
+                        <Button className="mt-3 mb-3" variant="warning" onClick={handleShow}>Edit</Button>
                 </div>
             </div>
 

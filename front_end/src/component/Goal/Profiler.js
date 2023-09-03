@@ -70,27 +70,43 @@ console.log("profiler current_week", current_week);
 
   return (
     <>
-
-      <div className="display_manager">
+     <style type='text/css'>
+      {`
+      h1 {
+        0.7
+      }
+      .btn-warning {
+        --bs-btn-hover-bg: #e9ff4e;
+        }
+      a {
+        text-decoration: none;
+        color: inherit; 
+      }
+      a:hover {
+        color: black;
+      }`}
+    </style>
+    <div className="goal_container">
+      <div className="display_manager rounded">
        
         {goalTypes.map((goalType) => {
           
           const currentGoal = goals.find((goal) => goal.goal_type === goalType.id);
           console.log(currentGoal);
           return (
-            <div key={goalType.id} className={'goal_box'}>
-              <h1 style={{ color: 'green' }}>{goalType.name.toUpperCase()}</h1>
+            <div key={goalType.id} className={`goal_box rounded bg-danger ${goalType.name}`}>
+              <h1 className="goal_type_title">{goalType.name.toUpperCase()}</h1>
               {currentGoal ? (
-                <div>
-                  <h1 style={{ width: '90%' }}> {currentGoal.title.toUpperCase()}</h1>
+                <div className="flex flex-col items-center">
+                  <h1 className="goal_title"> {currentGoal.title.toUpperCase()}</h1>
                   <p>Status: {currentGoal.accomplished}</p>
-
-                  <Link to={`/goal/${currentGoal.goal_id}` } >Goal</Link>
+                  <Button className="flex" variant="warning">
+                    <Link to={`/goal/${currentGoal.goal_id}` } >Goal</Link>
+                  </Button>
                 </div>
               ) : (
-                <div>
-
-                  <Button variant="primary" onClick={()=> handleShowModal(goalType)}>
+                <div className="goal_btn">
+                  <Button variant="light" onClick={()=> handleShowModal(goalType)}>
                     ADD YOUR {goalType.name} Goal
                   </Button>
                  <ModalForm show={showModal} close={ToggleModal} goalType={selected_goal_type} user_id={userId}/>
@@ -99,6 +115,7 @@ console.log("profiler current_week", current_week);
             </div>
           )
         })}
+      </div>
       </div>
     </>
   );

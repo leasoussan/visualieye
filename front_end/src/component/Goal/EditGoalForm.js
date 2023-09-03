@@ -78,31 +78,40 @@ function EditGoalForm({ closeModal, goal_data, onRefresh}) {
     return (
         <>
             <Modal show={true} onHide={closeModal}>
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title>Modal heading</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h2>Edit Goal</h2>
+                    <h3>Edit Goal</h3>
                     <form onSubmit={handleSaveChanges}>
-                        <label>Title:</label>
+                    <div className="mb-5">
+                        <label className="mb-3">Title:</label>
                         <input
+                            className='form-control'
                             type="text"
                             value={editedGoalData.title}
                             onChange={handleTitleChange}
                         />
-                        <label>Date:</label>
+                    </div>
+                    <div className="mb-5">
+                        <label className="mb-3">Date:</label>
                         <textarea
+                            style={{lineHeight: 0.5}}
+                            className='form-control'
                             value={editedGoalData.end_date}
                             onChange={handleEndDateChange}
                         />
-                        <button type="submit">Save Changes</button>
-                        <button onClick={handledeleteGoal}>Delete Goal</button>
+                    </div>
+                    <div className="row">
+                        <button className="col w-1/2 h-9 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80 mx-3" type="submit">Save Changes</button>
+                        <button className="col w-1/2 h-9 rounded-full bg-[#ef4444] hover:bg-[#ef4444]/80 mx-3" onClick={handledeleteGoal}>Delete Goal</button>
+                    </div>
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModal}>
-            Close
-          </Button>
+                        Close
+                    </Button>
                     {/* <Button variant="primary" onClick={handleSaveChanges}>
             Save Changes
           </Button> */}
