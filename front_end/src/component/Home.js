@@ -12,7 +12,6 @@ import { setCurrentWeekData } from '../actions';
 
 function Home() {
     const dispatch = useDispatch();
-    const currentWeek = useSelector((state) => state.globalDataReducer.currentWeekDateData)
 
     console.log("localStorage",localStorage);
 
