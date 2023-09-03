@@ -26,12 +26,17 @@ function ModalForm({ show, close, goalType, user_id}) {
                     <div className="modal_container" onClick={(e) => e.stopPropagation()}>
 
                         <Modal show={showModal}>
-                            <Modal.Header closeButton onClick={close}>
+                            <Modal.Header>
                                 <Modal.Title>{goalType.name}</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
                                 <AddGoalForm userId={user_id} goalType={goalType}  close={close}/>
                             </Modal.Body>
+                            <Modal.Footer>
+                                <Button variant="secondary" onClick={close}>
+                                    Close
+                                </Button>
+                            </Modal.Footer>
                         </Modal>
                     </div>
                     

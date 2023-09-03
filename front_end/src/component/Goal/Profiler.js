@@ -70,6 +70,22 @@ console.log("profiler current_week", current_week);
 
   return (
     <>
+     <style type='text/css'>
+      {`
+      h1 {
+        0.7
+      }
+      .btn-warning {
+        --bs-btn-hover-bg: #e9ff4e;
+        }
+      a {
+        text-decoration: none;
+        color: inherit; 
+      }
+      a:hover {
+        color: black;
+      }`}
+    </style>
     <div className="goal_container">
       <div className="display_manager rounded">
        
@@ -79,13 +95,14 @@ console.log("profiler current_week", current_week);
           console.log(currentGoal);
           return (
             <div key={goalType.id} className={`goal_box rounded bg-danger ${goalType.name}`}>
-              <h1 className="goal_title">{goalType.name.toUpperCase()}</h1>
+              <h1 className="goal_type_title">{goalType.name.toUpperCase()}</h1>
               {currentGoal ? (
-                <div>
-                  <h1 style={{ width: '90%' }}> {currentGoal.title.toUpperCase()}</h1>
+                <div className="flex flex-col items-center">
+                  <h1 className="goal_title"> {currentGoal.title.toUpperCase()}</h1>
                   <p>Status: {currentGoal.accomplished}</p>
-
-                  <Link to={`/goal/${currentGoal.goal_id}` } >Goal</Link>
+                  <Button className="flex" variant="warning">
+                    <Link to={`/goal/${currentGoal.goal_id}` } >Goal</Link>
+                  </Button>
                 </div>
               ) : (
                 <div className="goal_btn">

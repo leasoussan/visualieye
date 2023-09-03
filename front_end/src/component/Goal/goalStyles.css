@@ -30,13 +30,21 @@
 .planner h1 {
     font-size: xx-large;
 }
+
+.planner .goal_title {
+    font-size: medium;
+}
  
 .main {
     grid-area: main;
 }
 
 .goal_btn {
-    width: 80%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    width: 75%;
+    
 }
 
 
@@ -57,7 +65,7 @@
 } */
 
 .goal_header{
-    background-color: orange ;
+    width: 50%;
 }
 
 .goal_box {
@@ -70,10 +78,42 @@
     width: 70%;
 }
 
+.goal_title {
+    font-size: medium;
+    color: aliceblue;
+}
+
+.btn-warning {
+    --bs-btn-hover-bg: #00fffb;
+}
+
 @media only screen and (max-width: 1024px){
+    .goal_type_title {
+        font-size: x-large;
+    }
+
+    .goal_title {
+        font-size: medium;
+    }
+
     .planner h1 {
         font-size: large;
     }
+
+    .goal_box p {
+        font-size: small;
+    }
+
+    .goal_box button {
+        font-size: medium;
+        line-height: 0.9;
+    }
+
+    .goal_box button a {
+        font-size: small;
+    }
+
+
   }
   
 @media only screen and (max-width: 768px){
@@ -86,10 +126,14 @@
 }
 
 @media only screen and (max-width: 426px){
-    .goal_title {
+    .goal_type_title {
         font-size: medium;
     }
     .planner h1 {
+        font-size: xx-small;
+    }
+
+    .planner button a {
         font-size: xx-small;
     }
 
