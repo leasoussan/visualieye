@@ -52,7 +52,6 @@ function GoalDisplay(props) {
         getdata();
     }
 
-
     return (
         <>
         <style type='text/css'>
@@ -71,8 +70,6 @@ function GoalDisplay(props) {
         color: black;
       }`}
     </style>
-
-
             <div className="goal_container">
                 <div className="goal_header rounded bg-light">
                     {show && (

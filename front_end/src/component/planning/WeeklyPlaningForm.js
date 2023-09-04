@@ -110,8 +110,6 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
         )
     }
     );
-
-
     const handleChange = (e) => {
 
         console.log("checkedBoxes", e.target);
@@ -123,17 +121,12 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
         console.log(checkedBoxes);
 
     };
-
-
-
     return (
-
         <>
             <div className="planner_form_container">
                 <Button class="btn btn-light" onClick={handleShow}>
                     SET YOUR WEEK 
                 </Button>
-
                 <Modal
                     show={show}
                     onHide={handleClose}
@@ -145,17 +138,10 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
                         <Modal.Title> Weekly Planner From TO to  </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-
                         <form onSubmit={handleSubmit} onChange={handleChange}>
-
-
                             {setSlotTypeInputForm}
-                            {/*  */}
-                            <button type="submit">  send</button>
+                            <button type="submit">send</button>
                         </form>
-
-
-
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
@@ -164,15 +150,8 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
                         <Button variant="primary">Understood</Button>
                     </Modal.Footer>
                 </Modal>
-
-
             </div >
         </>
     )
-
-
-
-
 };
-
 export default WeeklyPlaningForm 
