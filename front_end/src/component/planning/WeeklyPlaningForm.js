@@ -99,7 +99,7 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
 
         return (
             <div key={`slot_type${index}`} className=" slot_form_category">
-                <h2>{slot_type.slot_type_name}</h2>
+                <h2 className="modal_slot_title mb-3 pb-1">{slot_type.slot_type_name}</h2>
                 <div className="input_week_checkbox">
 
                     <SlotsPlanningFormDetails slot_type_selected={slot_type.slot_type_name} currentWeek={currentWeek} handleData={handelTypeAndDayCheckBoxChange} />
@@ -123,11 +123,18 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
     };
     return (
         <>
+        <style type='text/css'>
+            {`
+            .modal {
+                --bs-modal-width: 60%;
+            }`}
+    </style>
             <div className="planner_form_container">
                 <Button class="btn btn-light" onClick={handleShow}>
                     SET YOUR WEEK 
                 </Button>
                 <Modal
+                    className="modal_container"
                     show={show}
                     onHide={handleClose}
                     backdrop="static"

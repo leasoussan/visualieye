@@ -8,15 +8,64 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  height: 90vh;
+  height: 85vh;
   width: 95vw;
+  margin-bottom: 2rem;
   background-color: rgb(122, 112, 112);
   border: 1px solid pink;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 0rem;
   border-radius: 4px;
   box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1);
-
 }
+
+/* .modal_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200%;
+} */
+
+.modal_slot_title {
+  border-bottom: 2px solid black;
+}
+.modal_slot {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 2rem 0rem;
+}
+
+.modal_slot_hours {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.modal_days_hours {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(158, 210, 240);
+  border: 3px solid black;
+}
+
+.modal_days_hours label {
+  display: flex;
+  justify-content: center;
+}
+
+.day_label {
+  font-size: large;
+}
+
+.hour_label {
+  font-size: small;
+}
+/* .modal_slot_hours {
+  display: flex;
+  flex-direction: row;
+} */
 
 
 /* .planner-header {
@@ -103,24 +152,23 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 0 2rem;
+  padding: 0 0rem;
 }
 
 .pomedoro_slots {
   width: 100%;
-  /* height: calc(100% / 72); */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-bottom: 3px solid rgb(0, 0, 0);
-  margin: 0;
+  margin: 1rem;
 }
 
 @media only screen and (max-width: 1440px){
 
-  .planner_form_container .btn {
+  /* .planner_form_container .btn {
     font-size: xx-large;
-  }
+  } */
 
   .flex .btn{
     font-size: x-large;
@@ -130,9 +178,9 @@
 
 @media only screen and (max-width: 1024px){
 
-  .planner_form_container .btn {
+  /* .planner_form_container .btn {
     font-size: x-large;
-  }
+  } */
 
   .flex .btn {
     font-size: medium;

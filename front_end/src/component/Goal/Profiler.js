@@ -151,8 +151,8 @@ console.log("profiler current_week", current_week);
         }
         </div>
         </div>
-    <div className="goal_container">
-      <div className="display_manager rounded">
+    <div className="goal_container mt-2 mb-2">
+      <div className="display_manager rounded mt-5 mb-5 pt-5">
         {goalBox}
    
         {/* {goalTypes.map((goalType) => {

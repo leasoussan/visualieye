@@ -34,44 +34,43 @@ import '../../css/plannerStyles.css'
 
         const displayHoursInput = (dayName)=>{
             return(
-                <div key={`hours${dayName}`}>
-                    <label>FROM:</label>
+                <div key={`hours${dayName}`} className="modal_slot_hours mx-2">
+                    <label className="hour_label mr-2 ml-2">FROM:</label>
                     <input 
-                    type="time" 
-                    name="day_slot_start_time" 
-                    onChange={handelHoursChanges}
-                    ></input>
-                    <label>TO:</label>
+                        type="time" 
+                        name="day_slot_start_time" 
+                        onChange={handelHoursChanges}>
+
+                    </input>
+                    <label className="hour_label mr-2 ml-2">TO:</label>
                     <input type="time" name="day_slot_end_time"></input>
                 </div>
-                // <>
-                // </>
             )
     
         };
         const curr_week_number = currentWeek.currentWeekNumber
-        const createUniqueKey =()=>{
+        const createUniqueKey = () => {
             
             const key = `${curr_week_number}/${slot_type_selected}/${day.day_name}`
             return key
         }
         return (
             <>
-           
-            <div key={createUniqueKey()} className={`category_form_container_slot/${slot_type_selected}`}>
-                <label>{day.day_name}</label>
-                <input 
-                slot_type={slot_type_selected}
-                type="checkbox"
-                value={day.day_date} 
-                name={day.day_name}
-                // checked ={isChecked}
-                onChange={handelCheckBoxChange}
-                />
-
-            </div>
-            <div>
-            {displayHoursInput(day.day_name)}
+            <div className="modal_days_hours rounded">
+                <div key={createUniqueKey()} className={`category_form_container_slot/${slot_type_selected}`}>
+                    <label className="day_label">{day.day_name}</label>
+                    <input 
+                    slot_type={slot_type_selected}
+                    type="checkbox"
+                    value={day.day_date} 
+                    name={day.day_name}
+                    // checked ={isChecked}
+                    onChange={handelCheckBoxChange}
+                    />
+                </div>
+                <div>
+                    {displayHoursInput(day.day_name)}
+                </div>
             </div>
             </>
         );
@@ -83,12 +82,11 @@ import '../../css/plannerStyles.css'
     
     return (
         <div>
-            <label> Days  </label>
-
-
-            {displayWeekDays}
-             
-
+            <h4 className="mx-3">Days</h4>
+            <div className="modal_slot">
+                {displayWeekDays}
+            </div>
+            
         </div>
 
     )

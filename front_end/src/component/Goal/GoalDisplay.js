@@ -70,7 +70,7 @@ function GoalDisplay(props) {
         color: black;
       }`}
     </style>
-            <div className="goal_container">
+            <div className="goal_container mt-5 mb-5">
                 <div className="goal_header rounded bg-light">
                     {show && (
                         <EditGoalForm closeModal={handleClose} goal_data={goalData} onRefresh={handleRefresh} />
