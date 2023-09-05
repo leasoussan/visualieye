@@ -9,10 +9,10 @@
   justify-content: center;
   flex-direction: row;
   height: 90vh;
-  width: 90vw;
+  width: 95vw;
   background-color: rgb(122, 112, 112);
   border: 1px solid pink;
-  padding: 2rem;
+  padding: 0.5rem 2rem;
   border-radius: 4px;
   box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1);
 
@@ -59,7 +59,7 @@
 
 .weekdays {
   width: auto;
-  height: 4rem;
+  height: 3rem;
 }
 
 /* .slots {

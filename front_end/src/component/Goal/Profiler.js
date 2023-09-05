@@ -120,14 +120,14 @@ console.log("profiler current_week", current_week);
       }`}
     </style>
     <div className="planner_cont w-full">
-      <div>
+      <div className="mr-3">
         {goalTypes.map((goalType) => {
           if (goalType.name === 'planner'){
           const currentGoal = goals.find((goal) => goal.goal_type === goalType.id);
           console.log('current goal', currentGoal);
           return (
             <div key={goalType.id} className={`planner_box rounded bg-light ${goalType.name}`}>
-              <h1 className="planner_title">{goalType.name.toUpperCase()}</h1>
+              <h1 className="planner_title mb-3">{goalType.name.toUpperCase()}</h1>
               {currentGoal ? (
                 <div className="flex flex-col items-center">
                   <h1 className="planner_goal_title"> {currentGoal.title.toUpperCase()}</h1>
@@ -137,7 +137,7 @@ console.log("profiler current_week", current_week);
                   </Button>
                 </div>
               ) : (
-              <div className="planner_goal_btn">
+              <div className="planner_goal_btn mb-3">
                   <Button variant="warning" onClick={()=> handleShowModal(goalType)}>
                     ADD YOUR {goalType.name} Goal
                   </Button>

@@ -6,6 +6,7 @@ import { format, parseISO } from "date-fns";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { CheckUserLogIn } from "../CheckUserLogIn.js";
+import { Button } from 'bootstrap';
 
 
 class AddGoalForm extends React.Component {
@@ -117,7 +118,7 @@ class AddGoalForm extends React.Component {
                     </div>
                     <div className="mb-3">
                         <label>Goal Date</label>
-                        <DatePicker className='form-control' selected={this.state.end_date} name="select_end_date" dateFormat='yyyy-MM-dd' onChange={(e) => { this.setState({ end_date: e }) }} onClick={this.handleDate} />
+                        <DatePicker className="form-control" selected={this.state.end_date} name="select_end_date" dateFormat='yyyy-MM-dd' onChange={(e) => { this.setState({ end_date: e }) }} />
                     </div>
                     <div className='flex justify-center'>
                         <button className="w-1/2 h-9 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80">

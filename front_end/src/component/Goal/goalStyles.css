@@ -44,9 +44,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 1rem 0;
     height: 100%;
-    width: 100%;
+    width: 80%;
 }
 
 .planner_goal_title {
@@ -58,7 +58,7 @@
     display: flex;
     justify-content: center;
     text-decoration: none;
-    width: 55%;
+    width: 75%;
 }
 
 .planner_goal_btn button {
@@ -125,6 +125,10 @@
         font-size: large;
     }
 
+    .planner {
+        width: 85%;
+    }
+
     .planner h1 {
         font-size: medium;
     }
@@ -133,6 +137,9 @@
         font-size: small;
     }
 
+    .planner_goal_btn {
+        width: 50%;
+    }
     .goal_box p {
         font-size: small;
     }
