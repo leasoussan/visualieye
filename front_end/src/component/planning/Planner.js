@@ -102,7 +102,7 @@ const Planner = ({ isLoggedIn, userId }) => {
 
     <div className="planner_container mt-5">
       <WeeklyPlanningForm currentWeek={current_week}  userId={userId} showModal={showModal} closeModal={closeModal} />  
-      <div className="flex flex-row mb-5">
+      <div className="flex flex-row mt-3 mb-5">
       <button className="btn btn-light mr-1">PAST WEEK </button>
       <button className="btn btn-light ml-1">NEXT WEEK  </button>
       </div>

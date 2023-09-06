@@ -34,15 +34,15 @@ import '../../css/plannerStyles.css'
 
         const displayHoursInput = (dayName)=>{
             return(
-                <div key={`hours${dayName}`} className="modal_slot_hours mx-2">
-                    <label className="hour_label mr-2 ml-2">FROM:</label>
+                <div key={`hours${dayName}`} className="modal_slot_hours">
+                    <label className="hour_label">FROM:</label>
                     <input 
                         type="time" 
                         name="day_slot_start_time" 
                         onChange={handelHoursChanges}>
 
                     </input>
-                    <label className="hour_label mr-2 ml-2">TO:</label>
+                    <label className="hour_label">TO:</label>
                     <input type="time" name="day_slot_end_time"></input>
                 </div>
             )
@@ -56,7 +56,7 @@ import '../../css/plannerStyles.css'
         }
         return (
             <>
-            <div className="modal_days_hours rounded">
+            <div className="modal_days_hours rounded mt-2 pb-1">
                 <div key={createUniqueKey()} className={`category_form_container_slot/${slot_type_selected}`}>
                     <label className="day_label">{day.day_name}</label>
                     <input 

@@ -1,7 +1,7 @@
 #body .navbarMain {
     font-size: x-large;
     width: auto;
-    /* margin-top: -1rem; */
+    margin-top: 1rem;
     margin-bottom: 2rem;
     opacity: 0.7;
 }

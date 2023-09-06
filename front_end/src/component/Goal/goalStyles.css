@@ -1,4 +1,11 @@
 /* internship version */
+.goals_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
 .goal_container {
     display: flex;
     justify-content: center;
@@ -16,13 +23,11 @@
     /* ". health . . money ."; */
     height: 65vh;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.7);
     /* opacity: 0.7; */
     /* box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1); */
 }
 
 .planner_cont {
-    padding-right: 1rem;
     display: flex;
     align-items: center;
     justify-content: end;
@@ -30,7 +35,7 @@
   }
 
 .planner h1 {
-    margin: 0 1rem;
+    margin: 0 1שrem;
     font-size: larger;
 }
 
@@ -116,6 +121,24 @@
     color: red;
 }
 
+.date_picker {
+    margin-top: 1rem;
+    width: 50%;
+    border: 1px solid #ced4da;
+}
+
+.calendar_icon {
+    display: flex;
+    height: 4vh;
+    justify-content: end;
+    /* align-items:flex-end; */
+
+}
+
+/* .react-datepicker__input-container {
+    width: 10%;
+} */
+
 
 @media only screen and (max-width: 1024px){
     .goal_type_title {
@@ -169,6 +192,10 @@
         font-size: small;
     }
 
+    .planner {
+        width: 60%;
+    }
+
     .planner h1 {
         font-size: small;
     } 
@@ -178,8 +205,30 @@
 }
 
 @media only screen and (max-width: 426px){
-    .goal_box {
+    
+    .goals_container {
         width: 100%;
+    }
+
+    .display_manager {
+        display: grid;
+        grid-template-columns: 17% 17% 17% 17% 17% 17%;
+        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-areas: 
+        ". . main main . . "
+        "health . main main . money"
+        "health . . . . money";
+        /* ". health . . money ."; */
+        height: 65vh;
+        width: 80%;
+        
+        /* opacity: 0.7; */
+        /* box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1); */
+    }
+    
+    .goal_box {
+        height: 75%;
+        width: 120%;
     }
 
     .goal_type_title {
@@ -207,6 +256,12 @@
 
     .planner .goal_btn button {
         font-size: 0.2rem;
+    }
+}
+
+@media only screen and (max-width: 426px){
+    .money, .health {
+        width: 140%;
     }
 }
 
