@@ -18,11 +18,12 @@
     grid-template-rows: 25% 25% 25% 25%;
     grid-template-areas: 
     ". . main main . . "
-    ". health  main main money ."
+    ". .  main main . ."
+    ". health . . money ."
     ". health . . money .";
-    /* ". health . . money ."; */
     height: 65vh;
     width: 100%;
+    padding: 2rem;
     /* opacity: 0.7; */
     /* box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1); */
 }
@@ -35,7 +36,7 @@
   }
 
 .planner h1 {
-    margin: 0 1שrem;
+    margin: 0 1rem;
     font-size: larger;
 }
 
@@ -48,9 +49,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0;
+    margin: 1rem 1rem;
     height: 100%;
-    width: 80%;
+    width: 10%;
 }
 
 .planner_goal_title {
@@ -150,7 +151,7 @@
     }
 
     .planner {
-        width: 85%;
+        width: 15%;
     }
 
     .planner h1 {
@@ -166,7 +167,8 @@
     }
 
     .goal_box {
-        height: 100%;
+        height: 70%;
+        width: 100%;
     }
 
     .goal_box p {
@@ -192,10 +194,6 @@
         font-size: small;
     }
 
-    .planner {
-        width: 60%;
-    }
-
     .planner h1 {
         font-size: small;
     } 
@@ -211,28 +209,25 @@
     }
 
     .display_manager {
-        display: grid;
-        grid-template-columns: 17% 17% 17% 17% 17% 17%;
-        grid-template-rows: 25% 25% 25% 25%;
-        grid-template-areas: 
-        ". . main main . . "
-        "health . main main . money"
-        "health . . . . money";
-        /* ". health . . money ."; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         height: 65vh;
-        width: 80%;
-        
-        /* opacity: 0.7; */
-        /* box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1); */
+        width: 100%;
     }
-    
-    .goal_box {
-        height: 75%;
-        width: 120%;
-    }
-
     .goal_type_title {
         font-size: medium;
+    }
+
+    .planner_cont {
+        justify-content: center;
+      }
+
+    .planner {
+        padding: 0.5rem;
+        margin: 1rem 1rem;
+        height: 100%;
+        width: 50%;
     }
     .planner h1 {
         font-size: x-small;
@@ -257,14 +252,29 @@
     .planner .goal_btn button {
         font-size: 0.2rem;
     }
-}
 
-@media only screen and (max-width: 426px){
-    .money, .health {
-        width: 140%;
+    .goal_box {
+        width: 70%;
+        margin: 0.5rem 0rem;
+        padding: 0.5rem;
     }
 }
 
+@media only screen and (max-width: 321px){
+
+    .planner {
+        height: 20vh;
+    }
+
+    .goals_container {
+        align-items: flex-start;
+        height: 70vh;
+    }
+
+    .goal_box {
+        height: 30vh;
+    }
+}
 
 
 

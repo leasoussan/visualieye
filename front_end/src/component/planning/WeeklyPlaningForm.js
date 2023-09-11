@@ -121,6 +121,13 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
         console.log(checkedBoxes);
 
     };
+
+    console.log("CURRENT WEEK", currentWeek["weekDates"][0]);
+    const display_date = function(day) {
+        const date = currentWeek.weekDates[day].day_date;
+        return `${date.substring(8,10)}/${date.substring(5,7)}`;
+    }
+
     return (
         <>
         <style type='text/css'>
@@ -130,7 +137,7 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
             }`}
     </style>
             <div className="planner_form_container">
-                <Button class="btn btn-light" onClick={handleShow}>
+                <Button className="btn btn-light" onClick={handleShow}>
                     SET YOUR WEEK 
                 </Button>
                 <Modal
@@ -142,19 +149,20 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
                 >
                     <Modal.Header closeButton>
                         {/* <Modal.Title> Weekly Planner From TO to {currentWeek[0].day} {currentWeek[0].value}   to  {currentWeek[currentWeek.length -1].day} {currentWeek[currentWeek.length -1].value} </Modal.Title> */}
-                        <Modal.Title> Weekly Planner From TO to  </Modal.Title>
+                        <Modal.Title> Weekly Planner From {display_date(0)} TO {display_date(6)}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <form onSubmit={handleSubmit} onChange={handleChange}>
                             {setSlotTypeInputForm}
-                            <button type="submit">send</button>
+                            <div className="d-flex justify-content-end">
+                            <button className="w-20 h-9 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80" type="submit">Send</button>
+                            </div>
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary">Understood</Button>
                     </Modal.Footer>
                 </Modal>
             </div >

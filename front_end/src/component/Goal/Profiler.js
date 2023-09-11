@@ -120,7 +120,6 @@ console.log("profiler current_week", current_week);
       }`}
     </style>
     <div className="planner_cont w-full">
-      <div>
         {goalTypes.map((goalType) => {
           if (goalType.name === 'planner'){
           const currentGoal = goals.find((goal) => goal.goal_type === goalType.id);
@@ -150,9 +149,8 @@ console.log("profiler current_week", current_week);
           )
         }
         </div>
-        </div>
     <div className="goals_container mt-5 mb-5">
-      <div className="display_manager rounded pt-5">
+      <div className="display_manager rounded">
         {goalBox}
    
         {/* {goalTypes.map((goalType) => {
