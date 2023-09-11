@@ -24,7 +24,7 @@ import '../../css/plannerStyles.css'
 
 
     const handelHoursChanges =(e)=>{
-        console.log(e.target);
+    console.log(e.target.value);
     }
 
 
@@ -34,25 +34,35 @@ import '../../css/plannerStyles.css'
 
         const displayHoursInput = (dayName)=>{
             return(
+                <>
+                 <style type='text/css'>
+                    {`
+                    .form-control {
+                        padding: 0px 0px;
+                        }`}
+                </style>
                 <div key={`hours${dayName}`} className="modal_slot_hours">
                     <div className="hour_slot">
                         <label className="hour_label mb-1">FROM:</label>
                         <input 
-                            className="hour_input"
-                            type="time" 
+                            className="hour_input form-control"
+                            type="time"
                             name="day_slot_start_time" 
-                            onChange={handelHoursChanges}>
+                            onChange={handelHoursChanges}
+                            >
                         </input>
+                
                     </div>
                     <div className="hour_slot">
                         <label className="hour_label mb-1">TO:</label>
                         <input 
-                            className="hour_input"
+                            className="hour_input form-control"
                             type="time"
                             name="day_slot_end_time">
                         </input>
                     </div>
                 </div>
+                </>
             )
     
         };
@@ -62,6 +72,7 @@ import '../../css/plannerStyles.css'
             const key = `${curr_week_number}/${slot_type_selected}/${day.day_name}`
             return key
         }
+
         return (
             <>
             <div className="modal_days_hours rounded mt-2 pb-3 pt-2">

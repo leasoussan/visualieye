@@ -95,17 +95,15 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
     const setSlotTypeInputForm = globalSlotsTypes.map((slot_type, index) => {
 
         const select_slot_type = slot_type.slot_type_name;
-        console.log("select_slot_type", slot_type);
+        const slotTypeFormat = () => select_slot_type.split('_').map(part => part.slice(0, 1).toUpperCase() + part.slice(1)).join(' ')
+        console.log("select_slot_type", slotTypeFormat());
 
         return (
             <div key={`slot_type${index}`} className=" slot_form_category">
-                <h2 className="modal_slot_title mb-3 pb-1">{slot_type.slot_type_name}</h2>
+                <h2 className="modal_slot_title mb-3 pb-1">{slotTypeFormat()}</h2>
                 <div className="input_week_checkbox">
-
-                    <SlotsPlanningFormDetails slot_type_selected={slot_type.slot_type_name} currentWeek={currentWeek} handleData={handelTypeAndDayCheckBoxChange} />
-
+                    <SlotsPlanningFormDetails slot_type_selected={select_slot_type} currentWeek={currentWeek} handleData={handelTypeAndDayCheckBoxChange} />
                 </div>
-
             </div>
         )
     }
@@ -122,7 +120,6 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
 
     };
 
-    console.log("CURRENT WEEK", currentWeek["weekDates"][0]);
     const display_date = function(day) {
         const date = currentWeek.weekDates[day].day_date;
         return `${date.substring(8,10)}/${date.substring(5,7)}`;
@@ -133,9 +130,9 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
         <style type='text/css'>
             {`
             .modal {
-                --bs-modal-width: 60%;
+                --bs-modal-width: 70%;
             }`}
-    </style>
+        </style>
             <div className="planner_form_container">
                 <Button className="btn btn-light" onClick={handleShow}>
                     SET YOUR WEEK 
