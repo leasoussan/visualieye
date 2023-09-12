@@ -67,6 +67,39 @@ console.log("profiler current_week", current_week);
     setSelectedGoalType(goal_type)
   };
 
+  const goalBox = (
+    <>
+    {goalTypes.map((goalType) => {
+          if (goalType.name !== 'planner'){
+          const currentGoal = goals.find((goal) => goal.goal_type === goalType.id);
+          console.log('current goal', currentGoal);
+          return (
+            <div key={goalType.id} className={`goal_box rounded bg-light ${goalType.name}`}>
+              <h1 className="goal_type_title">{goalType.name.toUpperCase()}</h1>
+              {currentGoal ? (
+                <div className="flex flex-col items-center">
+                  <h1 className="goal_title"> {currentGoal.title.toUpperCase()}</h1>
+                  <p>Status: {currentGoal.accomplished}</p>
+                  <Button className="flex" variant="warning">
+                    <Link to={`/goal/${currentGoal.goal_id}` } >Goal</Link>
+                  </Button>
+                </div>
+              ) : (
+              <div className="goal_btn">
+                  <Button variant="warning" onClick={()=> handleShowModal(goalType)}>
+                    ADD YOUR {goalType.name} Goal
+                  </Button>
+                  <ModalForm show={showModal} close={ToggleModal} goalType={selected_goal_type} user_id={userId}/>
+              </div>
+                )}
+              </div>
+            )}
+          }
+          )
+        }
+        </>
+  )
+          
 
   return (
     <>
@@ -86,15 +119,46 @@ console.log("profiler current_week", current_week);
         color: black;
       }`}
     </style>
-    <div className="goal_container">
-      <div className="display_manager rounded">
-       
+    <div className="planner_cont w-full">
         {goalTypes.map((goalType) => {
-          
+          if (goalType.name === 'planner'){
           const currentGoal = goals.find((goal) => goal.goal_type === goalType.id);
-          console.log(currentGoal);
+          console.log('current goal', currentGoal);
           return (
-            <div key={goalType.id} className={`goal_box rounded bg-danger ${goalType.name}`}>
+            <div key={goalType.id} className={`planner_box rounded bg-light ${goalType.name}`}>
+              <h1 className="planner_title mb-3">{goalType.name.toUpperCase()}</h1>
+              {currentGoal ? (
+                <div className="flex flex-col items-center">
+                  <h1 className="planner_goal_title"> {currentGoal.title.toUpperCase()}</h1>
+                  <p>Status: {currentGoal.accomplished}</p>
+                  <Button className="flex" variant="warning">
+                    <Link to={`/goal/${currentGoal.goal_id}` } >Goal</Link>
+                  </Button>
+                </div>
+              ) : (
+              <div className="planner_goal_btn mb-3">
+                  <Button variant="warning" onClick={()=> handleShowModal(goalType)}>
+                    ADD YOUR {goalType.name} Goal
+                  </Button>
+                  <ModalForm show={showModal} close={ToggleModal} goalType={selected_goal_type} user_id={userId}/>
+              </div>
+                )}
+              </div>
+            )}
+          }
+          )
+        }
+        </div>
+    <div className="goals_container mt-5 mb-5">
+      <div className="display_manager rounded">
+        {goalBox}
+   
+        {/* {goalTypes.map((goalType) => {
+          if (goalType.name !== 'planner'){
+          const currentGoal = goals.find((goal) => goal.goal_type === goalType.id);
+          console.log('current goal', currentGoal);
+          return (
+            <div key={goalType.id} className={`goal_box rounded bg-light ${goalType.name}`}>
               <h1 className="goal_type_title">{goalType.name.toUpperCase()}</h1>
               {currentGoal ? (
                 <div className="flex flex-col items-center">
@@ -105,17 +169,19 @@ console.log("profiler current_week", current_week);
                   </Button>
                 </div>
               ) : (
-                <div className="goal_btn">
+              <div className="goal_btn">
                   <Button variant="light" onClick={()=> handleShowModal(goalType)}>
                     ADD YOUR {goalType.name} Goal
                   </Button>
-                 <ModalForm show={showModal} close={ToggleModal} goalType={selected_goal_type} user_id={userId}/>
-                </div>
-              )}
-            </div>
+                  <ModalForm show={showModal} close={ToggleModal} goalType={selected_goal_type} user_id={userId}/>
+              </div>
+                )}
+              </div>
+            )}
+          }
           )
-        })}
-      </div>
+          } */}
+        </div>
       </div>
     </>
   );

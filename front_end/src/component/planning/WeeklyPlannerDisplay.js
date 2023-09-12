@@ -16,7 +16,7 @@ const WeeklyPlannerDisplay = () => {
   console.log("weekly planner display currentWeek", currentWeek);
 
   
-  const renderPlanning =Object.entries(currentWeek.weekDates).map(([index, day]) => 
+  const renderPlanning = Object.entries(currentWeek.weekDates).map(([index, day]) => 
   (
     
     <div key={index} className="daily_hours_container">

@@ -24,7 +24,7 @@ import '../../css/plannerStyles.css'
 
 
     const handelHoursChanges =(e)=>{
-        console.log(e.target);
+    console.log(e.target.value);
     }
 
 
@@ -34,44 +34,63 @@ import '../../css/plannerStyles.css'
 
         const displayHoursInput = (dayName)=>{
             return(
-                <div key={`hours${dayName}`}>
-                    <label>FROM:</label>
-                    <input 
-                    type="time" 
-                    name="day_slot_start_time" 
-                    onChange={handelHoursChanges}
-                    ></input>
-                    <label>TO:</label>
-                    <input type="time" name="day_slot_end_time"></input>
+                <>
+                 <style type='text/css'>
+                    {`
+                    .form-control {
+                        padding: 0px 0px;
+                        }`}
+                </style>
+                <div key={`hours${dayName}`} className="modal_slot_hours">
+                    <div className="hour_slot">
+                        <label className="hour_label mb-1">FROM:</label>
+                        <input 
+                            className="hour_input form-control"
+                            type="time"
+                            name="day_slot_start_time" 
+                            onChange={handelHoursChanges}
+                            >
+                        </input>
+                
+                    </div>
+                    <div className="hour_slot">
+                        <label className="hour_label mb-1">TO:</label>
+                        <input 
+                            className="hour_input form-control"
+                            type="time"
+                            name="day_slot_end_time">
+                        </input>
+                    </div>
                 </div>
-                // <>
-                // </>
+                </>
             )
     
         };
         const curr_week_number = currentWeek.currentWeekNumber
-        const createUniqueKey =()=>{
+        const createUniqueKey = () => {
             
             const key = `${curr_week_number}/${slot_type_selected}/${day.day_name}`
             return key
         }
+
         return (
             <>
-           
-            <div key={createUniqueKey()} className={`category_form_container_slot/${slot_type_selected}`}>
-                <label>{day.day_name}</label>
-                <input 
-                slot_type={slot_type_selected}
-                type="checkbox"
-                value={day.day_date} 
-                name={day.day_name}
-                // checked ={isChecked}
-                onChange={handelCheckBoxChange}
-                />
-
-            </div>
-            <div>
-            {displayHoursInput(day.day_name)}
+            <div className="modal_days_hours rounded mt-2 pb-3 pt-2">
+                <div key={createUniqueKey()} className={`category_form_container_slot/${slot_type_selected} row mb-2`}>
+                    <label className="day_label col px-1">{day.day_name}</label>
+                    <input 
+                    className="col"
+                    slot_type={slot_type_selected}
+                    type="checkbox"
+                    value={day.day_date} 
+                    name={day.day_name}
+                    // checked ={isChecked}
+                    onChange={handelCheckBoxChange}
+                    />
+                </div>
+                <div>
+                    {displayHoursInput(day.day_name)}
+                </div>
             </div>
             </>
         );
@@ -83,14 +102,10 @@ import '../../css/plannerStyles.css'
     
     return (
         <div>
-            <label> Days  </label>
-
-
-            {displayWeekDays}
-             
-
+            <h4 className="mx-3">Days</h4>
+            <div className="modal_slot">
+                {displayWeekDays}
+            </div>
         </div>
-
     )
-
 };

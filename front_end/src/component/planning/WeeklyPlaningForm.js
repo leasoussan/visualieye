@@ -95,23 +95,18 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
     const setSlotTypeInputForm = globalSlotsTypes.map((slot_type, index) => {
 
         const select_slot_type = slot_type.slot_type_name;
-        console.log("select_slot_type", slot_type);
+        const slotTypeFormat = () => select_slot_type.split('_').map(part => part.slice(0, 1).toUpperCase() + part.slice(1)).join(' ')
 
         return (
-            <div key={`slot_type${index}`} className=" slot_form_category">
-                <h2>{slot_type.slot_type_name}</h2>
+            <div key={`slot_type${index}`} className=" slot_form_category pb-5 mb-3">
+                <h2 className="modal_slot_title mb-3 pb-1">{slotTypeFormat()}</h2>
                 <div className="input_week_checkbox">
-
-                    <SlotsPlanningFormDetails slot_type_selected={slot_type.slot_type_name} currentWeek={currentWeek} handleData={handelTypeAndDayCheckBoxChange} />
-
+                    <SlotsPlanningFormDetails slot_type_selected={select_slot_type} currentWeek={currentWeek} handleData={handelTypeAndDayCheckBoxChange} />
                 </div>
-
             </div>
         )
     }
     );
-
-
     const handleChange = (e) => {
 
         console.log("checkedBoxes", e.target);
@@ -124,17 +119,25 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
 
     };
 
-
+    const display_date = function(day) {
+        const date = currentWeek.weekDates[day].day_date;
+        return `${date.substring(8,10)}/${date.substring(5,7)}`;
+    }
 
     return (
-
         <>
+        <style type='text/css'>
+            {`
+            .modal {
+                --bs-modal-width: 70%;
+            }`}
+        </style>
             <div className="planner_form_container">
-                <Button class="btn btn-light" onClick={handleShow}>
+                <Button className="btn btn-light" onClick={handleShow}>
                     SET YOUR WEEK 
                 </Button>
-
                 <Modal
+                    className="modal_container"
                     show={show}
                     onHide={handleClose}
                     backdrop="static"
@@ -142,37 +145,24 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
                 >
                     <Modal.Header closeButton>
                         {/* <Modal.Title> Weekly Planner From TO to {currentWeek[0].day} {currentWeek[0].value}   to  {currentWeek[currentWeek.length -1].day} {currentWeek[currentWeek.length -1].value} </Modal.Title> */}
-                        <Modal.Title> Weekly Planner From TO to  </Modal.Title>
+                        <Modal.Title> Weekly Planner {display_date(0)} - {display_date(6)}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-
                         <form onSubmit={handleSubmit} onChange={handleChange}>
-
-
                             {setSlotTypeInputForm}
-                            {/*  */}
-                            <button type="submit">  send</button>
+                            <div className="d-flex justify-content-end">
+                            <button className="w-20 h-9 rounded-full bg-[#ffc93c] hover:bg-[#ffc93c]/80" type="submit">Send</button>
+                            </div>
                         </form>
-
-
-
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary">Understood</Button>
                     </Modal.Footer>
                 </Modal>
-
-
             </div >
         </>
     )
-
-
-
-
 };
-
 export default WeeklyPlaningForm 
