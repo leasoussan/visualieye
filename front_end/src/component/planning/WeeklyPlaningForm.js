@@ -96,10 +96,9 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
 
         const select_slot_type = slot_type.slot_type_name;
         const slotTypeFormat = () => select_slot_type.split('_').map(part => part.slice(0, 1).toUpperCase() + part.slice(1)).join(' ')
-        console.log("select_slot_type", slotTypeFormat());
 
         return (
-            <div key={`slot_type${index}`} className=" slot_form_category">
+            <div key={`slot_type${index}`} className=" slot_form_category pb-5 mb-3">
                 <h2 className="modal_slot_title mb-3 pb-1">{slotTypeFormat()}</h2>
                 <div className="input_week_checkbox">
                     <SlotsPlanningFormDetails slot_type_selected={select_slot_type} currentWeek={currentWeek} handleData={handelTypeAndDayCheckBoxChange} />
@@ -146,7 +145,7 @@ function WeeklyPlaningForm({ userId, currentWeek }) {
                 >
                     <Modal.Header closeButton>
                         {/* <Modal.Title> Weekly Planner From TO to {currentWeek[0].day} {currentWeek[0].value}   to  {currentWeek[currentWeek.length -1].day} {currentWeek[currentWeek.length -1].value} </Modal.Title> */}
-                        <Modal.Title> Weekly Planner From {display_date(0)} TO {display_date(6)}</Modal.Title>
+                        <Modal.Title> Weekly Planner {display_date(0)} - {display_date(6)}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <form onSubmit={handleSubmit} onChange={handleChange}>

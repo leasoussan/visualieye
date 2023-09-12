@@ -47,6 +47,7 @@
 .modal_slot_hours input {
   width: 94%;
   font-size: 9px;
+  background-color: #ffc93c;
 }
 
 .hour_slot {
